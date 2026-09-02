@@ -22,77 +22,105 @@
 
       <div class="page-hero">
         <div>
-          <div class="eyebrow">03 · Optimize · SF data-to-action engine</div>
-          <h1>Turn evidence into<br>measurable action.</h1>
-          <p>Select an observed data signal, explore SF’s fifteen decarbonization methods and see exactly how each opportunity would be quantified.</p>
+          <div class="eyebrow">03 · Optimize · SF opportunity matcher</div>
+          <h1>One signal. One action.<br>One outcome model.</h1>
+          <p>SF maps observed carbon hotspots to the most relevant decarbonization method—then defines what must be validated before savings can be quantified.</p>
         </div>
         <aside class="data-stamp" aria-label="Method library">
-          <span>SF playbook</span><strong>15</strong><small>decarbonization methods</small><em>5 structural levers</em>
+          <span>Priority screen</span><strong>3</strong><small>client-facing opportunities</small><em>Backed by a 15-method library</em>
         </aside>
       </div>
 
       <div class="hero-kpis" aria-label="Optimization engine principles">
-        <article><span>Observed signals</span><strong>5</strong><small>entry points</small></article>
-        <article><span>Structural levers</span><strong>5</strong><small>SF framework</small></article>
-        <article><span>Methods mapped</span><strong>15</strong><small>complete library</small></article>
-        <article><span>Unverified savings</span><strong>0</strong><small>presented as actual</small></article>
+        <article><span>Evidence sources</span><strong>3</strong><small>transport · WHS · packaging</small></article>
+        <article><span>Priority matches</span><strong>3</strong><small>focused client discussion</small></article>
+        <article><span>SF method library</span><strong>15</strong><small>across 5 levers</small></article>
+        <article><span>Unverified claims</span><strong>0</strong><small>savings shown as actual</small></article>
       </div>
     </div>
   </header>
 
   <main class="main-shell">
-    <section class="formula-band" aria-label="Data plus SF playbook equals Scope 3 outcome optimization">
-      <div class="formula-node"><span>Estée Lauder 2026 data</span><strong>Observed footprint evidence</strong><small>Actual emissions · mode · city · volume</small></div>
-      <div class="formula-mark" aria-hidden="true">+</div>
-      <div class="formula-node playbook"><span>SF decarbonization playbook</span><strong>5 levers · 15 methods</strong><small>Network · fleet · energy · operations · ecosystem</small></div>
-      <div class="formula-mark" aria-hidden="true">=</div>
-      <div class="formula-node outcome"><span>Scope 3 outcome optimization</span><strong>Prioritized, quantified, traceable</strong><small>CO₂e · intensity · cost · SLA · data coverage</small></div>
+    <section class="match-flow" aria-label="Optimization matching process">
+      <article><span>01 · Detect</span><strong>Carbon hotspot</strong><small>Actual footprint evidence</small></article>
+      <b aria-hidden="true">→</b>
+      <article><span>02 · Match</span><strong>SF method</strong><small>Best-fit operational lever</small></article>
+      <b aria-hidden="true">→</b>
+      <article class="is-outcome"><span>03 · Validate</span><strong>Outcome model</strong><small>Carbon · service · cost</small></article>
     </section>
 
-    <section class="engine-layout" aria-label="Interactive optimization engine">
-      <article class="card engine-card">
-        <div class="engine-head"><h2>Observed data signals</h2><span>Choose a starting point</span></div>
-        <div id="signal-list" class="signal-list"></div>
-        <p class="engine-note">Signals determine where to investigate. They do not prove method-level savings.</p>
-      </article>
-
-      <article class="card engine-card">
-        <div class="engine-head"><h2>SF decarbonization playbook</h2><span>Choose a lever and method</span></div>
-        <div id="lever-tabs" class="lever-tabs" aria-label="SF decarbonization levers"></div>
-        <div id="method-list" class="method-list" aria-label="Methods in selected lever"></div>
-        <div class="method-count"><span>Every lever contains three methods.</span><strong id="method-count">01–03 of 15</strong></div>
-      </article>
-
-      <aside class="card engine-card opportunity-card" aria-live="polite">
-        <div class="engine-head"><h2>Selected opportunity</h2><span id="model-status" class="model-status">Screening-ready</span></div>
-        <div class="opportunity-identity">
-          <div id="opportunity-number" class="opportunity-number">02</div>
-          <div class="opportunity-name"><small id="opportunity-lever">Network Optimization &amp; Modal Shift</small><strong id="opportunity-name">Road-to-Rail / Sea Shift</strong></div>
+    <section class="priority-engine card" aria-label="Interactive priority opportunity matcher">
+      <aside class="priority-rail">
+        <div class="priority-head">
+          <span>Opportunity shortlist</span>
+          <h2>Start with the strongest signals.</h2>
+          <p>Three evidence-led conversations—not fifteen competing recommendations.</p>
         </div>
-        <div class="evidence-block"><span>Current data signal</span><strong id="evidence-value">1,035.25 tCO₂e</strong><p id="evidence-text">Land accounts for 97.38% of SF transport actual emissions.</p></div>
-        <div class="detail-block"><div class="detail-label">Quantification logic</div><div id="logic-line" class="logic-line">Eligible tonne-km × (Road EF − Target-mode EF)</div></div>
-        <div class="detail-block"><div class="detail-label">Inputs still required</div><div id="input-chips" class="input-chips"></div></div>
-        <div class="detail-block"><div class="detail-label">Measurable outcome model</div><div id="outcome-grid" class="outcome-grid"></div></div>
-        <div class="scenario-note"><span>Outputs activate after source fields and operational feasibility are validated.</span><strong>Scenario—not reported actual</strong></div>
+        <div id="priority-list" class="priority-list"></div>
+        <div class="priority-foot"><strong>3 shown</strong><span>12 additional methods remain in the library</span></div>
       </aside>
+
+      <article class="match-result" aria-live="polite">
+        <div class="match-result-head">
+          <div><span>Selected opportunity</span><h2 id="priority-title">Modal shift</h2></div>
+          <strong id="match-stage" class="model-status">Screening-ready</strong>
+        </div>
+
+        <div class="match-visual">
+          <div id="match-gauge" class="match-gauge" role="img" aria-label="97.38% of SF transport emissions">
+            <div><strong id="gauge-value">97.38%</strong><span id="gauge-context">of SF transport</span></div>
+          </div>
+          <div class="match-route">
+            <div class="match-node">
+              <span>Detected signal</span>
+              <strong id="priority-signal">Land mode concentration</strong>
+              <small id="evidence-pool">1,035.25 tCO₂e visible pool</small>
+            </div>
+            <div class="route-connector"><span>SF AUTO-MATCH</span><i aria-hidden="true">→</i></div>
+            <div class="match-node is-action">
+              <span id="match-lever">Network Optimization &amp; Modal Shift</span>
+              <strong id="match-method">02 · Road-to-Rail / Sea Shift</strong>
+              <small id="match-reason">Land is the dominant visible transport emission pool.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="match-detail-grid">
+          <div>
+            <span class="detail-label">Validation gate</span>
+            <div id="validation-chips" class="validation-chips"></div>
+          </div>
+          <div>
+            <span class="detail-label">Next decision</span>
+            <strong id="next-step" class="next-step">Test eligible lanes against weight, distance and SLA.</strong>
+          </div>
+        </div>
+
+        <div class="outcome-line">
+          <span>Modelled outputs</span>
+          <div id="outcome-grid" class="outcome-grid"></div>
+        </div>
+        <div class="scenario-note"><span>The visible pool is evidence for screening—not a savings forecast.</span><strong>Scenario after validation</strong></div>
+      </article>
     </section>
 
-    <section class="reported-result" aria-label="Reported aggregate emissions relationship">
-      <span>Reported 2026 aggregate outcome</span>
-      <div class="reported-equation"><strong>1,895.82 t baseline</strong><b>−</b><strong>431.86 t avoided</strong><b>=</b><strong>1,463.96 t actual</strong></div>
-      <p>SF Jan–Jul · WHS Jan–Jun · Packaging Jan–Jul. The reported result is not attributed to individual methods.</p>
-    </section>
-
-    <section class="section" aria-labelledby="govern-title">
-      <div class="section-intro">
-        <div><div class="section-label">Evidence before recommendation</div><h2 id="govern-title">Every output needs an auditable calculation path.</h2></div>
-        <p>The methodology page explains how actual, calculated and scenario values remain distinct, and which source fields are required for client-grade quantification.</p>
+    <section class="playbook-overview" aria-labelledby="playbook-title">
+      <div class="playbook-copy">
+        <span>SF method coverage</span>
+        <h2 id="playbook-title">Five levers. Fifteen methods.<br>Only the best match surfaces.</h2>
+        <a href="methodology.html">Explore the full methodology <b>→</b></a>
       </div>
-      <a class="action-link" href="methodology.html"><div><span>Review the data foundation</span><strong>Open Methodology & Data Governance</strong></div><b>→</b></a>
+      <div class="playbook-map" aria-label="Fifteen methods grouped into five levers">
+        <article><span>01–03</span><strong>Network</strong><div><i></i><i></i><i></i></div></article>
+        <article><span>04–06</span><strong>Fleet</strong><div><i></i><i></i><i></i></div></article>
+        <article><span>07–09</span><strong>Energy</strong><div><i></i><i></i><i></i></div></article>
+        <article><span>10–12</span><strong>Operations</strong><div><i></i><i></i><i></i></div></article>
+        <article><span>13–15</span><strong>Ecosystem</strong><div><i></i><i></i><i></i></div></article>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer"><span><strong>Optimization Engine</strong> · 5 SF levers and 15 methods</span><span>Scenario outputs are not reported actuals</span></footer>
+  <footer class="site-footer"><span><strong>SF Opportunity Matcher</strong> · Evidence-led priority screening</span><span>Scenario outputs are not reported actuals</span></footer>
   <script src="assets/site.js"></script>
   <script src="data/dashboard-data.js"></script>
   <script src="assets/optimization.js"></script>

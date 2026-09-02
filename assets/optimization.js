@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const data = window.ESTEE_DASHBOARD_DATA;
-  const signalList = document.querySelector("#signal-list");
-  const leverTabs = document.querySelector("#lever-tabs");
-  const methodList = document.querySelector("#method-list");
-  if (!data || !signalList || !leverTabs || !methodList) return;
+  const priorityList = document.querySelector("#priority-list");
+  if (!data || !priorityList || !data.optimizationPriorities) return;
 
   const findMethod = (methodId) => {
     for (const lever of data.levers) {
@@ -14,69 +12,45 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const requestedMethod = new URLSearchParams(window.location.search).get("method");
-  const initial = findMethod(requestedMethod) || findMethod("m2");
-  let activeMethodId = initial.method.id;
-  let activeLeverId = initial.lever.id;
-  let activeSignalId = initial.method.signalId;
+  const requestedPriority = data.optimizationPriorities.find((item) => item.methodId === requestedMethod);
+  let activeMethodId = (requestedPriority || data.optimizationPriorities[0]).methodId;
 
-  function renderSignals() {
-    signalList.replaceChildren();
-    data.signals.forEach((signal) => {
+  function renderPriorities() {
+    priorityList.replaceChildren();
+    data.optimizationPriorities.forEach((priority) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "signal-button";
-      button.setAttribute("aria-pressed", String(signal.id === activeSignalId));
-      button.innerHTML = `<span class="signal-code">${signal.code}</span>
-        <span class="signal-copy"><strong>${signal.title}</strong><span>${signal.note}</span></span>
-        <span class="signal-value">${signal.value}</span>`;
-      button.addEventListener("click", () => selectMethod(signal.methodId, signal.id));
-      signalList.appendChild(button);
+      button.className = "priority-button";
+      button.setAttribute("aria-pressed", String(priority.methodId === activeMethodId));
+      button.innerHTML = `<span class="priority-code">${priority.code}</span>
+        <span class="priority-copy"><strong>${priority.title}</strong><small>${priority.signal}</small></span>
+        <span class="priority-metric"><strong>${priority.metric}</strong><small>${priority.unit}</small></span>`;
+      button.addEventListener("click", () => selectPriority(priority.methodId));
+      priorityList.appendChild(button);
     });
   }
 
-  function renderLevers() {
-    leverTabs.replaceChildren();
-    data.levers.forEach((lever) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "lever-button";
-      button.setAttribute("aria-pressed", String(lever.id === activeLeverId));
-      button.innerHTML = `<span>${lever.range}</span>${lever.short}`;
-      button.addEventListener("click", () => selectMethod(lever.methods[0].id, lever.methods[0].signalId));
-      leverTabs.appendChild(button);
-    });
-  }
-
-  function renderMethods() {
-    const lever = data.levers.find((item) => item.id === activeLeverId);
-    methodList.replaceChildren();
-    lever.methods.forEach((method) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "method-button";
-      button.setAttribute("aria-pressed", String(method.id === activeMethodId));
-      button.innerHTML = `<span class="method-number">${method.number}</span>
-        <span class="method-copy"><strong>${method.name}</strong><span>${method.summary}</span></span>
-        <span class="method-stage">${method.stage}</span>`;
-      button.addEventListener("click", () => selectMethod(method.id, method.signalId));
-      methodList.appendChild(button);
-    });
-    document.querySelector("#method-count").textContent = `${lever.range} of 15`;
-  }
-
-  function renderOpportunity() {
+  function renderMatch() {
+    const priority = data.optimizationPriorities.find((item) => item.methodId === activeMethodId);
     const selection = findMethod(activeMethodId);
-    if (!selection) return;
+    if (!priority || !selection) return;
     const { lever, method } = selection;
-    document.querySelector("#model-status").textContent = method.stage;
-    document.querySelector("#opportunity-number").textContent = method.number;
-    document.querySelector("#opportunity-lever").textContent = lever.name;
-    document.querySelector("#opportunity-name").textContent = method.name;
-    document.querySelector("#evidence-value").textContent = method.evidenceValue;
-    document.querySelector("#evidence-text").textContent = method.evidenceText;
-    document.querySelector("#logic-line").textContent = method.logic;
-    document.querySelector("#input-chips").innerHTML = method.inputs.map((item) => `<span>${item}</span>`).join("");
+    const gauge = document.querySelector("#match-gauge");
+
+    document.querySelector("#priority-title").textContent = priority.title;
+    document.querySelector("#match-stage").textContent = method.stage;
+    document.querySelector("#gauge-value").textContent = `${priority.share.toFixed(2)}%`;
+    document.querySelector("#gauge-context").textContent = priority.shareContext;
+    document.querySelector("#priority-signal").textContent = priority.signal;
+    document.querySelector("#evidence-pool").textContent = `${priority.metric} ${priority.unit} visible pool`;
+    document.querySelector("#match-lever").textContent = lever.name;
+    document.querySelector("#match-method").textContent = `${method.number} · ${method.name}`;
+    document.querySelector("#match-reason").textContent = priority.reason;
+    document.querySelector("#next-step").textContent = priority.nextStep;
+    document.querySelector("#validation-chips").innerHTML = priority.validation.map((item) => `<span>${item}</span>`).join("");
     document.querySelector("#outcome-grid").innerHTML = method.outcomes.map((item) => `<div class="outcome-item"><span>${item.label}</span><strong>${item.value}</strong></div>`).join("");
+    gauge.style.setProperty("--gauge-value", `${priority.share}%`);
+    gauge.setAttribute("aria-label", `${priority.share.toFixed(2)}% ${priority.shareContext}`);
     try {
       window.history.replaceState({}, "", `${window.location.pathname}?method=${method.id}`);
     } catch (_) {
@@ -85,18 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderEngine() {
-    renderSignals();
-    renderLevers();
-    renderMethods();
-    renderOpportunity();
+    renderPriorities();
+    renderMatch();
   }
 
-  function selectMethod(methodId, signalId) {
-    const selection = findMethod(methodId);
-    if (!selection) return;
+  function selectPriority(methodId) {
+    if (!data.optimizationPriorities.some((item) => item.methodId === methodId)) return;
     activeMethodId = methodId;
-    activeLeverId = selection.lever.id;
-    activeSignalId = signalId || selection.method.signalId;
     renderEngine();
   }
 

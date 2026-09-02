@@ -53,6 +53,23 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     { id: "packaging", code: "04", title: "Packaging footprint", value: "0.201 t", note: "Absolute only · intensity unavailable", methodId: "m12" },
     { id: "governance", code: "05", title: "3PL data coverage gap", value: "N/A", note: "No monthly data available", methodId: "m13" },
   ],
+  optimizationPriorities: [
+    {
+      code: "P1", methodId: "m2", title: "Modal shift", signal: "Land mode concentration", metric: "1,035.25", unit: "tCO₂e",
+      share: 97.38, shareContext: "of SF transport", reason: "Land represents the dominant visible transport pool, making eligible long-haul lanes the clearest first screen.",
+      validation: ["Lane", "Weight", "SLA"], nextStep: "Test eligible long-haul lanes against distance, service and cost constraints.",
+    },
+    {
+      code: "P2", methodId: "m1", title: "Network design", signal: "Top-city concentration", metric: "330.98", unit: "tCO₂e",
+      share: 31.13, shareContext: "of SF transport", reason: "The top ten cities concentrate nearly one-third of SF actual emissions and create a focused network screen.",
+      validation: ["OD lanes", "Node flows", "SLA"], nextStep: "Model node consolidation and transfer reduction for the highest-emission city flows.",
+    },
+    {
+      code: "P3", methodId: "m7", title: "Warehouse energy", signal: "WHS footprint", metric: "400.69", unit: "tCO₂e",
+      share: 27.37, shareContext: "of overall actual", reason: "Warehouse operations form the second-largest reported footprint and a controllable efficiency opportunity.",
+      validation: ["Site kWh", "HVAC load", "Hours"], nextStep: "Establish site-level energy baselines before testing IoT control measures.",
+    },
+  ],
   levers: [
     {
       id: "network", range: "01–03", short: "Network", name: "Network Optimization & Modal Shift",
