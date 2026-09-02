@@ -47,7 +47,7 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     candidateCarbonShare: 80.69,
     strategies: {
       road: {
-        name: "30T consolidation",
+        name: "30T diesel truck line-haul",
         matchedPairs: 5594,
         matchedBaselineIntensity: 777.46,
         targetIntensity: 123.33,
