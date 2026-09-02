@@ -1,0 +1,188 @@
+window.ESTEE_DASHBOARD_DATA = Object.freeze({
+  meta: {
+    period: "2026 YTD",
+    sfCoverage: "Jan–Jul",
+    warehouseCoverage: "Jan–Jun",
+    packagingCoverage: "Jan–Jul",
+  },
+  months: [
+    { month: "Jan", actual: 108.79, avoided: 34.44, intensity: 210.13, volume: 517.73 },
+    { month: "Feb", actual: 124.86, avoided: 22.66, intensity: 268.77, volume: 464.56 },
+    { month: "Mar", actual: 153.06, avoided: 33.16, intensity: 267.20, volume: 572.82 },
+    { month: "Apr", actual: 86.16, avoided: 23.93, intensity: 239.29, volume: 360.07 },
+    { month: "May", actual: 309.76, avoided: 65.98, intensity: 317.03, volume: 977.06 },
+    { month: "Jun", actual: 217.90, avoided: 48.86, intensity: 328.30, volume: 663.71 },
+    { month: "Jul", actual: 62.53, avoided: 16.60, intensity: 246.06, volume: 254.15 },
+  ],
+  metrics: {
+    actual: { label: "Actual emissions", unit: "tCO₂e", field: "actual" },
+    avoided: { label: "Avoided emissions", unit: "tCO₂e", field: "avoided" },
+    intensity: { label: "Carbon intensity", unit: "gCO₂e/pcs", field: "intensity" },
+    volume: { label: "Shipment volume", unit: "k pcs", field: "volume" },
+  },
+  totals: {
+    overall: { baseline: 1895.82, avoided: 431.86, actual: 1463.96, rate: 22.78 },
+    sf: { baseline: 1308.70, avoided: 245.63, actual: 1063.07, intensity: 279.01, volume: 3810.10, rate: 18.77 },
+    warehouse: { baseline: 586.90, avoided: 186.21, actual: 400.69, rate: 31.73 },
+    packaging: { baseline: 0.219, avoided: 0.018, actual: 0.201, rate: 8.22 },
+  },
+  segments: [
+    { id: "sf", name: "SF Transport", actual: 1063.07, avoided: 245.63, baseline: 1308.70, share: 72.62, coverage: "Jan–Jul" },
+    { id: "warehouse", name: "WHS", actual: 400.69, avoided: 186.21, baseline: 586.90, share: 27.37, coverage: "Jan–Jun" },
+    { id: "packaging", name: "Packaging", actual: 0.201, avoided: 0.018, baseline: 0.219, share: 0.01, coverage: "Jan–Jul absolute only" },
+  ],
+  cities: [
+    { name: "Beijing", emissions: 60.77, haul: 1426.53, waybills: 181264 },
+    { name: "Shanghai", emissions: 46.82, haul: 468.28, waybills: 337715 },
+    { name: "Shenyang", emissions: 41.97, haul: 1801.58, waybills: 46434 },
+    { name: "Xi'an", emissions: 39.02, haul: 1451.40, waybills: 72684 },
+    { name: "Harbin", emissions: 30.98, haul: 2298.13, waybills: 30495 },
+    { name: "Chengdu", emissions: 29.57, haul: 2034.66, waybills: 26046 },
+  ],
+  modes: [
+    { name: "Land", value: 1035.25, share: 97.38 },
+    { name: "Pick up", value: 11.21, share: 1.05 },
+    { name: "Rail", value: 10.62, share: 1.00 },
+    { name: "Air", value: 4.06, share: 0.38 },
+    { name: "Delivery", value: 1.93, share: 0.18 },
+  ],
+  signals: [
+    { id: "transport", code: "01", title: "Transport mode concentration", value: "1,063.07 t", note: "Land 97.38% · Air 4.06 t", methodId: "m2" },
+    { id: "cities", code: "02", title: "Long-haul city concentration", value: "330.98 t", note: "Top 10 cities · 31.13% of SF actual", methodId: "m1" },
+    { id: "warehouse", code: "03", title: "Warehouse footprint", value: "400.69 t", note: "Jan–Jun reported actual", methodId: "m7" },
+    { id: "packaging", code: "04", title: "Packaging footprint", value: "0.201 t", note: "Absolute only · intensity unavailable", methodId: "m12" },
+    { id: "governance", code: "05", title: "3PL data coverage gap", value: "N/A", note: "No monthly data available", methodId: "m13" },
+  ],
+  levers: [
+    {
+      id: "network", range: "01–03", short: "Network", name: "Network Optimization & Modal Shift",
+      methods: [
+        {
+          id: "m1", number: "01", name: "Network Node Consolidation", summary: "Reduce avoidable cross-region transfers.", stage: "Screening-ready", signalId: "cities",
+          evidenceValue: "330.98 tCO₂e", evidenceText: "The top 10 cities represent 31.13% of SF transport actual emissions.",
+          logic: "Current network emissions − optimized node-network emissions",
+          inputs: ["OD lanes", "Node flows", "Weight", "SLA"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Network", value: "km & transfers avoided" }, { label: "Business", value: "Cost & SLA impact" }],
+        },
+        {
+          id: "m2", number: "02", name: "Road-to-Rail / Sea Shift", summary: "Shift eligible long-haul road freight.", stage: "Screening-ready", signalId: "transport",
+          evidenceValue: "1,035.25 tCO₂e", evidenceText: "Land accounts for 97.38% of SF transport actual emissions.",
+          logic: "Eligible tonne-km × (Road EF − Target-mode EF)",
+          inputs: ["Lane", "Weight", "Distance", "Mode EF", "SLA", "Cost"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Intensity", value: "gCO₂e/pcs change" }, { label: "Business", value: "Cost & SLA impact" }],
+        },
+        {
+          id: "m3", number: "03", name: "Air-to-Ground Rebalancing", summary: "Move non-urgent air shipments to ground.", stage: "Data required", signalId: "transport",
+          evidenceValue: "4.06 tCO₂e", evidenceText: "Air contributes 4.06 tCO₂e in the current SF transport mode mix.",
+          logic: "Eligible air tonne-km × (Air EF − Ground EF)",
+          inputs: ["Air waybills", "Weight", "Route", "SLA", "Ground option"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Service", value: "SLA compliance" }, { label: "Business", value: "Cost per shipment" }],
+        },
+      ],
+    },
+    {
+      id: "fleet", range: "04–06", short: "Fleet", name: "Fleet & Asset Decarbonization",
+      methods: [
+        {
+          id: "m4", number: "04", name: "Heavy Fleet Optimization", summary: "Improve vehicle capacity and utilization.", stage: "Data required", signalId: "transport",
+          evidenceValue: "1,035.25 tCO₂e", evidenceText: "Land is the largest visible transport emission pool.",
+          logic: "Tonne-km × (Current fleet EF − Optimized fleet EF)",
+          inputs: ["Vehicle class", "Fuel", "Capacity", "Load factor", "Route"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Efficiency", value: "Load factor gain" }, { label: "Business", value: "Trips & cost avoided" }],
+        },
+        {
+          id: "m5", number: "05", name: "NEV Fleet Replacement", summary: "Replace eligible urban ICE vehicles.", stage: "Data required", signalId: "transport",
+          evidenceValue: "13.14 tCO₂e", evidenceText: "Pick-up and delivery legs contribute 13.14 tCO₂e in total.",
+          logic: "Eligible vehicle-km × (ICE EF − NEV lifecycle EF)",
+          inputs: ["Vehicle-km", "Duty cycle", "Grid mix", "Fleet plan", "Charging"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Fleet", value: "NEV adoption share" }, { label: "Finance", value: "TCO & payback" }],
+        },
+        {
+          id: "m6", number: "06", name: "Next-Gen Aviation Fleet", summary: "Use efficient aircraft and ground assets.", stage: "Program design", signalId: "transport",
+          evidenceValue: "4.06 tCO₂e", evidenceText: "Air is a smaller but high-factor component of the current footprint.",
+          logic: "Air tonne-km × (Current aircraft EF − Future fleet EF)",
+          inputs: ["Aircraft type", "Tonne-km", "Load factor", "Fuel", "Ground energy"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Aviation", value: "Fleet efficiency gain" }, { label: "Roadmap", value: "Transition milestones" }],
+        },
+      ],
+    },
+    {
+      id: "energy", range: "07–09", short: "Energy", name: "Green Energy & Infrastructure",
+      methods: [
+        {
+          id: "m7", number: "07", name: "Smart Energy IoT Systems", summary: "Optimize HVAC, lighting and monitoring.", stage: "Screening-ready", signalId: "warehouse",
+          evidenceValue: "400.69 tCO₂e", evidenceText: "WHS contributes 400.69 tCO₂e of reported actual emissions for Jan–Jun.",
+          logic: "Baseline site kWh × grid EF − optimized site emissions",
+          inputs: ["Site kWh", "HVAC load", "Lighting", "Hours", "Weather"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Energy", value: "kWh saved" }, { label: "Finance", value: "Savings & payback" }],
+        },
+        {
+          id: "m8", number: "08", name: "Rooftop Solar PV Expansion", summary: "Generate renewable power at logistics sites.", stage: "Data required", signalId: "warehouse",
+          evidenceValue: "400.69 tCO₂e", evidenceText: "Warehouse emissions provide the screening base for site decarbonization.",
+          logic: "On-site solar kWh × displaced grid emission factor",
+          inputs: ["Roof area", "Solar yield", "Site kWh", "Grid EF", "CAPEX"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Energy", value: "Renewable share" }, { label: "Finance", value: "IRR & payback" }],
+        },
+        {
+          id: "m9", number: "09", name: "Green Power Procurement", summary: "Use verified GECs and renewable PPAs.", stage: "Data required", signalId: "warehouse",
+          evidenceValue: "400.69 tCO₂e", evidenceText: "The WHS footprint can be matched with regional electricity sourcing data.",
+          logic: "Matched renewable kWh × applicable grid emission factor",
+          inputs: ["Site kWh", "Region", "Grid EF", "GEC/PPA", "Contract term"],
+          outcomes: [{ label: "Carbon", value: "Market-based tCO₂e" }, { label: "Energy", value: "Renewable share" }, { label: "Governance", value: "Certificate traceability" }],
+        },
+      ],
+    },
+    {
+      id: "operations", range: "10–12", short: "Operations", name: "Eco-Packaging & Algorithmic Efficiency",
+      methods: [
+        {
+          id: "m10", number: "10", name: "Dynamic AI Route Planning", summary: "Reduce distance and fuel with live routing.", stage: "Screening-ready", signalId: "cities",
+          evidenceValue: "330.98 tCO₂e", evidenceText: "High-emission city clusters offer a practical route-screening starting point.",
+          logic: "Avoided vehicle-km × vehicle energy emission factor",
+          inputs: ["Stops", "GPS", "Traffic", "Load", "SLA", "Vehicle"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Routing", value: "km & time saved" }, { label: "Business", value: "Cost per delivery" }],
+        },
+        {
+          id: "m11", number: "11", name: "3D Packing & Loading Algorithms", summary: "Improve cube utilization and reduce trips.", stage: "Data required", signalId: "transport",
+          evidenceValue: "3.81 million pcs", evidenceText: "Shipment volume establishes scale; dimensional and load data are still required.",
+          logic: "Trips avoided × average trip emissions",
+          inputs: ["Dimensions", "Vehicle cube", "Load factor", "Route", "Damage limit"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Loading", value: "Cube utilization" }, { label: "Business", value: "Trips & cost avoided" }],
+        },
+        {
+          id: "m12", number: "12", name: "Reusable & Eco-Packaging", summary: "Reduce material and increase reuse cycles.", stage: "Data required", signalId: "packaging",
+          evidenceValue: "0.201 tCO₂e", evidenceText: "Packaging absolute emissions are available; monthly intensity is not.",
+          logic: "Units × (Single-use EF − Reuse-cycle EF)",
+          inputs: ["Material", "Mass", "Units", "Reuse cycles", "Return rate"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Circularity", value: "Material avoided" }, { label: "Business", value: "Cost per use" }],
+        },
+      ],
+    },
+    {
+      id: "ecosystem", range: "13–15", short: "Ecosystem", name: "Ecosystem Enablement & Digitalization",
+      methods: [
+        {
+          id: "m13", number: "13", name: "3PL Carrier Governance", summary: "Set carbon thresholds and carrier scorecards.", stage: "Foundation", signalId: "governance",
+          evidenceValue: "N/A", evidenceText: "No 3PL monthly dataset is available; the gap is treated as a governance signal, not zero.",
+          logic: "Carrier activity × verified EF, scored against carbon thresholds",
+          inputs: ["Carrier activity", "Fuel/mode", "Emission factor", "Audit evidence"],
+          outcomes: [{ label: "Governance", value: "Data coverage rate" }, { label: "Supplier", value: "ESG scorecard" }, { label: "Carbon", value: "Verified tCO₂e" }],
+        },
+        {
+          id: "m14", number: "14", name: "100% Paperless Operations", summary: "Scale e-POD and digital waybills.", stage: "Program design", signalId: "governance",
+          evidenceValue: "3.81 million pcs", evidenceText: "Shipment scale indicates process reach, but document-use data are not yet available.",
+          logic: "Documents avoided × paper and process lifecycle EF",
+          inputs: ["Document count", "Pages", "Paper mass", "Process energy"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Waste", value: "Paper avoided" }, { label: "Governance", value: "Digital traceability" }],
+        },
+        {
+          id: "m15", number: "15", name: "Unmanned Last-Mile Pilots", summary: "Test low-emission autonomous delivery.", stage: "Pilot design", signalId: "transport",
+          evidenceValue: "1.93 tCO₂e", evidenceText: "Delivery contributes 1.93 tCO₂e in the current SF transport mode mix.",
+          logic: "Pilot route-km × (Current delivery EF − Pilot lifecycle EF)",
+          inputs: ["Pilot zone", "Route-km", "Duty cycle", "Energy mix", "Capacity"],
+          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Service", value: "Delivery success & SLA" }, { label: "Pilot", value: "Scalability evidence" }],
+        },
+      ],
+    },
+  ],
+});

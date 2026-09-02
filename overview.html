@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive 2026 Estée Lauder SF transport carbon footprint view.">
+  <title>2026 Footprint · Estée Lauder × SF</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand-link" href="index.html">
+          <span class="logo-box"><img src="assets/sf-logo.png" alt="SF Express logo"></span>
+          <span class="brand-copy"><strong>SF × ESTĒE LAUDER</strong><span>Scope 3 carbon decision platform</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a><a href="overview.html">Footprint</a><a href="drivers.html">Drivers</a><a href="optimization.html">Optimization</a><a href="methodology.html">Methodology</a>
+        </div>
+      </nav>
+
+      <div class="page-hero">
+        <div>
+          <div class="eyebrow">01 · Measure · SF transport</div>
+          <h1>One trusted<br>2026 footprint.</h1>
+          <p>A month-by-month view of actual emissions, reported avoided emissions, carbon intensity and shipment volume across SF transport services.</p>
+        </div>
+        <aside class="data-stamp" aria-label="Data coverage">
+          <span>Data coverage</span><strong>7</strong><small>mapped months</small><em>Jan–Jul 2026</em>
+        </aside>
+      </div>
+
+      <div class="hero-kpis" aria-label="SF transport headline metrics">
+        <article><span>Actual emissions</span><strong>1,063.07</strong><small>tCO₂e</small></article>
+        <article><span>Reported avoided</span><strong>245.63</strong><small>tCO₂e</small></article>
+        <article><span>Carbon intensity</span><strong>279.01</strong><small>gCO₂e/pcs</small></article>
+        <article><span>Shipment volume</span><strong>3.81</strong><small>million pcs</small></article>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-shell">
+    <section class="overview-layout" aria-label="Interactive monthly footprint">
+      <article class="card">
+        <div class="chart-head">
+          <div><div class="card-kicker">2026 monthly operating profile</div><h2>Explore the footprint by month.</h2></div>
+          <div class="metric-switch" aria-label="Chart metric">
+            <button type="button" data-metric="actual" aria-pressed="true">Actual</button>
+            <button type="button" data-metric="avoided" aria-pressed="false">Avoided</button>
+            <button type="button" data-metric="intensity" aria-pressed="false">Intensity</button>
+            <button type="button" data-metric="volume" aria-pressed="false">Volume</button>
+          </div>
+        </div>
+        <div class="chart-meta"><span id="chart-metric-label">Actual emissions · tCO₂e</span><span id="chart-average">2026 average</span></div>
+        <div id="month-chart" class="month-chart" role="group" aria-label="Interactive monthly carbon chart"></div>
+      </article>
+
+      <aside class="card selected-panel" aria-live="polite">
+        <div class="selected-head"><span>Selected month</span><strong id="selected-month">May 2026</strong></div>
+        <div class="selected-hero"><span>Actual emissions</span><strong id="selected-actual">309.76</strong><small>tCO₂e</small></div>
+        <div class="selected-grid">
+          <div><span>YTD share</span><strong id="selected-share">29.14%</strong></div>
+          <div><span>Avoided emissions</span><strong id="selected-avoided">65.98 t</strong></div>
+          <div><span>Carbon intensity</span><strong id="selected-intensity">317.03 g/pcs</strong></div>
+          <div><span>Shipment volume</span><strong id="selected-volume">977.06 k pcs</strong></div>
+        </div>
+        <p class="selected-note">Move across the chart or focus a month to update this panel. Monthly values sum to 1,063.06 tCO₂e; the source aggregate is 1,063.07 tCO₂e due to rounding.</p>
+      </aside>
+    </section>
+
+    <section class="insight-row" aria-label="Key footprint insights">
+      <article class="insight-card"><strong>29.14%</strong><p>May contributed the largest single-month share of SF transport actual emissions.</p></article>
+      <article class="insight-card"><strong>328.30 g/pcs</strong><p>June recorded the highest carbon intensity despite a lower volume than May.</p></article>
+      <article class="insight-card"><strong>49.64%</strong><p>May and June together contributed nearly half of Jan–Jul actual emissions.</p></article>
+    </section>
+
+    <section class="relationship-band" aria-label="SF transport baseline relationship">
+      <article><span>Calculated baseline</span><strong>1,308.70 tCO₂e</strong></article><b>−</b>
+      <article><span>Reported avoided</span><strong>245.63 tCO₂e</strong></article><b>=</b>
+      <article><span>Actual emissions</span><strong>1,063.07 tCO₂e</strong></article>
+      <small>Baseline is calculated as Actual + Avoided. Reported reduction rate: 18.77%.</small>
+    </section>
+
+    <section class="section" aria-labelledby="next-title">
+      <div class="section-intro">
+        <div><div class="section-label">Next question</div><h2 id="next-title">What is driving this footprint?</h2></div>
+        <p>The monthly profile shows when emissions occurred. The driver view explains where they are concentrated across business sources, cities and transport modes.</p>
+      </div>
+      <a class="action-link" href="drivers.html"><div><span>Continue to diagnosis</span><strong>Open the Emission Drivers view</strong></div><b>→</b></a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span><strong>2026 Footprint</strong> · SF transport Jan–Jul</span><span>Actual data view</span></footer>
+  <script src="assets/site.js"></script>
+  <script src="data/dashboard-data.js"></script>
+  <script src="assets/overview.js"></script>
+</body>
+</html>

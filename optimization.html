@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive SF decarbonization playbook connecting Estée Lauder data to measurable Scope 3 outcomes.">
+  <title>Optimization Engine · Estée Lauder × SF</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand-link" href="index.html">
+          <span class="logo-box"><img src="assets/sf-logo.png" alt="SF Express logo"></span>
+          <span class="brand-copy"><strong>SF × ESTĒE LAUDER</strong><span>Scope 3 carbon decision platform</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a><a href="overview.html">Footprint</a><a href="drivers.html">Drivers</a><a href="optimization.html">Optimization</a><a href="methodology.html">Methodology</a>
+        </div>
+      </nav>
+
+      <div class="page-hero">
+        <div>
+          <div class="eyebrow">03 · Optimize · SF data-to-action engine</div>
+          <h1>Turn evidence into<br>measurable action.</h1>
+          <p>Select an observed data signal, explore SF’s fifteen decarbonization methods and see exactly how each opportunity would be quantified.</p>
+        </div>
+        <aside class="data-stamp" aria-label="Method library">
+          <span>SF playbook</span><strong>15</strong><small>decarbonization methods</small><em>5 structural levers</em>
+        </aside>
+      </div>
+
+      <div class="hero-kpis" aria-label="Optimization engine principles">
+        <article><span>Observed signals</span><strong>5</strong><small>entry points</small></article>
+        <article><span>Structural levers</span><strong>5</strong><small>SF framework</small></article>
+        <article><span>Methods mapped</span><strong>15</strong><small>complete library</small></article>
+        <article><span>Unverified savings</span><strong>0</strong><small>presented as actual</small></article>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-shell">
+    <section class="formula-band" aria-label="Data plus SF playbook equals Scope 3 outcome optimization">
+      <div class="formula-node"><span>Estée Lauder 2026 data</span><strong>Observed footprint evidence</strong><small>Actual emissions · mode · city · volume</small></div>
+      <div class="formula-mark" aria-hidden="true">+</div>
+      <div class="formula-node playbook"><span>SF decarbonization playbook</span><strong>5 levers · 15 methods</strong><small>Network · fleet · energy · operations · ecosystem</small></div>
+      <div class="formula-mark" aria-hidden="true">=</div>
+      <div class="formula-node outcome"><span>Scope 3 outcome optimization</span><strong>Prioritized, quantified, traceable</strong><small>CO₂e · intensity · cost · SLA · data coverage</small></div>
+    </section>
+
+    <section class="engine-layout" aria-label="Interactive optimization engine">
+      <article class="card engine-card">
+        <div class="engine-head"><h2>Observed data signals</h2><span>Choose a starting point</span></div>
+        <div id="signal-list" class="signal-list"></div>
+        <p class="engine-note">Signals determine where to investigate. They do not prove method-level savings.</p>
+      </article>
+
+      <article class="card engine-card">
+        <div class="engine-head"><h2>SF decarbonization playbook</h2><span>Choose a lever and method</span></div>
+        <div id="lever-tabs" class="lever-tabs" aria-label="SF decarbonization levers"></div>
+        <div id="method-list" class="method-list" aria-label="Methods in selected lever"></div>
+        <div class="method-count"><span>Every lever contains three methods.</span><strong id="method-count">01–03 of 15</strong></div>
+      </article>
+
+      <aside class="card engine-card opportunity-card" aria-live="polite">
+        <div class="engine-head"><h2>Selected opportunity</h2><span id="model-status" class="model-status">Screening-ready</span></div>
+        <div class="opportunity-identity">
+          <div id="opportunity-number" class="opportunity-number">02</div>
+          <div class="opportunity-name"><small id="opportunity-lever">Network Optimization &amp; Modal Shift</small><strong id="opportunity-name">Road-to-Rail / Sea Shift</strong></div>
+        </div>
+        <div class="evidence-block"><span>Current data signal</span><strong id="evidence-value">1,035.25 tCO₂e</strong><p id="evidence-text">Land accounts for 97.38% of SF transport actual emissions.</p></div>
+        <div class="detail-block"><div class="detail-label">Quantification logic</div><div id="logic-line" class="logic-line">Eligible tonne-km × (Road EF − Target-mode EF)</div></div>
+        <div class="detail-block"><div class="detail-label">Inputs still required</div><div id="input-chips" class="input-chips"></div></div>
+        <div class="detail-block"><div class="detail-label">Measurable outcome model</div><div id="outcome-grid" class="outcome-grid"></div></div>
+        <div class="scenario-note"><span>Outputs activate after source fields and operational feasibility are validated.</span><strong>Scenario—not reported actual</strong></div>
+      </aside>
+    </section>
+
+    <section class="reported-result" aria-label="Reported aggregate emissions relationship">
+      <span>Reported 2026 aggregate outcome</span>
+      <div class="reported-equation"><strong>1,895.82 t baseline</strong><b>−</b><strong>431.86 t avoided</strong><b>=</b><strong>1,463.96 t actual</strong></div>
+      <p>SF Jan–Jul · WHS Jan–Jun · Packaging Jan–Jul. The reported result is not attributed to individual methods.</p>
+    </section>
+
+    <section class="section" aria-labelledby="govern-title">
+      <div class="section-intro">
+        <div><div class="section-label">Evidence before recommendation</div><h2 id="govern-title">Every output needs an auditable calculation path.</h2></div>
+        <p>The methodology page explains how actual, calculated and scenario values remain distinct, and which source fields are required for client-grade quantification.</p>
+      </div>
+      <a class="action-link" href="methodology.html"><div><span>Review the data foundation</span><strong>Open Methodology & Data Governance</strong></div><b>→</b></a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span><strong>Optimization Engine</strong> · 5 SF levers and 15 methods</span><span>Scenario outputs are not reported actuals</span></footer>
+  <script src="assets/site.js"></script>
+  <script src="data/dashboard-data.js"></script>
+  <script src="assets/optimization.js"></script>
+</body>
+</html>

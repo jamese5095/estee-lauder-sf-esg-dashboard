@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculation methodology, data coverage and SF decarbonization method library for the Estée Lauder dashboard.">
+  <title>Methodology & Data · Estée Lauder × SF</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand-link" href="index.html">
+          <span class="logo-box"><img src="assets/sf-logo.png" alt="SF Express logo"></span>
+          <span class="brand-copy"><strong>SF × ESTĒE LAUDER</strong><span>Scope 3 carbon decision platform</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a><a href="overview.html">Footprint</a><a href="drivers.html">Drivers</a><a href="optimization.html">Optimization</a><a href="methodology.html">Methodology</a>
+        </div>
+      </nav>
+
+      <div class="page-hero">
+        <div>
+          <div class="eyebrow">04 · Govern · Calculation before claim</div>
+          <h1>Make every result<br>traceable.</h1>
+          <p>Transparent formulae, visible coverage boundaries and explicit evidence labels keep the dashboard useful in client conversations and ready for further development.</p>
+        </div>
+        <aside class="data-stamp" aria-label="Methodology status">
+          <span>Evidence model</span><strong>3</strong><small>value classifications</small><em>Actual · Calculated · Scenario</em>
+        </aside>
+      </div>
+
+      <div class="hero-kpis" aria-label="Methodology summary">
+        <article><span>Source period</span><strong>2026</strong><small>only</small></article>
+        <article><span>Mapped months</span><strong>7</strong><small>SF transport</small></article>
+        <article><span>Structural levers</span><strong>5</strong><small>SF framework</small></article>
+        <article><span>Methods documented</span><strong>15</strong><small>complete library</small></article>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-shell">
+    <section class="card" aria-labelledby="lineage-title">
+      <div class="card-kicker">Data lineage</div>
+      <h2 id="lineage-title">From operating record to decision output.</h2>
+      <p class="card-description">Each modeled recommendation follows the same calculation path. No method-level reduction is shown until the source activity and operational feasibility are validated.</p>
+      <div class="methodology-flow">
+        <article class="flow-step"><span>01</span><strong>Activity data</strong><p>Waybill, pieces, weight, route, distance, mode, energy or material.</p></article>
+        <article class="flow-step"><span>02</span><strong>Normalization</strong><p>Align units, coverage period, duplicates and missing fields.</p></article>
+        <article class="flow-step"><span>03</span><strong>Emission factor</strong><p>Apply the relevant transport, electricity or material factor.</p></article>
+        <article class="flow-step"><span>04</span><strong>Aggregation</strong><p>Summarize by month, source, city, mode and business scope.</p></article>
+        <article class="flow-step"><span>05</span><strong>Opportunity model</strong><p>Compare current and target activity under cost and SLA constraints.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="formula-title">
+      <div class="section-intro">
+        <div><div class="section-label">Calculation framework</div><h2 id="formula-title">Four relationships anchor the dashboard.</h2></div>
+        <p>The current source dashboard supplies aggregate values. Shipment-level opportunity calculations remain gated until the required operational fields are available.</p>
+      </div>
+      <div class="formula-grid">
+        <article class="formula-card"><span>Actual emissions</span><strong>Activity × Emission factor</strong><p>Activity may be tonne-km, vehicle-km, electricity, material mass or another method-specific driver.</p></article>
+        <article class="formula-card"><span>Calculated baseline</span><strong>Actual + Reported avoided</strong><p>The baseline is derived from the two source aggregates and is not presented as a separately measured value.</p></article>
+        <article class="formula-card"><span>Carbon intensity</span><strong>Actual emissions ÷ Shipment volume</strong><p>SF Jan–Jul weighted intensity is 279.01 gCO₂e/pcs. CN intensity is unavailable, not zero.</p></article>
+        <article class="formula-card"><span>Scenario reduction</span><strong>Eligible activity × (Current EF − Target EF)</strong><p>The target scenario also requires operating feasibility, cost and service-level validation.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="labels-title">
+      <div class="section-intro">
+        <div><div class="section-label">Evidence classification</div><h2 id="labels-title">Three labels prevent false precision.</h2></div>
+        <p>The interface keeps source facts, derived relationships and prospective scenarios visually and verbally distinct.</p>
+      </div>
+      <div class="label-grid">
+        <article class="label-card"><i></i><strong>Actual / Reported</strong><p>A value directly displayed in the 2026 source dashboard or extracted from its monthly records.</p></article>
+        <article class="label-card derived"><i></i><strong>Calculated / Derived</strong><p>A transparent arithmetic relationship, such as baseline or weighted intensity, calculated from reported values.</p></article>
+        <article class="label-card scenario"><i></i><strong>Scenario / Modeled</strong><p>A prospective result that only becomes available after method-specific inputs and constraints are supplied.</p></article>
+      </div>
+    </section>
+
+    <section class="section card" aria-labelledby="coverage-title">
+      <div class="section-heading">
+        <div><div class="card-kicker">Coverage matrix</div><h2 id="coverage-title">Available does not mean complete.</h2></div>
+        <p>Periods differ by source, so the overall aggregate is suitable for the current demonstration but should not be interpreted as a perfectly aligned seven-month inventory.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Scope</th><th>Coverage</th><th>Absolute</th><th>Avoided</th><th>Intensity</th><th>Known boundary</th></tr></thead>
+          <tbody>
+            <tr><td>SF Transport</td><td>Jan–Jul</td><td>Available</td><td>Available</td><td>Available</td><td>Monthly display rounds 0.01 t below source aggregate.</td></tr>
+            <tr><td>WHS</td><td>Jan–Jun</td><td>Available</td><td>Available</td><td>Unit reconciled</td><td>One fewer month than SF and Packaging.</td></tr>
+            <tr><td>Packaging</td><td>Jan–Jul</td><td>Available</td><td>Available</td><td>Unavailable</td><td>Absolute emissions only.</td></tr>
+            <tr><td>3PL</td><td>Not provided</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td><td>Carrier data gap is a governance signal.</td></tr>
+            <tr><td>CN intensity</td><td>Not provided</td><td>—</td><td>—</td><td>Unavailable</td><td>Must not be displayed as zero.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <a class="source-link" href="docs/estee-lauder-2026-emission-data.md"><div><span>Supporting source table</span><strong>Estée Lauder 2026 emission data extraction</strong></div><b>Open data record →</b></a>
+    </section>
+
+    <section id="library" class="section" aria-labelledby="library-title">
+      <div class="section-intro">
+        <div><div class="section-label">SF decarbonization playbook</div><h2 id="library-title">Five levers. Fifteen methods.</h2></div>
+        <p>The full library is shown here for reference. The optimization engine presents only three methods at a time to keep the client decision flow focused.</p>
+      </div>
+      <div class="method-library">
+        <article class="library-card"><span>01–03</span><h3>Network Optimization & Modal Shift</h3><ol><li><strong>01</strong>Network Node Consolidation</li><li><strong>02</strong>Road-to-Rail / Sea Shift</li><li><strong>03</strong>Air-to-Ground Rebalancing</li></ol></article>
+        <article class="library-card"><span>04–06</span><h3>Fleet & Asset Decarbonization</h3><ol><li><strong>04</strong>Heavy Fleet Optimization</li><li><strong>05</strong>NEV Fleet Replacement</li><li><strong>06</strong>Next-Gen Aviation Fleet</li></ol></article>
+        <article class="library-card"><span>07–09</span><h3>Green Energy & Infrastructure</h3><ol><li><strong>07</strong>Smart Energy IoT Systems</li><li><strong>08</strong>Rooftop Solar PV Expansion</li><li><strong>09</strong>Green Power Procurement</li></ol></article>
+        <article class="library-card"><span>10–12</span><h3>Eco-Packaging & Algorithmic Efficiency</h3><ol><li><strong>10</strong>Dynamic AI Route Planning</li><li><strong>11</strong>3D Packing & Loading Algorithms</li><li><strong>12</strong>Reusable & Eco-Packaging</li></ol></article>
+        <article class="library-card"><span>13–15</span><h3>Ecosystem Enablement & Digitalization</h3><ol><li><strong>13</strong>3PL Carrier Governance</li><li><strong>14</strong>100% Paperless Operations</li><li><strong>15</strong>Unmanned Last-Mile Pilots</li></ol></article>
+      </div>
+      <a class="source-link" href="docs/sf-15-decarbonization-methods.md"><div><span>Supporting method document</span><strong>Original 15-method summary supplied for this project</strong></div><b>Open method record →</b></a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span><strong>Methodology & Data</strong> · Transparent calculation and coverage</span><span>2026 source data only</span></footer>
+  <script src="assets/site.js"></script>
+</body>
+</html>
