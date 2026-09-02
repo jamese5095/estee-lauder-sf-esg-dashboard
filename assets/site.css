@@ -616,15 +616,27 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .panel-kicker { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
 .panel-kicker span { color: var(--gold-deep); font-size: 8px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
 .panel-kicker strong { color: var(--navy); font-size: 9px; }
-.concentration-bars { margin-top: 22px; display: grid; gap: 17px; }
+.cohort-identity { margin-top: 17px; padding: 15px 16px; border-left: 3px solid var(--gold); border-radius: 0 9px 9px 0; background: #fff; }
+.cohort-identity span, .cohort-identity strong, .cohort-identity small { display: block; }
+.cohort-identity span { color: var(--muted); font-size: 7px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+.cohort-identity strong { margin-top: 3px; color: var(--navy); font-size: 16px; }
+.cohort-identity small { margin-top: 2px; color: var(--gold-deep); font-size: 8px; font-weight: 700; }
+.concentration-bars { margin-top: 18px; display: grid; gap: 15px; }
 .concentration-row > div:first-child, .benchmark-row > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
 .concentration-row span, .benchmark-row span { color: var(--muted); font-size: 9px; font-weight: 700; }
 .concentration-row strong, .benchmark-row strong { color: var(--navy); font-size: 16px; letter-spacing: -0.025em; }
 .concentration-track, .benchmark-track { height: 9px; margin-top: 7px; overflow: hidden; border-radius: 999px; background: #e3e6ec; }
 .concentration-track i, .benchmark-track i { width: var(--share); height: 100%; display: block; border-radius: inherit; background: var(--blue-3); }
 .concentration-row.is-carbon .concentration-track i { background: var(--gold); }
-.concentration-panel p { margin: 21px 0 0; padding-top: 17px; color: var(--muted); border-top: 1px solid var(--soft-line); font-size: 10px; line-height: 1.6; }
-.concentration-panel p strong { color: var(--navy); }
+.concentration-equation { margin-top: 18px; padding-top: 15px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 9px; align-items: center; border-top: 1px solid var(--soft-line); }
+.concentration-equation div { min-width: 0; }
+.concentration-equation strong, .concentration-equation span { display: block; text-align: center; }
+.concentration-equation strong { color: var(--navy); font-size: 15px; }
+.concentration-equation span { margin-top: 1px; color: var(--muted); font-size: 6px; font-weight: 700; text-transform: uppercase; }
+.concentration-equation > b { color: var(--gold-deep); font-size: 15px; }
+.concentration-equation .is-result { padding: 7px; border-radius: 8px; background: var(--navy); }
+.concentration-equation .is-result strong { color: var(--gold); }
+.concentration-equation .is-result span { color: #aeb6ca; }
 .benchmark-list { margin-top: 20px; display: grid; gap: 13px; }
 .benchmark-track { height: 8px; }
 .benchmark-track i { width: max(var(--level), 8px); background: var(--blue-3); }
@@ -720,4 +732,6 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .model-trace { grid-template-columns: 1fr; }
   .model-trace > b { display: none; }
   .model-note { align-items: flex-start; flex-direction: column; }
+  .concentration-equation { grid-template-columns: 1fr; }
+  .concentration-equation > b { display: none; }
 }
