@@ -1,76 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const data = window.ESTEE_DASHBOARD_DATA;
-  const priorityList = document.querySelector("#priority-list");
-  if (!data || !priorityList || !data.optimizationPriorities) return;
+  const model = window.ESTEE_DASHBOARD_DATA?.optimizationCase;
+  const slider = document.querySelector("#candidate-share");
+  const strategyButtons = [...document.querySelectorAll("[data-strategy]")];
+  const presetButtons = [...document.querySelectorAll("[data-share]")];
+  if (!model || !slider || !strategyButtons.length) return;
 
-  const findMethod = (methodId) => {
-    for (const lever of data.levers) {
-      const method = lever.methods.find((item) => item.id === methodId);
-      if (method) return { lever, method };
-    }
-    return null;
+  let activeStrategy = "road";
+
+  const setText = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value;
   };
 
-  const requestedMethod = new URLSearchParams(window.location.search).get("method");
-  const requestedPriority = data.optimizationPriorities.find((item) => item.methodId === requestedMethod);
-  let activeMethodId = (requestedPriority || data.optimizationPriorities[0]).methodId;
+  const render = () => {
+    const share = Number(slider.value);
+    const strategy = model.strategies[activeStrategy];
+    const activatedWeightKg = model.candidateWeightKg * share / 100;
+    const intensityDelta = strategy.matchedBaselineIntensity - strategy.targetIntensity;
+    const reductionTonnes = activatedWeightKg * intensityDelta / 1_000_000;
+    const optimizedFootprint = model.actualFootprintTonnes - reductionTonnes;
+    const optimizedIntensity = optimizedFootprint * 1_000_000 / model.totalWeightKg;
+    const footprintImprovement = reductionTonnes / model.actualFootprintTonnes * 100;
+    const sliderProgress = (share - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100;
 
-  function renderPriorities() {
-    priorityList.replaceChildren();
-    data.optimizationPriorities.forEach((priority) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "priority-button";
-      button.setAttribute("aria-pressed", String(priority.methodId === activeMethodId));
-      button.innerHTML = `<span class="priority-code">${priority.code}</span>
-        <span class="priority-copy"><strong>${priority.title}</strong><small>${priority.signal}</small></span>
-        <span class="priority-metric"><strong>${priority.metric}</strong><small>${priority.unit}</small></span>`;
-      button.addEventListener("click", () => selectPriority(priority.methodId));
-      priorityList.appendChild(button);
+    slider.style.setProperty("--range-progress", `${sliderProgress}%`);
+    slider.setAttribute("aria-valuetext", `${share}% of candidate weight activated`);
+    setText("#share-output", `${share}%`);
+    setText("#scenario-strategy", strategy.name);
+    setText("#impact-reduction", reductionTonnes.toFixed(2));
+    document.querySelector("#impact-reduction")?.insertAdjacentHTML("beforeend", " <small>tCO₂e</small>");
+    setText("#activated-weight", `${(activatedWeightKg / 1000).toFixed(2)} tonnes`);
+    setText("#optimized-footprint", `${optimizedFootprint.toFixed(2)} tCO₂e`);
+    setText("#footprint-change", `${footprintImprovement.toFixed(1)}% improvement`);
+    setText("#optimized-intensity", `${optimizedIntensity.toFixed(1)} g/kg`);
+    setText("#freight-delta", `${strategy.freightDeltaPercent >= 0 ? "+" : ""}${strategy.freightDeltaPercent.toFixed(2)}%`);
+    setText("#matched-baseline", strategy.matchedBaselineIntensity.toFixed(1));
+    setText("#target-intensity", strategy.targetIntensity.toFixed(1));
+    setText("#intensity-delta", intensityDelta.toFixed(1));
+
+    strategyButtons.forEach((button) => {
+      const active = button.dataset.strategy === activeStrategy;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
     });
-  }
+    presetButtons.forEach((button) => button.classList.toggle("active", Number(button.dataset.share) === share));
+  };
 
-  function renderMatch() {
-    const priority = data.optimizationPriorities.find((item) => item.methodId === activeMethodId);
-    const selection = findMethod(activeMethodId);
-    if (!priority || !selection) return;
-    const { lever, method } = selection;
-    const gauge = document.querySelector("#match-gauge");
+  strategyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeStrategy = button.dataset.strategy;
+      render();
+    });
+  });
 
-    document.querySelector("#priority-title").textContent = priority.title;
-    document.querySelector("#match-stage").textContent = method.stage;
-    document.querySelector("#gauge-value").textContent = `${priority.share.toFixed(2)}%`;
-    document.querySelector("#gauge-context").textContent = priority.shareContext;
-    document.querySelector("#priority-signal").textContent = priority.signal;
-    document.querySelector("#evidence-pool").textContent = `${priority.metric} ${priority.unit} visible pool`;
-    document.querySelector("#match-lever").textContent = lever.name;
-    document.querySelector("#match-method").textContent = `${method.number} · ${method.name}`;
-    document.querySelector("#match-reason").textContent = priority.reason;
-    document.querySelector("#next-step").textContent = priority.nextStep;
-    document.querySelector("#validation-chips").innerHTML = priority.validation.map((item) => `<span>${item}</span>`).join("");
-    document.querySelector("#outcome-grid").innerHTML = method.outcomes.map((item) => `<div class="outcome-item"><span>${item.label}</span><strong>${item.value}</strong></div>`).join("");
-    document.querySelector("#current-sf-actual").textContent = `${data.totals.sf.actual.toLocaleString("en-US", { minimumFractionDigits: 2 })} tCO₂e`;
-    document.querySelector("#estimate-status").textContent = `Awaiting ${method.inputs.length} inputs`;
-    document.querySelector("#estimate-formula").textContent = method.logic;
-    gauge.style.setProperty("--gauge-value", `${priority.share}%`);
-    gauge.setAttribute("aria-label", `${priority.share.toFixed(2)}% ${priority.shareContext}`);
-    try {
-      window.history.replaceState({}, "", `${window.location.pathname}?method=${method.id}`);
-    } catch (_) {
-      // Some local file viewers do not allow URL replacement; the interaction still works.
-    }
-  }
+  presetButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      slider.value = button.dataset.share;
+      render();
+    });
+  });
 
-  function renderEngine() {
-    renderPriorities();
-    renderMatch();
-  }
-
-  function selectPriority(methodId) {
-    if (!data.optimizationPriorities.some((item) => item.methodId === methodId)) return;
-    activeMethodId = methodId;
-    renderEngine();
-  }
-
-  renderEngine();
+  slider.addEventListener("input", render);
+  render();
 });

@@ -34,6 +34,36 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     { name: "Air", value: 4.06, share: 0.38 },
     { name: "Delivery", value: 1.93, share: 0.18 },
   ],
+  optimizationCase: {
+    lane: "Shanghai → Beijing",
+    period: "May 2026",
+    waybills: 45888,
+    totalWeightKg: 47525.447,
+    actualFootprintTonnes: 17.3710663,
+    actualIntensity: 365.5108,
+    candidateWeightKg: 16380.453,
+    candidateFootprintTonnes: 14.016331,
+    candidateWeightShare: 34.47,
+    candidateCarbonShare: 80.69,
+    strategies: {
+      road: {
+        name: "30T consolidation",
+        matchedPairs: 5594,
+        matchedBaselineIntensity: 777.46,
+        targetIntensity: 123.33,
+        improvementPercent: 84.14,
+        freightDeltaPercent: 0.017,
+      },
+      rail: {
+        name: "Rail shift",
+        matchedPairs: 6892,
+        matchedBaselineIntensity: 785.54,
+        targetIntensity: 82.19,
+        improvementPercent: 89.54,
+        freightDeltaPercent: 0.036,
+      },
+    },
+  },
   optimizationPriorities: [
     {
       code: "P1", methodId: "m2", title: "Modal shift", signal: "Land mode concentration", metric: "1,035.25", unit: "tCO₂e",
