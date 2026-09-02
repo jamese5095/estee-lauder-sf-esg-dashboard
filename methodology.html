@@ -57,13 +57,13 @@
     <section class="section" aria-labelledby="formula-title">
       <div class="section-intro">
         <div><div class="section-label">Calculation framework</div><h2 id="formula-title">Four relationships anchor the dashboard.</h2></div>
-        <p>The current source dashboard supplies aggregate values. Shipment-level opportunity calculations remain gated until the required operational fields are available.</p>
+        <p>The current dashboard uses the SF Express net actual footprint. Opportunity estimates remain gated until the required operational fields and comparable emission factors are available.</p>
       </div>
       <div class="formula-grid">
         <article class="formula-card"><span>Actual emissions</span><strong>Activity × Emission factor</strong><p>Activity may be tonne-km, vehicle-km, electricity, material mass or another method-specific driver.</p></article>
-        <article class="formula-card"><span>Calculated baseline</span><strong>Actual + Reported avoided</strong><p>The baseline is derived from the two source aggregates and is not presented as a separately measured value.</p></article>
         <article class="formula-card"><span>Carbon intensity</span><strong>Actual emissions ÷ Shipment volume</strong><p>SF Jan–Jul weighted intensity is 279.01 gCO₂e/pcs. CN intensity is unavailable, not zero.</p></article>
-        <article class="formula-card"><span>Scenario reduction</span><strong>Eligible activity × (Current EF − Target EF)</strong><p>The target scenario also requires operating feasibility, cost and service-level validation.</p></article>
+        <article class="formula-card"><span>Estimated reduction</span><strong>Eligible activity × (Current EF − Target EF)</strong><p>The target scenario also requires adoption, operating feasibility, cost and service-level validation.</p></article>
+        <article class="formula-card"><span>Optimized footprint</span><strong>Current SF actual − Estimated reduction</strong><p>The result remains a scenario until activity, factors and operational constraints are validated.</p></article>
       </div>
     </section>
 
@@ -74,7 +74,7 @@
       </div>
       <div class="label-grid">
         <article class="label-card"><i></i><strong>Actual / Reported</strong><p>A value directly displayed in the 2026 source dashboard or extracted from its monthly records.</p></article>
-        <article class="label-card derived"><i></i><strong>Calculated / Derived</strong><p>A transparent arithmetic relationship, such as baseline or weighted intensity, calculated from reported values.</p></article>
+        <article class="label-card derived"><i></i><strong>Calculated / Derived</strong><p>A transparent arithmetic relationship, such as weighted intensity, calculated from reported values.</p></article>
         <article class="label-card scenario"><i></i><strong>Scenario / Modeled</strong><p>A prospective result that only becomes available after method-specific inputs and constraints are supplied.</p></article>
       </div>
     </section>
@@ -82,21 +82,21 @@
     <section class="section card" aria-labelledby="coverage-title">
       <div class="section-heading">
         <div><div class="card-kicker">Coverage matrix</div><h2 id="coverage-title">Available does not mean complete.</h2></div>
-        <p>Periods differ by source, so the overall aggregate is suitable for the current demonstration but should not be interpreted as a perfectly aligned seven-month inventory.</p>
+        <p>The reporting view is limited to SF Express Jan–Jul. Scenario fields are shown separately so current actuals are never confused with modeled results.</p>
       </div>
       <div class="table-wrap">
         <table class="data-table">
-          <thead><tr><th>Scope</th><th>Coverage</th><th>Absolute</th><th>Avoided</th><th>Intensity</th><th>Known boundary</th></tr></thead>
+          <thead><tr><th>SF data view</th><th>Coverage</th><th>Actual</th><th>Intensity</th><th>Known boundary</th></tr></thead>
           <tbody>
-            <tr><td>SF Transport</td><td>Jan–Jul</td><td>Available</td><td>Available</td><td>Available</td><td>Monthly display rounds 0.01 t below source aggregate.</td></tr>
-            <tr><td>WHS</td><td>Jan–Jun</td><td>Available</td><td>Available</td><td>Unit reconciled</td><td>One fewer month than SF and Packaging.</td></tr>
-            <tr><td>Packaging</td><td>Jan–Jul</td><td>Available</td><td>Available</td><td>Unavailable</td><td>Absolute emissions only.</td></tr>
-            <tr><td>3PL</td><td>Not provided</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td><td>Carrier data gap is a governance signal.</td></tr>
-            <tr><td>CN intensity</td><td>Not provided</td><td>—</td><td>—</td><td>Unavailable</td><td>Must not be displayed as zero.</td></tr>
+            <tr><td>Monthly profile</td><td>Jan–Jul</td><td>Available</td><td>Available</td><td>Monthly display rounds 0.01 t below the SF source total.</td></tr>
+            <tr><td>Transport mode</td><td>Jan–Jul</td><td>Available</td><td>Not provided</td><td>Five SF legs and modes; actual emissions only.</td></tr>
+            <tr><td>City view</td><td>Extracted view</td><td>Available</td><td>Not provided</td><td>Emissions, average haul and waybill volume.</td></tr>
+            <tr><td>Lane activity</td><td>To collect</td><td>To calculate</td><td>To calculate</td><td>OD, weight, distance, mode, SLA and cost required.</td></tr>
+            <tr><td>Scenario factors</td><td>To collect</td><td>—</td><td>—</td><td>Current and target factors must use comparable boundaries.</td></tr>
           </tbody>
         </table>
       </div>
-      <a class="source-link" href="docs/estee-lauder-2026-emission-data.md"><div><span>Supporting source table</span><strong>Estée Lauder 2026 emission data extraction</strong></div><b>Open data record →</b></a>
+      <a class="source-link" href="docs/optimization-input-requirements.md"><div><span>Scenario input specification</span><strong>Data and emission factors required for optimization estimates</strong></div><b>Open data request →</b></a>
     </section>
 
     <section id="library" class="section" aria-labelledby="library-title">

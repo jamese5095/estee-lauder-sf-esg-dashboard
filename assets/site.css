@@ -368,6 +368,21 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .outcome-item strong { margin-top: 3px; color: var(--navy); font-size: 9px; line-height: 1.35; }
 .scenario-note { margin-top: 14px; padding-top: 12px; display: flex; justify-content: space-between; gap: 10px; color: var(--muted); border-top: 1px solid var(--soft-line); font-size: 8px; line-height: 1.4; }
 .scenario-note strong { color: var(--warning); white-space: nowrap; }
+.impact-estimate { margin-top: 20px; padding: 19px; border-radius: 13px; color: #fff; background: var(--navy); }
+.estimate-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.estimate-head span { color: #d9c994; font-size: 8px; font-weight: 800; letter-spacing: 0.7px; text-transform: uppercase; }
+.estimate-head > strong { padding: 5px 8px; color: #d9c994; border: 1px solid rgba(217, 201, 148, 0.24); border-radius: 999px; font-size: 7px; text-transform: uppercase; }
+.estimate-equation { margin-top: 15px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; }
+.estimate-equation article { min-width: 0; padding: 12px; border-radius: 9px; background: rgba(255, 255, 255, 0.08); }
+.estimate-equation article.is-pending { border: 1px dashed rgba(255, 255, 255, 0.24); background: transparent; }
+.estimate-equation span, .estimate-equation strong { display: block; }
+.estimate-equation span { color: #9fa8bf; font-size: 7px; text-transform: uppercase; }
+.estimate-equation strong { margin-top: 4px; color: #fff; font-size: 12px; line-height: 1.35; }
+.estimate-equation article.is-pending strong { color: #d9c994; }
+.estimate-equation > b { color: var(--gold); }
+.estimate-foot { margin-top: 13px; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.estimate-foot span { color: #aeb6ca; font-size: 8px; }
+.estimate-foot a { flex: 0 0 auto; color: #d9c994; font-size: 8px; font-weight: 800; text-decoration: none; }
 
 .playbook-overview { margin-top: 14px; padding: 30px; display: grid; grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr); gap: 45px; align-items: center; color: #fff; border-radius: 16px; background: var(--navy); }
 .playbook-copy h2 { margin: 8px 0 0; color: #fff; font-size: 25px; letter-spacing: -0.04em; line-height: 1.2; }
@@ -459,6 +474,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .priority-rail { border-right: 0; border-bottom: 1px solid var(--line); }
   .match-detail-grid { grid-template-columns: 1fr; }
   .playbook-map { grid-template-columns: repeat(5, minmax(100px, 1fr)); overflow-x: auto; }
+  .estimate-equation { grid-template-columns: 1fr; }
+  .estimate-equation > b { display: none; }
   .methodology-flow { grid-template-columns: 1fr 1fr; }
   .site-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
 }
@@ -485,4 +502,5 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .match-visual { padding: 20px; }
   .match-result-head { flex-direction: column; }
   .outcome-line { grid-template-columns: 1fr; }
+  .estimate-head, .estimate-foot { align-items: flex-start; flex-direction: column; }
 }

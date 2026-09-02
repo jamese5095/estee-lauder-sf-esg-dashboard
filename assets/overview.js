@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setText("#selected-month", `${row.month} 2026`);
     setText("#selected-actual", format(row.actual));
     setText("#selected-share", `${format(row.actual / displayedTotal * 100)}%`);
-    setText("#selected-avoided", `${format(row.avoided)} t`);
+    const monthlyRank = [...data.months].sort((a, b) => b.actual - a.actual).findIndex((month) => month.month === row.month) + 1;
+    setText("#selected-rank", `#${monthlyRank} of ${data.months.length}`);
     setText("#selected-intensity", `${format(row.intensity)} g/pcs`);
     setText("#selected-volume", `${format(row.volume)} k pcs`);
     chart.querySelectorAll(".month-button").forEach((button, buttonIndex) => {

@@ -49,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#next-step").textContent = priority.nextStep;
     document.querySelector("#validation-chips").innerHTML = priority.validation.map((item) => `<span>${item}</span>`).join("");
     document.querySelector("#outcome-grid").innerHTML = method.outcomes.map((item) => `<div class="outcome-item"><span>${item.label}</span><strong>${item.value}</strong></div>`).join("");
+    document.querySelector("#current-sf-actual").textContent = `${data.totals.sf.actual.toLocaleString("en-US", { minimumFractionDigits: 2 })} tCO₂e`;
+    document.querySelector("#estimate-status").textContent = `Awaiting ${method.inputs.length} inputs`;
+    document.querySelector("#estimate-formula").textContent = method.logic;
     gauge.style.setProperty("--gauge-value", `${priority.share}%`);
     gauge.setAttribute("aria-label", `${priority.share.toFixed(2)}% ${priority.shareContext}`);
     try {

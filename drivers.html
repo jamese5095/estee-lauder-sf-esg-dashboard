@@ -24,18 +24,18 @@
         <div>
           <div class="eyebrow">02 · Diagnose · Concentration before action</div>
           <h1>Find where action<br>matters most.</h1>
-          <p>Move from the overall footprint to operational concentration points without treating missing data as zero or turning a screening signal into a saving claim.</p>
+          <p>Move from the SF Express footprint to operational concentration points without treating missing data as zero or turning a screening signal into a saving claim.</p>
         </div>
-        <aside class="data-stamp" aria-label="Largest source">
-          <span>Largest source</span><strong>72.62%</strong><small>SF transport</small><em>of overall actual</em>
+        <aside class="data-stamp" aria-label="Largest transport mode">
+          <span>Largest mode</span><strong>97.38%</strong><small>Land transport</small><em>of SF Express actual</em>
         </aside>
       </div>
 
       <div class="hero-kpis" aria-label="Key emission drivers">
-        <article><span>Overall actual</span><strong>1,463.96</strong><small>tCO₂e</small></article>
+        <article><span>SF Express actual</span><strong>1,063.07</strong><small>tCO₂e</small></article>
+        <article><span>Carbon intensity</span><strong>279.01</strong><small>gCO₂e/pcs</small></article>
         <article><span>Land mode share</span><strong>97.38%</strong><small>SF transport</small></article>
         <article><span>Top 10 cities</span><strong>330.98</strong><small>tCO₂e</small></article>
-        <article><span>Warehouse actual</span><strong>400.69</strong><small>tCO₂e</small></article>
       </div>
     </div>
   </header>
@@ -43,13 +43,14 @@
   <main class="main-shell">
     <section class="driver-overview">
       <article class="card">
-        <div class="card-kicker">Overall source mix</div>
-        <h2>Transport dominates the visible footprint.</h2>
-        <p class="card-description">Actual emissions are shown separately from reported avoided emissions and calculated baselines.</p>
-        <div class="source-list">
-          <div class="source-row"><strong>SF Transport</strong><span class="source-track"><i style="width:72.62%"></i></span><span class="number">1,063.07 t</span><em>72.62%</em></div>
-          <div class="source-row"><strong>WHS</strong><span class="source-track"><i style="width:27.37%"></i></span><span class="number">400.69 t</span><em>27.37%</em></div>
-          <div class="source-row"><strong>Packaging</strong><span class="source-track"><i style="width:0.8%"></i></span><span class="number">0.201 t</span><em>0.01%</em></div>
+        <div class="card-kicker">SF Express reporting scope</div>
+        <h2>One transport boundary, clearly defined.</h2>
+        <p class="card-description">All values on this page use the SF Express Jan–Jul net actual footprint.</p>
+        <div class="selected-grid driver-scope-grid">
+          <div><span>Actual emissions</span><strong>1,063.07 tCO₂e</strong></div>
+          <div><span>Carbon intensity</span><strong>279.01 g/pcs</strong></div>
+          <div><span>Shipment volume</span><strong>3.81 million pcs</strong></div>
+          <div><span>Coverage</span><strong>Jan–Jul 2026</strong></div>
         </div>
       </article>
 
@@ -79,7 +80,7 @@
           <thead><tr><th>City</th><th>Actual emissions</th><th class="number">Average haul</th><th class="number">Waybills</th><th>Relevant SF lever</th></tr></thead>
           <tbody>
             <tr><td>Beijing</td><td><div class="city-emission"><i style="width:100%"></i><span class="number">60.77 t</span></div></td><td class="number">1,426.53 km</td><td class="number">181,264</td><td><a href="optimization.html?method=m2">Modal shift →</a></td></tr>
-            <tr><td>Shanghai</td><td><div class="city-emission"><i style="width:77%"></i><span class="number">46.82 t</span></div></td><td class="number">468.28 km</td><td class="number">337,715</td><td><a href="optimization.html?method=m10">AI routing →</a></td></tr>
+            <tr><td>Shanghai</td><td><div class="city-emission"><i style="width:77%"></i><span class="number">46.82 t</span></div></td><td class="number">468.28 km</td><td class="number">337,715</td><td><a href="optimization.html?method=m1">Network design →</a></td></tr>
             <tr><td>Shenyang</td><td><div class="city-emission"><i style="width:69%"></i><span class="number">41.97 t</span></div></td><td class="number">1,801.58 km</td><td class="number">46,434</td><td><a href="optimization.html?method=m2">Modal shift →</a></td></tr>
             <tr><td>Xi'an</td><td><div class="city-emission"><i style="width:64%"></i><span class="number">39.02 t</span></div></td><td class="number">1,451.40 km</td><td class="number">72,684</td><td><a href="optimization.html?method=m1">Node design →</a></td></tr>
             <tr><td>Harbin</td><td><div class="city-emission"><i style="width:51%"></i><span class="number">30.98 t</span></div></td><td class="number">2,298.13 km</td><td class="number">30,495</td><td><a href="optimization.html?method=m2">Modal shift →</a></td></tr>
@@ -95,11 +96,11 @@
         <p>Coverage boundaries remain visible so the dashboard can be used in a client conversation without overstating completeness.</p>
       </div>
       <div class="coverage-grid">
-        <article class="coverage-card"><span>SF Transport</span><strong>Jan–Jul</strong><p>Monthly absolute, avoided, intensity and volume available.</p></article>
-        <article class="coverage-card"><span>WHS</span><strong>Jan–Jun</strong><p>Absolute actual and avoided aggregates available.</p></article>
-        <article class="coverage-card"><span>Packaging</span><strong>Jan–Jul</strong><p>Absolute emissions only; monthly intensity unavailable.</p></article>
-        <article class="coverage-card missing"><span>3PL</span><strong>No monthly data</strong><p>Carrier activity and verified factors are required.</p></article>
-        <article class="coverage-card missing"><span>CN intensity</span><strong>Unavailable</strong><p>Displayed as unavailable rather than zero.</p></article>
+        <article class="coverage-card"><span>Monthly SF profile</span><strong>Available</strong><p>Actual emissions, intensity and volume for Jan–Jul.</p></article>
+        <article class="coverage-card"><span>Mode mix</span><strong>Available</strong><p>Actual emissions across five SF transport legs and modes.</p></article>
+        <article class="coverage-card"><span>City view</span><strong>Available</strong><p>Emissions, average haul and waybill volume.</p></article>
+        <article class="coverage-card missing"><span>Lane-level activity</span><strong>To collect</strong><p>OD, weight, distance, mode, SLA and cost.</p></article>
+        <article class="coverage-card missing"><span>Scenario factors</span><strong>To collect</strong><p>Comparable current- and target-mode emission factors.</p></article>
       </div>
       <a class="action-link" href="optimization.html?method=m2"><div><span>Convert diagnosis into action</span><strong>Start with Road-to-Rail / Sea Shift screening</strong></div><b>→</b></a>
     </section>

@@ -2,35 +2,23 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
   meta: {
     period: "2026 YTD",
     sfCoverage: "Jan–Jul",
-    warehouseCoverage: "Jan–Jun",
-    packagingCoverage: "Jan–Jul",
   },
   months: [
-    { month: "Jan", actual: 108.79, avoided: 34.44, intensity: 210.13, volume: 517.73 },
-    { month: "Feb", actual: 124.86, avoided: 22.66, intensity: 268.77, volume: 464.56 },
-    { month: "Mar", actual: 153.06, avoided: 33.16, intensity: 267.20, volume: 572.82 },
-    { month: "Apr", actual: 86.16, avoided: 23.93, intensity: 239.29, volume: 360.07 },
-    { month: "May", actual: 309.76, avoided: 65.98, intensity: 317.03, volume: 977.06 },
-    { month: "Jun", actual: 217.90, avoided: 48.86, intensity: 328.30, volume: 663.71 },
-    { month: "Jul", actual: 62.53, avoided: 16.60, intensity: 246.06, volume: 254.15 },
+    { month: "Jan", actual: 108.79, intensity: 210.13, volume: 517.73 },
+    { month: "Feb", actual: 124.86, intensity: 268.77, volume: 464.56 },
+    { month: "Mar", actual: 153.06, intensity: 267.20, volume: 572.82 },
+    { month: "Apr", actual: 86.16, intensity: 239.29, volume: 360.07 },
+    { month: "May", actual: 309.76, intensity: 317.03, volume: 977.06 },
+    { month: "Jun", actual: 217.90, intensity: 328.30, volume: 663.71 },
+    { month: "Jul", actual: 62.53, intensity: 246.06, volume: 254.15 },
   ],
   metrics: {
     actual: { label: "Actual emissions", unit: "tCO₂e", field: "actual" },
-    avoided: { label: "Avoided emissions", unit: "tCO₂e", field: "avoided" },
     intensity: { label: "Carbon intensity", unit: "gCO₂e/pcs", field: "intensity" },
-    volume: { label: "Shipment volume", unit: "k pcs", field: "volume" },
   },
   totals: {
-    overall: { baseline: 1895.82, avoided: 431.86, actual: 1463.96, rate: 22.78 },
-    sf: { baseline: 1308.70, avoided: 245.63, actual: 1063.07, intensity: 279.01, volume: 3810.10, rate: 18.77 },
-    warehouse: { baseline: 586.90, avoided: 186.21, actual: 400.69, rate: 31.73 },
-    packaging: { baseline: 0.219, avoided: 0.018, actual: 0.201, rate: 8.22 },
+    sf: { actual: 1063.07, intensity: 279.01, volume: 3810.10 },
   },
-  segments: [
-    { id: "sf", name: "SF Transport", actual: 1063.07, avoided: 245.63, baseline: 1308.70, share: 72.62, coverage: "Jan–Jul" },
-    { id: "warehouse", name: "WHS", actual: 400.69, avoided: 186.21, baseline: 586.90, share: 27.37, coverage: "Jan–Jun" },
-    { id: "packaging", name: "Packaging", actual: 0.201, avoided: 0.018, baseline: 0.219, share: 0.01, coverage: "Jan–Jul absolute only" },
-  ],
   cities: [
     { name: "Beijing", emissions: 60.77, haul: 1426.53, waybills: 181264 },
     { name: "Shanghai", emissions: 46.82, haul: 468.28, waybills: 337715 },
@@ -46,13 +34,6 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     { name: "Air", value: 4.06, share: 0.38 },
     { name: "Delivery", value: 1.93, share: 0.18 },
   ],
-  signals: [
-    { id: "transport", code: "01", title: "Transport mode concentration", value: "1,063.07 t", note: "Land 97.38% · Air 4.06 t", methodId: "m2" },
-    { id: "cities", code: "02", title: "Long-haul city concentration", value: "330.98 t", note: "Top 10 cities · 31.13% of SF actual", methodId: "m1" },
-    { id: "warehouse", code: "03", title: "Warehouse footprint", value: "400.69 t", note: "Jan–Jun reported actual", methodId: "m7" },
-    { id: "packaging", code: "04", title: "Packaging footprint", value: "0.201 t", note: "Absolute only · intensity unavailable", methodId: "m12" },
-    { id: "governance", code: "05", title: "3PL data coverage gap", value: "N/A", note: "No monthly data available", methodId: "m13" },
-  ],
   optimizationPriorities: [
     {
       code: "P1", methodId: "m2", title: "Modal shift", signal: "Land mode concentration", metric: "1,035.25", unit: "tCO₂e",
@@ -65,9 +46,9 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
       validation: ["OD lanes", "Node flows", "SLA"], nextStep: "Model node consolidation and transfer reduction for the highest-emission city flows.",
     },
     {
-      code: "P3", methodId: "m7", title: "Warehouse energy", signal: "WHS footprint", metric: "400.69", unit: "tCO₂e",
-      share: 27.37, shareContext: "of overall actual", reason: "Warehouse operations form the second-largest reported footprint and a controllable efficiency opportunity.",
-      validation: ["Site kWh", "HVAC load", "Hours"], nextStep: "Establish site-level energy baselines before testing IoT control measures.",
+      code: "P3", methodId: "m5", title: "Urban fleet", signal: "Pick-up + delivery legs", metric: "13.14", unit: "tCO₂e",
+      share: 1.24, shareContext: "of SF transport", reason: "Pick-up and delivery form a clearly bounded urban operating pool suitable for NEV feasibility screening.",
+      validation: ["Vehicle-km", "Duty cycle", "Grid EF"], nextStep: "Compare current urban fleet energy use with an eligible NEV deployment scenario.",
     },
   ],
   levers: [
@@ -79,14 +60,14 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
           evidenceValue: "330.98 tCO₂e", evidenceText: "The top 10 cities represent 31.13% of SF transport actual emissions.",
           logic: "Current network emissions − optimized node-network emissions",
           inputs: ["OD lanes", "Node flows", "Weight", "SLA"],
-          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Network", value: "km & transfers avoided" }, { label: "Business", value: "Cost & SLA impact" }],
+          outcomes: [{ label: "Carbon", value: "Estimated tCO₂e reduction" }, { label: "Network", value: "km & transfer change" }, { label: "Business", value: "Cost & SLA impact" }],
         },
         {
           id: "m2", number: "02", name: "Road-to-Rail / Sea Shift", summary: "Shift eligible long-haul road freight.", stage: "Screening-ready", signalId: "transport",
           evidenceValue: "1,035.25 tCO₂e", evidenceText: "Land accounts for 97.38% of SF transport actual emissions.",
           logic: "Eligible tonne-km × (Road EF − Target-mode EF)",
           inputs: ["Lane", "Weight", "Distance", "Mode EF", "SLA", "Cost"],
-          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Intensity", value: "gCO₂e/pcs change" }, { label: "Business", value: "Cost & SLA impact" }],
+          outcomes: [{ label: "Carbon", value: "Estimated tCO₂e reduction" }, { label: "Intensity", value: "gCO₂e/pcs change" }, { label: "Business", value: "Cost & SLA impact" }],
         },
         {
           id: "m3", number: "03", name: "Air-to-Ground Rebalancing", summary: "Move non-urgent air shipments to ground.", stage: "Data required", signalId: "transport",
@@ -112,7 +93,7 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
           evidenceValue: "13.14 tCO₂e", evidenceText: "Pick-up and delivery legs contribute 13.14 tCO₂e in total.",
           logic: "Eligible vehicle-km × (ICE EF − NEV lifecycle EF)",
           inputs: ["Vehicle-km", "Duty cycle", "Grid mix", "Fleet plan", "Charging"],
-          outcomes: [{ label: "Carbon", value: "Avoided tCO₂e" }, { label: "Fleet", value: "NEV adoption share" }, { label: "Finance", value: "TCO & payback" }],
+          outcomes: [{ label: "Carbon", value: "Estimated tCO₂e reduction" }, { label: "Fleet", value: "NEV adoption share" }, { label: "Finance", value: "TCO & payback" }],
         },
         {
           id: "m6", number: "06", name: "Next-Gen Aviation Fleet", summary: "Use efficient aircraft and ground assets.", stage: "Program design", signalId: "transport",
