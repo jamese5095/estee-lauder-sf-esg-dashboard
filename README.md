@@ -10,8 +10,9 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 
 - `index.html` — client-facing project portal and decision journey.
 - `overview.html` — interactive Jan–Jul SF transport footprint.
-- `drivers.html` — source, city, transport-mode and data-coverage analysis.
+- `drivers.html` — source mix, city and transport-mode concentration analysis.
 - `optimization.html` — interactive matcher connecting three SF data signals to prioritized methods and future estimates.
+- `optimization-2.html` — alternative leadership view showing multiple SF solutions to one observed problem without projected uplift.
 - `methodology.html` — formulae, SF data lineage, scenario requirements and the full method library.
 - `assets/site.css` — shared Estée Lauder-inspired visual system and responsive layout.
 - `assets/site.js` — shared navigation behavior.
@@ -24,7 +25,7 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 ## Data principles
 
 - Only 2026 data are presented.
-- The reporting view is limited to the SF Express Jan–Jul footprint.
+- The Footprint reporting view is limited to Estée Lauder products transported by SF Express from Jan–Jul; Drivers retains the three-source mix for context.
 - Actual/reported, calculated/derived and scenario/modeled values remain distinct.
 - The Footprint chart shows only net actual emissions and carbon intensity.
 - Missing 3PL and CN intensity data are shown as unavailable, not zero.
