@@ -30,3 +30,14 @@
 | Shipment volume | 3,810.10 k pcs |
 
 Monthly emissions sum to 1,063.06 tCO₂e at two-decimal display precision. The source YTD value is 1,063.07 tCO₂e because of source-level rounding.
+
+## January–May intensity diagnostic
+
+| Metric | January | May | Change |
+| --- | ---: | ---: | ---: |
+| Shipment volume | 517.73 k pcs | 977.06 k pcs | +88.72% |
+| Actual emissions | 108.79 tCO₂e | 309.76 tCO₂e | +184.73% |
+| Carbon intensity | 210.13 gCO₂e/pcs | 317.03 gCO₂e/pcs | +50.87% |
+| SF Standard Express share of volume | 99.9942% | 99.9990% | Stable |
+
+Actual emissions increased faster than shipment volume, which mathematically explains the higher May intensity. The service-tier distribution was effectively unchanged, so the current data do not support service-tier mix as the main operational cause. Lane distance, weight per piece, transport mode, vehicle factor and load utilization should be tested next.

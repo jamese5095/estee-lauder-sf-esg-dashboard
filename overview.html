@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Carbon footprint of Estée Lauder products transported by SF Express in 2026.">
   <title>2026 Footprint · Estée Lauder × SF</title>
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/site.css?v=20260902c">
 </head>
 <body>
   <header class="site-header">
@@ -31,11 +31,10 @@
         </aside>
       </div>
 
-      <div class="hero-kpis" aria-label="SF transport headline metrics">
+      <div class="hero-kpis three-up" aria-label="SF transport headline metrics">
         <article><span>Actual emissions</span><strong>1,063.07</strong><small>tCO₂e</small></article>
         <article><span>Carbon intensity</span><strong>279.01</strong><small>gCO₂e/pcs</small></article>
         <article><span>Shipment volume</span><strong>3.81</strong><small>million pcs</small></article>
-        <article><span>Reporting boundary</span><strong>EL</strong><small>products via SF Express</small></article>
       </div>
     </div>
   </header>
@@ -71,6 +70,45 @@
       <article class="insight-card"><strong>29.14%</strong><p>May contributed the largest monthly share of emissions from Estée Lauder products transported by SF.</p></article>
       <article class="insight-card"><strong>328.30 g/pcs</strong><p>June recorded the highest carbon intensity despite a lower volume than May.</p></article>
       <article class="insight-card"><strong>210.13 g/pcs</strong><p>January recorded the lowest carbon intensity in the Jan–Jul SF shipment profile.</p></article>
+    </section>
+
+    <section class="section intensity-section" aria-labelledby="intensity-title">
+      <div class="section-intro">
+        <div><div class="section-label">Carbon intensity explained</div><h2 id="intensity-title">Volume sets the scale. Structure sets the intensity.</h2></div>
+        <p>Carbon intensity measures emissions per shipped piece. A busier month does not automatically have a higher intensity; intensity rises only when emissions grow faster than shipment volume.</p>
+      </div>
+
+      <div class="intensity-diagnostic">
+        <article class="card intensity-compare">
+          <div class="card-kicker">January to May · What the data proves</div>
+          <div class="intensity-months">
+            <div class="month-snapshot"><span>JAN · LOWEST INTENSITY</span><strong>210.13</strong><small>gCO₂e/pcs · 517.73k pcs</small></div>
+            <b aria-hidden="true">→</b>
+            <div class="month-snapshot is-high"><span>MAY · HIGHEST VOLUME</span><strong>317.03</strong><small>gCO₂e/pcs · 977.06k pcs</small></div>
+          </div>
+          <div class="growth-strip">
+            <div><span>Shipment volume</span><strong>+88.7%</strong></div>
+            <div><span>Actual emissions</span><strong>+184.7%</strong></div>
+            <div><span>Carbon intensity</span><strong>+50.9%</strong></div>
+          </div>
+        </article>
+
+        <article class="card intensity-reading">
+          <div class="card-kicker">Interpretation</div>
+          <div class="intensity-formula"><span>ACTUAL CO₂e</span><b>÷</b><span>SHIPMENT PIECES</span><strong>= INTENSITY</strong></div>
+          <h3>Volume alone is not the cause.</h3>
+          <p>May’s emissions increased much faster than its shipment volume. January also handled more pieces than April or July, yet had the lowest emissions per piece.</p>
+          <div class="evidence-pill"><strong>&gt;99.99%</strong><span>of both January and May volume was SF Standard Express, so the service-tier mix is unlikely to explain the change.</span></div>
+        </article>
+      </div>
+
+      <div class="intensity-levers" aria-label="Structural carbon intensity levers">
+        <article><span>01</span><strong>Distance per piece</strong><p>Shorten routes and remove avoidable transfers.</p></article>
+        <article><span>02</span><strong>Factor per tonne-km</strong><p>Shift mode, fuel or vehicle technology.</p></article>
+        <article><span>03</span><strong>Pieces per trip</strong><p>Improve consolidation, routing and loading.</p></article>
+        <article><span>04</span><strong>Weight and SLA mix</strong><p>Manage heavy, urgent and long-haul demand.</p></article>
+      </div>
+      <p class="intensity-caveat"><strong>Next diagnostic:</strong> Compare monthly distance per piece, weight per piece, lane/mode mix and load factor. These fields determine which structural lever can credibly lower intensity and total emissions.</p>
     </section>
 
     <section class="section" aria-labelledby="next-title">
