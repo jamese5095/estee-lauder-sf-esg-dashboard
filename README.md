@@ -11,12 +11,12 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - `index.html` — client-facing project portal and decision journey.
 - `overview.html` — interactive Jan–Jul SF transport footprint.
 - `drivers.html` — source mix, city and transport-mode concentration analysis.
-- `optimization.html` — quantified Shanghai-to-Beijing routing case with an interactive carbon-impact scenario.
+- `optimization.html` — May–June Shanghai-to-Beijing evidence, transport-source intensity and an interactive planning scenario.
 - `methodology.html` — formulae, SF data lineage, scenario requirements and the full method library.
 - `assets/site.css` — shared Estée Lauder-inspired visual system and responsive layout.
 - `assets/site.js` — shared navigation behavior.
 - `assets/overview.js` — monthly metric and selected-month interaction.
-- `assets/optimization.js` — signal, lever and method selection logic.
+- `assets/optimization.js` — transport-source detail and transparent tonne-km scenario logic.
 - `assets/sf-logo.png` — local SF logo asset used by the Ecco dashboard project.
 - `data/dashboard-data.js` — centralized 2026 dashboard data and fifteen-method model.
 - `docs/` — source records plus the optimization data and emission-factor request.
@@ -29,6 +29,8 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - The Footprint view covers Jan–Jul 2026; Drivers retains the three-source mix for context.
 - Actual/reported, calculated/derived and scenario/modeled values remain distinct.
 - The Footprint chart shows monthly actual emissions; selected-month detail retains carbon intensity and shipment volume for context.
+- The Optimization view uses the complete May–June lane export: 77,955 unique waybills, 79.45 tonnes and 29.49 tCO₂e.
+- Optimization estimates use actual fuel-road tonne-km and observed transport-source WTW intensity; the assessed activity share is the explicit planning assumption.
 - Missing 3PL and CN intensity data are shown as unavailable, not zero.
 - Monthly SF values total 1,063.06 tCO₂e at two decimal places, while the source aggregate is 1,063.07 tCO₂e due to source rounding.
 
