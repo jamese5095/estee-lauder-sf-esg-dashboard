@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="An account-linked shipment-level SF routing case that turns Estée Lauder carbon data into measurable ESG value.">
   <title>Precision Routing · Estée Lauder × SF</title>
-  <link rel="stylesheet" href="assets/site.css?v=rail-case-1">
+  <link rel="stylesheet" href="assets/site.css?v=rail-unified-1">
 </head>
 <body>
   <header class="site-header">
@@ -103,14 +103,13 @@
       </div>
     </section>
 
-    <section class="precision-workbench rail-workbench" aria-label="Rail pathway and impact simulator">
-      <article class="routing-strategy rail-strategy card">
-        <div class="precision-section-head compact">
-          <div><span>SF rail pathway</span><h2>Shift eligible road volume to rail.</h2></div>
-        </div>
+    <section class="rail-workbench rail-unified card" aria-labelledby="rail-optimization-title">
+      <div class="precision-section-head">
+        <div><span>SF rail opportunity</span><h2 id="rail-optimization-title">Road-to-rail optimization.</h2></div>
+      </div>
+      <p class="rail-description">Shift eligible road volume to existing rail-supported operations, with compatible delivery windows.</p>
 
-        <p class="rail-description">Use existing rail-supported operations for shipments with compatible delivery windows.</p>
-
+      <div class="rail-evidence-row">
         <div class="rail-journey" aria-label="Pick-up unchanged, targeted road transport shifted to rail, delivery unchanged">
           <div class="rail-stage"><span>01</span><strong>Pick-up</strong><small>Unchanged</small></div>
           <b aria-hidden="true">→</b>
@@ -126,20 +125,9 @@
             <div><strong><span id="rail-chain-intensity">82</span> <small>gCO₂e/kg</small></strong><span>Observed rail-chain intensity</span></div>
           </div>
         </div>
+      </div>
 
-        <span class="rail-gates-title">Activation checks</span>
-        <div class="execution-guardrails" aria-label="Activation checks">
-          <span><i>•</i><b>SLA fit</b></span>
-          <span><i>•</i><b>Capacity available</b></span>
-          <span><i>•</i><b>Cost viable</b></span>
-        </div>
-      </article>
-
-      <article class="impact-simulator rail-simulator card">
-        <div class="precision-section-head compact">
-          <div><span>Interactive rail scenario</span><h2>Scale the rail shift.</h2></div>
-        </div>
-
+      <div class="rail-interaction-row">
         <div class="share-control">
           <div><label for="candidate-share">Target road activity shifted to rail</label><output id="share-output" for="candidate-share">10%</output></div>
           <p class="share-context"><b id="activated-activity">1,742</b> of <strong id="target-total-activity">17,423</strong> tonne-km selected</p>
@@ -157,7 +145,6 @@
           <div class="impact-hero">
             <span>Estimated monthly WTW reduction</span>
             <strong><span id="impact-reduction">1.29</span> <small>tCO₂e</small></strong>
-            <p>From the selected road-to-rail shift</p>
           </div>
           <div class="rail-footprint">
             <div><span>May lane WTW footprint</span><strong id="footprint-change">7.4% reduction</strong></div>
@@ -168,7 +155,16 @@
             </div>
           </div>
         </div>
-      </article>
+      </div>
+
+      <div class="rail-footer">
+        <span class="rail-gates-title">Activation checks</span>
+        <div class="execution-guardrails" aria-label="Activation checks">
+          <span><i>•</i><b>SLA fit</b></span>
+          <span><i>•</i><b>Capacity available</b></span>
+          <span><i>•</i><b>Cost viable</b></span>
+        </div>
+      </div>
     </section>
 
     <section class="playbook-overview" aria-labelledby="playbook-title">

@@ -709,11 +709,13 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .concentration-equation > b { display: none; }
 }
 
-/* Single-path rail case. These rules do not change the other dashboard pages. */
+/* Unified rail workbench. Scoped to Optimization; calculations remain unchanged. */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-.rail-description { margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
-.rail-journey { margin-top: 24px; display: grid; grid-template-columns: 1fr 14px 1.35fr 14px 1fr; gap: 6px; align-items: center; }
-.rail-stage { min-width: 0; padding: 20px 8px; border: 1px solid var(--soft-line); border-radius: 11px; background: var(--cream); text-align: center; }
+.rail-unified { margin-top: 14px; padding: 30px; }
+.rail-description { margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.rail-evidence-row { margin-top: 24px; display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); align-items: center; gap: 28px; }
+.rail-journey { display: grid; grid-template-columns: 1fr 14px 1.35fr 14px 1fr; gap: 6px; align-items: center; }
+.rail-stage { min-width: 0; padding: 16px 8px; border: 1px solid var(--soft-line); border-radius: 11px; background: var(--cream); text-align: center; }
 .rail-stage span, .rail-stage strong, .rail-stage small { display: block; }
 .rail-stage span { color: var(--gold-deep); font-size: 9px; font-weight: 800; letter-spacing: .5px; }
 .rail-stage strong { margin-top: 10px; color: var(--navy); font-size: 17px; }
@@ -723,7 +725,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .rail-stage.is-shift strong { color: #fff; }
 .rail-stage.is-shift small { color: #b6bfd3; }
 .rail-journey > b { color: var(--gold-deep); text-align: center; }
-.rail-observed { margin-top: 22px; padding: 19px 0; border-top: 1px solid var(--soft-line); border-bottom: 1px solid var(--soft-line); }
+.rail-observed { min-width: 0; padding: 4px 24px; border-left: 1px solid var(--soft-line); }
 .rail-observed > span, .rail-gates-title { color: var(--gold-deep); font-size: 10px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
 .rail-observed-grid { margin-top: 12px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 18px; }
 .rail-observed-grid strong, .rail-observed-grid span { display: block; }
@@ -731,25 +733,39 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .rail-observed-grid strong small { color: var(--muted); font-size: 12px; letter-spacing: 0; white-space: nowrap; }
 .rail-observed-grid span { margin-top: 6px; color: var(--muted); font-size: 12px; }
 .rail-observed-grid strong > span { display: inline; margin: 0; color: inherit; font-size: inherit; }
-.rail-gates-title { display: block; margin-top: 18px; }
-.rail-strategy .execution-guardrails { margin-top: 8px; }
-.rail-strategy .execution-guardrails b { font-size: 11px; }
-.rail-simulator .share-control label { color: var(--muted); font-size: 12px; font-weight: 700; }
-.rail-simulator .share-control output { font-size: 30px; }
-.rail-simulator .share-context { font-size: 12px; }
-.rail-simulator .impact-hero { margin-top: 18px; padding: 27px; }
-.rail-simulator .impact-hero > strong { font-size: 54px; }
-.rail-footprint { margin-top: 12px; padding: 20px; border: 1px solid var(--soft-line); border-radius: 12px; }
+.rail-interaction-row { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: 28px; align-items: stretch; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--soft-line); }
+.rail-unified .share-control { min-width: 0; margin: 0; padding: 24px; display: flex; flex-direction: column; justify-content: center; }
+.rail-unified .share-control label { color: var(--muted); font-size: 13px; font-weight: 700; }
+.rail-unified .share-control output { flex-shrink: 0; font-size: 36px; }
+.rail-unified .share-context { margin-top: 12px; font-size: 12px; }
+.rail-unified #candidate-share { margin-top: 25px; }
+.rail-unified .share-presets { margin-top: 22px; }
+.rail-unified .share-presets button { min-height: 36px; font-size: 11px; }
+.rail-unified .rail-results { min-width: 0; padding: 24px; border-radius: 14px; background: var(--navy); }
+.rail-unified .impact-hero { margin: 0; padding: 0; }
+.rail-unified .impact-hero > span { font-size: 11px; }
+.rail-unified .impact-hero > strong { font-size: 50px; }
+.rail-footprint { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .14); }
 .rail-footprint > div:first-child { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
-.rail-footprint > div:first-child span { color: var(--muted); font-size: 12px; }
-.rail-footprint > div:first-child strong { color: var(--success); font-size: 12px; }
+.rail-footprint > div:first-child span { color: #b6bfd3; font-size: 12px; }
+.rail-footprint > div:first-child strong { color: var(--gold); font-size: 12px; }
 .rail-footprint-values { margin-top: 15px; display: grid; grid-template-columns: 1fr 18px 1fr; align-items: center; gap: 12px; }
-.rail-footprint-values > div > small { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; }
-.rail-footprint-values strong { display: block; margin-top: 4px; color: var(--navy); font-size: 22px; letter-spacing: -.03em; white-space: nowrap; }
-.rail-footprint-values > div:first-child strong { color: var(--muted); }
+.rail-footprint-values > div > small { display: block; color: #b6bfd3; font-size: 10px; text-transform: uppercase; }
+.rail-footprint-values strong { display: block; margin-top: 4px; color: #fff; font-size: 22px; letter-spacing: -.03em; white-space: nowrap; }
+.rail-footprint-values > div:first-child strong { color: #b6bfd3; }
 .rail-footprint-values strong small { font-size: 11px; letter-spacing: 0; }
-.rail-footprint-values > b { color: var(--gold-deep); text-align: center; }
+.rail-footprint-values > b { color: var(--gold); text-align: center; }
+.rail-footer { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.rail-gates-title { display: block; }
+.rail-footer .execution-guardrails { margin: 0; display: flex; flex-wrap: wrap; gap: 20px; }
+.rail-footer .execution-guardrails span { padding: 0; background: transparent; }
+.rail-footer .execution-guardrails b { font-size: 11px; }
+@media (max-width: 900px) {
+  .rail-evidence-row, .rail-interaction-row { grid-template-columns: 1fr; gap: 22px; }
+  .rail-observed { padding: 0; border-left: 0; }
+}
 @media (max-width: 520px) {
+  .rail-unified { padding: 21px; }
   .rail-journey { grid-template-columns: 1fr 10px 1.3fr 10px 1fr; gap: 3px; }
   .rail-stage { padding: 16px 5px; }
   .rail-stage strong { font-size: 14px; }
@@ -759,9 +775,13 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .rail-observed-grid strong { font-size: 27px; }
   .rail-observed-grid strong small { font-size: 10px; }
   .rail-observed-grid span { font-size: 11px; }
-  .rail-footprint { padding: 15px; }
+  .rail-unified .share-control, .rail-unified .rail-results { padding: 18px; }
+  .rail-unified .share-control output { font-size: 30px; }
+  .rail-unified .impact-hero > strong { font-size: 46px; }
   .rail-footprint-values { gap: 6px; grid-template-columns: 1fr 12px 1fr; }
   .rail-footprint-values strong { font-size: 18px; }
+  .rail-footer { align-items: flex-start; flex-direction: column; }
+  .rail-footer .execution-guardrails { column-gap: 14px; row-gap: 8px; }
 }
 
 /* Methodology: compliant accounting system without dashboard clutter */

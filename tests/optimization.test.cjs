@@ -58,3 +58,14 @@ test("client page presents one pathway and retains the manual slider", () => {
   assert.match(html, /tonne-km selected/);
   assert.match(html, /Observed rail-chain intensity/);
 });
+
+test("rail pathway and controls share one module with one heading", () => {
+  const html = fs.readFileSync(path.join(root, "optimization.html"), "utf8");
+  const module = html.match(/<section class="rail-workbench rail-unified card"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(module);
+  assert.equal((module.match(/<h2\b/g) || []).length, 1);
+  assert.equal((module.match(/id="candidate-share"/g) || []).length, 1);
+  assert.match(module, /id="impact-reduction"/);
+  assert.match(module, /id="rail-waybills"/);
+  assert.doesNotMatch(module, /<article\b|SF rail pathway|Interactive rail scenario|Scale the rail shift/);
+});
