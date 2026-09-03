@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="An account-linked shipment-level SF routing case that turns Estée Lauder carbon data into measurable ESG value.">
   <title>Precision Routing · Estée Lauder × SF</title>
-  <link rel="stylesheet" href="assets/site.css?v=rail-unified-1">
+  <link rel="stylesheet" href="assets/site.css?v=rail-candidates-1">
 </head>
 <body>
   <header class="site-header">
@@ -24,7 +24,7 @@
         <div>
           <div class="eyebrow">03 · Optimize · Shanghai → Beijing case</div>
           <h1>A representative lane.<br>Measurable carbon impact.</h1>
-          <p>The Shanghai-to-Beijing lane connects a concentrated road-carbon opportunity with an existing SF rail pathway and an interactive estimate of its potential impact.</p>
+          <p>Identify long-haul road shipments on the Shanghai-to-Beijing lane, explore a rail shift, and estimate its carbon impact.</p>
         </div>
         <aside class="data-stamp" aria-label="Selected sample month">
           <span>Selected sample</span><strong>MAY</strong><small>Highest Jan–Jul footprint</small><em>2026 · Full month</em>
@@ -105,66 +105,66 @@
 
     <section class="rail-workbench rail-unified card" aria-labelledby="rail-optimization-title">
       <div class="precision-section-head">
-        <div><span>SF rail opportunity</span><h2 id="rail-optimization-title">Road-to-rail optimization.</h2></div>
+        <div><span>SF rail opportunity</span><h2 id="rail-optimization-title">Plan the rail shift.</h2></div>
+        <span class="rail-case-period">Shanghai → Beijing · May 2026</span>
       </div>
-      <p class="rail-description">Shift eligible road volume to existing rail-supported operations, with compatible delivery windows.</p>
 
-      <div class="rail-evidence-row">
-        <div class="rail-journey" aria-label="Pick-up unchanged, targeted road transport shifted to rail, delivery unchanged">
-          <div class="rail-stage"><span>01</span><strong>Pick-up</strong><small>Unchanged</small></div>
-          <b aria-hidden="true">→</b>
-          <div class="rail-stage is-shift"><span>ROAD → RAIL</span><strong>Line-haul</strong><small>Targeted shift</small></div>
-          <b aria-hidden="true">→</b>
-          <div class="rail-stage"><span>03</span><strong>Delivery</strong><small>Unchanged</small></div>
+      <div class="rail-candidate-summary">
+        <div class="rail-candidate-total">
+          <span>Potential rail-shift shipments</span>
+          <strong id="rail-candidate-count">13,879</strong>
+          <small>Screened from 16,149 fuel-road waybills</small>
         </div>
-
-        <div class="rail-observed" aria-label="Observed rail operations, Shanghai to Beijing, May 2026">
-          <span>Already operating on this lane · May 2026</span>
-          <div class="rail-observed-grid">
-            <div><strong id="rail-waybills">17,772</strong><span>Observed rail waybills</span></div>
-            <div><strong><span id="rail-chain-intensity">82</span> <small>gCO₂e/kg</small></strong><span>Observed rail-chain intensity</span></div>
+        <div class="rail-candidate-definition" id="rail-candidate-definition">
+          <span>Which shipments?</span>
+          <p>Fuel-road waybills with long-distance transport and no recorded rail leg.</p>
+          <div class="rail-screening-rules">
+            <span>Recorded fuel-road distance <b>≥1,000 km</b></span>
+            <span><b>No rail transport recorded</b></span>
           </div>
+          <small>Case-specific screening rule · Each waybill counted once</small>
         </div>
       </div>
 
       <div class="rail-interaction-row">
         <div class="share-control">
-          <div><label for="candidate-share">Target road activity shifted to rail</label><output id="share-output" for="candidate-share">10%</output></div>
-          <p class="share-context"><b id="activated-activity">1,742</b> of <strong id="target-total-activity">17,423</strong> tonne-km selected</p>
-          <input id="candidate-share" type="range" min="5" max="30" step="1" value="10" aria-describedby="rail-activity-context">
-          <span id="rail-activity-context" class="sr-only">Percentage of the targeted road transport work, measured in tonne-kilometres, not percentage of waybills.</span>
+          <div><label for="candidate-share">Candidate shipments shifted to rail</label><output id="share-output" for="candidate-share">10%</output></div>
+          <p class="share-context"><b id="selected-waybills">—</b> of <strong id="candidate-total">13,879</strong> candidate shipments</p>
+          <input id="candidate-share" type="range" min="5" max="30" step="1" value="10" aria-describedby="rail-candidate-definition rail-scenario-basis" disabled>
           <div class="share-presets" aria-label="Scenario presets">
-            <button type="button" data-share="5">5%</button>
-            <button class="active" type="button" data-share="10">10%</button>
-            <button type="button" data-share="20">20%</button>
-            <button type="button" data-share="30">30%</button>
+            <button type="button" data-share="5" disabled>5%</button>
+            <button class="active" type="button" data-share="10" disabled>10%</button>
+            <button type="button" data-share="20" disabled>20%</button>
+            <button type="button" data-share="30" disabled>30%</button>
           </div>
+          <p class="rail-selection-note" id="rail-scenario-basis">Illustrative selection from May's candidate pool.<br>Estimate uses the selected waybills' transport records.</p>
         </div>
 
         <div class="rail-results" aria-live="polite" aria-atomic="true">
           <div class="impact-hero">
             <span>Estimated monthly WTW reduction</span>
-            <strong><span id="impact-reduction">1.29</span> <small>tCO₂e</small></strong>
+            <strong><span id="impact-reduction">—</span> <small>tCO₂e</small></strong>
           </div>
           <div class="rail-footprint">
-            <div><span>May lane WTW footprint</span><strong id="footprint-change">7.4% reduction</strong></div>
+            <div><span>May lane WTW footprint</span><strong id="footprint-change">—</strong></div>
             <div class="rail-footprint-values">
               <div><small>Actual</small><strong><span id="actual-footprint">17.37</span> <small>tCO₂e</small></strong></div>
               <b aria-hidden="true">→</b>
-              <div><small>After scenario</small><strong><span id="optimized-footprint">16.08</span> <small>tCO₂e</small></strong></div>
+              <div><small>After scenario</small><strong><span id="optimized-footprint">—</span> <small>tCO₂e</small></strong></div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="rail-footer">
-        <span class="rail-gates-title">Activation checks</span>
+        <span class="rail-gates-title">Before rollout</span>
         <div class="execution-guardrails" aria-label="Activation checks">
-          <span><i>•</i><b>SLA fit</b></span>
-          <span><i>•</i><b>Capacity available</b></span>
-          <span><i>•</i><b>Cost viable</b></span>
+          <span><i>•</i><b>Delivery-window fit</b></span>
+          <span><i>•</i><b>Rail capacity</b></span>
+          <span><i>•</i><b>Cost viability</b></span>
         </div>
       </div>
+      <noscript><p class="rail-selection-note">Enable JavaScript to explore the rail-shift scenario.</p></noscript>
     </section>
 
     <section class="playbook-overview" aria-labelledby="playbook-title">
@@ -185,7 +185,8 @@
 
   <footer class="site-footer"><span><strong>SF Precision Routing</strong> · Shanghai → Beijing case</span><span>Monthly-account sample · May 2026</span></footer>
   <script src="assets/site.js"></script>
-  <script src="data/dashboard-data.js?v=rail-case-1"></script>
-  <script src="assets/optimization.js?v=rail-case-1"></script>
+  <script src="data/dashboard-data.js?v=rail-candidates-1"></script>
+  <script src="data/rail-candidates.js?v=rail-candidates-1"></script>
+  <script src="assets/optimization.js?v=rail-candidates-1"></script>
 </body>
 </html>

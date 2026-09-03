@@ -51,12 +51,8 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     candidateIntensity: 841.7098,
     railScenario: {
       targetSource: "Fuel vehicle",
-      targetRoadActivityTonneKm: 17423.449,
-      targetRoadEmissionsKg: 13520.4006,
       railIntensityKgPerTonneKm: 0.0347023,
       railDistanceRatio: 1,
-      observedRailWaybills: 17772,
-      observedRailChainIntensityGPerKg: 82.3249,
     },
   },
   optimizationPriorities: [
