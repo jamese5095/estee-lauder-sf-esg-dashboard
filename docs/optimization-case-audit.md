@@ -33,20 +33,20 @@ The cohort contains land waybills with a `Fuel vehicle` source recorded on a tra
 | Share of lane WTW emissions | 80.9117% |
 | WTW intensity | 841.7098 gCO₂e/kg |
 
-## Matched historical comparisons
+## Observed operating pathways
 
-Candidate and comparison waybills are grouped into exact shipment-date and shipment-weight strata. Each stratum contributes the smaller observation count from the two groups; group-average emissions and billed freight are used within the stratum to avoid arbitrary waybill selection. The 30T-road comparison uses mutually exclusive land waybills with a 30T diesel transport source and no generic fuel-vehicle source. The rail comparison uses rail waybills.
+The client-facing page uses the observed full-chain WTW intensity of two operating pathways. Comparison-matching mechanics are retained outside the presentation layer.
 
-| Comparison | Matched pairs | Baseline intensity | Target intensity | Intensity improvement | Billed-freight delta |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| 30T diesel road | 5,756 | 756.6214 gCO₂e/kg | 123.2361 gCO₂e/kg | 83.7123% | +0.0238% |
-| Rail | 7,237 | 761.2846 gCO₂e/kg | 82.2912 gCO₂e/kg | 89.1905% | +0.0380% |
+| Operating pathway | Observed waybills | Shipment weight | WTW intensity |
+| --- | ---: | ---: | ---: |
+| High-capacity 30T road | 14,191 | 14,663.774 kg | 125.9253 gCO₂e/kg |
+| Rail-supported routing | 17,772 | 18,470.778 kg | 82.3249 gCO₂e/kg |
 
 ## Scenario unit check
 
 - Activated weight: `candidate kg × selected share`
-- WTW reduction: `activated kg × intensity delta gCO₂e/kg ÷ 1,000,000 = tCO₂e`
+- WTW reduction: `activated kg × (fuel-road cohort intensity − observed pathway intensity) ÷ 1,000,000 = tCO₂e`
 - Optimized footprint: `lane tCO₂e − modeled reduction tCO₂e`
 - Optimized lane intensity: `optimized tCO₂e × 1,000,000 ÷ lane kg = gCO₂e/kg`
 
-At the default 10% road scenario, 1.6698 tonnes of candidate weight produces a modeled 1.0577 tCO₂e reduction, a 16.3134 tCO₂e optimized footprint and 343.2564 gCO₂e/kg optimized lane intensity.
+At the default 10% road scenario, 1.6698 tonnes of candidate weight produces a modeled 1.1952 tCO₂e reduction, a 16.1758 tCO₂e optimized footprint and 340.3612 gCO₂e/kg optimized lane intensity.

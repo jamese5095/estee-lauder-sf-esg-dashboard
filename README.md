@@ -16,7 +16,7 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - `assets/site.css` — shared Estée Lauder-inspired visual system and responsive layout.
 - `assets/site.js` — shared navigation behavior.
 - `assets/overview.js` — monthly metric and selected-month interaction.
-- `assets/optimization.js` — signal, lever and method selection logic.
+- `assets/optimization.js` — operating-path selection and interactive carbon-impact calculation.
 - `assets/sf-logo.png` — local SF logo asset used by the Ecco dashboard project.
 - `data/dashboard-data.js` — centralized 2026 dashboard data and fifteen-method model.
 - `docs/` — source records plus the optimization data and emission-factor request.

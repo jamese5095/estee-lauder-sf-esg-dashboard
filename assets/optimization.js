@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const share = Number(slider.value);
     const strategy = model.strategies[activeStrategy];
     const activatedWeightKg = model.candidateWeightKg * share / 100;
-    const intensityDelta = strategy.matchedBaselineIntensity - strategy.targetIntensity;
+    const intensityDelta = model.candidateIntensity - strategy.targetChainIntensityGPerKg;
     const reductionTonnes = activatedWeightKg * intensityDelta / 1_000_000;
     const optimizedFootprint = model.actualFootprintTonnes - reductionTonnes;
     const optimizedIntensity = optimizedFootprint * 1_000_000 / model.totalWeightKg;
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sliderProgress = (share - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100;
 
     slider.style.setProperty("--range-progress", `${sliderProgress}%`);
-    slider.setAttribute("aria-valuetext", `${share}% of candidate cohort optimized, ${(activatedWeightKg / 1000).toFixed(2)} of ${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
+    slider.setAttribute("aria-valuetext", `${share}% of fuel-road shipments optimized, ${(activatedWeightKg / 1000).toFixed(2)} of ${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
     setText("#share-output", `${share}%`);
     setText("#candidate-total-weight", `${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
     setText("#scenario-strategy", strategy.name);
@@ -34,10 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setText("#optimized-footprint", `${optimizedFootprint.toFixed(2)} tCO₂e`);
     setText("#footprint-change", `${footprintImprovement.toFixed(1)}% improvement`);
     setText("#optimized-intensity", `${optimizedIntensity.toFixed(1)} g/kg`);
-    setText("#freight-delta", `${strategy.freightDeltaPercent >= 0 ? "+" : ""}${strategy.freightDeltaPercent.toFixed(2)}%`);
-    setText("#matched-baseline", strategy.matchedBaselineIntensity.toFixed(1));
-    setText("#target-intensity", strategy.targetIntensity.toFixed(1));
-    setText("#intensity-delta", intensityDelta.toFixed(1));
 
     strategyButtons.forEach((button) => {
       const active = button.dataset.strategy === activeStrategy;

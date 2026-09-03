@@ -51,18 +51,20 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     candidateIntensity: 841.7098,
     strategies: {
       road: {
-        name: "30T diesel truck line-haul",
+        name: "Road consolidation",
         matchedPairs: 5756,
         matchedBaselineIntensity: 756.6214,
         targetIntensity: 123.2361,
+        targetChainIntensityGPerKg: 125.9253,
         improvementPercent: 83.7123,
         freightDeltaPercent: 0.0238,
       },
       rail: {
-        name: "Rail shift",
+        name: "Rail-enabled routing",
         matchedPairs: 7237,
         matchedBaselineIntensity: 761.2846,
         targetIntensity: 82.2912,
+        targetChainIntensityGPerKg: 82.3249,
         improvementPercent: 89.1905,
         freightDeltaPercent: 0.0380,
       },
