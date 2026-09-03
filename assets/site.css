@@ -709,6 +709,61 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .concentration-equation > b { display: none; }
 }
 
+/* Single-path rail case. These rules do not change the other dashboard pages. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.rail-description { margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.rail-journey { margin-top: 24px; display: grid; grid-template-columns: 1fr 14px 1.35fr 14px 1fr; gap: 6px; align-items: center; }
+.rail-stage { min-width: 0; padding: 20px 8px; border: 1px solid var(--soft-line); border-radius: 11px; background: var(--cream); text-align: center; }
+.rail-stage span, .rail-stage strong, .rail-stage small { display: block; }
+.rail-stage span { color: var(--gold-deep); font-size: 9px; font-weight: 800; letter-spacing: .5px; }
+.rail-stage strong { margin-top: 10px; color: var(--navy); font-size: 17px; }
+.rail-stage small { margin-top: 5px; color: var(--muted); font-size: 11px; }
+.rail-stage.is-shift { border-color: var(--navy); background: var(--navy); box-shadow: 0 8px 20px rgba(4, 10, 43, .12); }
+.rail-stage.is-shift span { color: var(--gold); }
+.rail-stage.is-shift strong { color: #fff; }
+.rail-stage.is-shift small { color: #b6bfd3; }
+.rail-journey > b { color: var(--gold-deep); text-align: center; }
+.rail-observed { margin-top: 22px; padding: 19px 0; border-top: 1px solid var(--soft-line); border-bottom: 1px solid var(--soft-line); }
+.rail-observed > span, .rail-gates-title { color: var(--gold-deep); font-size: 10px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
+.rail-observed-grid { margin-top: 12px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 18px; }
+.rail-observed-grid strong, .rail-observed-grid span { display: block; }
+.rail-observed-grid strong { color: var(--navy); font-size: 30px; letter-spacing: -.04em; line-height: 1.2; }
+.rail-observed-grid strong small { color: var(--muted); font-size: 12px; letter-spacing: 0; white-space: nowrap; }
+.rail-observed-grid span { margin-top: 6px; color: var(--muted); font-size: 12px; }
+.rail-observed-grid strong > span { display: inline; margin: 0; color: inherit; font-size: inherit; }
+.rail-gates-title { display: block; margin-top: 18px; }
+.rail-strategy .execution-guardrails { margin-top: 8px; }
+.rail-strategy .execution-guardrails b { font-size: 11px; }
+.rail-simulator .share-control label { color: var(--muted); font-size: 12px; font-weight: 700; }
+.rail-simulator .share-control output { font-size: 30px; }
+.rail-simulator .share-context { font-size: 12px; }
+.rail-simulator .impact-hero { margin-top: 18px; padding: 27px; }
+.rail-simulator .impact-hero > strong { font-size: 54px; }
+.rail-footprint { margin-top: 12px; padding: 20px; border: 1px solid var(--soft-line); border-radius: 12px; }
+.rail-footprint > div:first-child { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.rail-footprint > div:first-child span { color: var(--muted); font-size: 12px; }
+.rail-footprint > div:first-child strong { color: var(--success); font-size: 12px; }
+.rail-footprint-values { margin-top: 15px; display: grid; grid-template-columns: 1fr 18px 1fr; align-items: center; gap: 12px; }
+.rail-footprint-values > div > small { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; }
+.rail-footprint-values strong { display: block; margin-top: 4px; color: var(--navy); font-size: 22px; letter-spacing: -.03em; white-space: nowrap; }
+.rail-footprint-values > div:first-child strong { color: var(--muted); }
+.rail-footprint-values strong small { font-size: 11px; letter-spacing: 0; }
+.rail-footprint-values > b { color: var(--gold-deep); text-align: center; }
+@media (max-width: 520px) {
+  .rail-journey { grid-template-columns: 1fr 10px 1.3fr 10px 1fr; gap: 3px; }
+  .rail-stage { padding: 16px 5px; }
+  .rail-stage strong { font-size: 14px; }
+  .rail-stage span { font-size: 8px; letter-spacing: 0; }
+  .rail-stage small { font-size: 10px; }
+  .rail-observed-grid { gap: 12px; }
+  .rail-observed-grid strong { font-size: 27px; }
+  .rail-observed-grid strong small { font-size: 10px; }
+  .rail-observed-grid span { font-size: 11px; }
+  .rail-footprint { padding: 15px; }
+  .rail-footprint-values { gap: 6px; grid-template-columns: 1fr 12px 1fr; }
+  .rail-footprint-values strong { font-size: 18px; }
+}
+
 /* Methodology: compliant accounting system without dashboard clutter */
 .driver-overview.single { grid-template-columns: 1fr; }
 .driver-overview.single > .card { padding: 30px; }

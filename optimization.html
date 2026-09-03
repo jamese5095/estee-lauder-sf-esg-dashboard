@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="An account-linked shipment-level SF routing case that turns Estée Lauder carbon data into measurable ESG value.">
   <title>Precision Routing · Estée Lauder × SF</title>
-  <link rel="stylesheet" href="assets/site.css?v=20260903i">
+  <link rel="stylesheet" href="assets/site.css?v=rail-case-1">
 </head>
 <body>
   <header class="site-header">
@@ -24,7 +24,7 @@
         <div>
           <div class="eyebrow">03 · Optimize · Shanghai → Beijing case</div>
           <h1>A representative lane.<br>Measurable carbon impact.</h1>
-          <p>The Shanghai-to-Beijing lane shows how SF shipment data can identify a concentrated carbon opportunity, connect it to practical operating paths and quantify the potential impact.</p>
+          <p>The Shanghai-to-Beijing lane connects a concentrated road-carbon opportunity with an existing SF rail pathway and an interactive estimate of its potential impact.</p>
         </div>
         <aside class="data-stamp" aria-label="Selected sample month">
           <span>Selected sample</span><strong>MAY</strong><small>Highest Jan–Jul footprint</small><em>2026 · Full month</em>
@@ -103,53 +103,48 @@
       </div>
     </section>
 
-    <section class="precision-workbench" aria-label="Routing strategy and impact simulator">
-      <article class="routing-strategy card">
+    <section class="precision-workbench rail-workbench" aria-label="Rail pathway and impact simulator">
+      <article class="routing-strategy rail-strategy card">
         <div class="precision-section-head compact">
-          <div><span>SF routing strategy</span><h2>Choose an operating path.</h2></div>
-          <strong class="engine-chip">SF OPERATING LEVERS</strong>
+          <div><span>SF rail pathway</span><h2>Shift eligible road volume to rail.</h2></div>
         </div>
 
-        <div class="routing-origin">
-          <span>High-impact shipment cohort</span>
-          <strong>Fuel-road shipment cohort</strong>
-          <small>16,149 waybills · 16,698 kg · 841.7 gCO₂e/kg</small>
+        <p class="rail-description">Use existing rail-supported operations for shipments with compatible delivery windows.</p>
+
+        <div class="rail-journey" aria-label="Pick-up unchanged, targeted road transport shifted to rail, delivery unchanged">
+          <div class="rail-stage"><span>01</span><strong>Pick-up</strong><small>Unchanged</small></div>
+          <b aria-hidden="true">→</b>
+          <div class="rail-stage is-shift"><span>ROAD → RAIL</span><strong>Line-haul</strong><small>Targeted shift</small></div>
+          <b aria-hidden="true">→</b>
+          <div class="rail-stage"><span>03</span><strong>Delivery</strong><small>Unchanged</small></div>
         </div>
 
-        <div class="strategy-connector" aria-hidden="true"><span>TWO OPERATING PATHS</span><i>↓</i></div>
-
-        <div class="strategy-options" role="group" aria-label="Choose an optimization strategy">
-          <button class="strategy-option active" type="button" data-strategy="road" aria-pressed="true">
-            <span>01 · Road efficiency</span>
-            <strong>Road consolidation</strong>
-            <small>Move eligible freight through observed high-capacity 30T road operations.</small>
-            <div><b>126</b><em>observed full-chain intensity · gCO₂e/kg</em></div>
-          </button>
-          <button class="strategy-option" type="button" data-strategy="rail" aria-pressed="false">
-            <span>02 · Modal shift</span>
-            <strong>Rail-enabled routing</strong>
-            <small>Use scheduled rail-supported operations where service windows align.</small>
-            <div><b>82</b><em>observed full-chain intensity · gCO₂e/kg</em></div>
-          </button>
+        <div class="rail-observed" aria-label="Observed rail operations, Shanghai to Beijing, May 2026">
+          <span>Already operating on this lane · May 2026</span>
+          <div class="rail-observed-grid">
+            <div><strong id="rail-waybills">17,772</strong><span>Observed rail waybills</span></div>
+            <div><strong><span id="rail-chain-intensity">82</span> <small>gCO₂e/kg</small></strong><span>Observed rail-chain intensity</span></div>
+          </div>
         </div>
 
-        <div class="execution-guardrails">
+        <span class="rail-gates-title">Activation checks</span>
+        <div class="execution-guardrails" aria-label="Activation checks">
           <span><i>•</i><b>SLA fit</b></span>
           <span><i>•</i><b>Capacity available</b></span>
           <span><i>•</i><b>Cost viable</b></span>
         </div>
       </article>
 
-      <article class="impact-simulator card" aria-live="polite">
+      <article class="impact-simulator rail-simulator card">
         <div class="precision-section-head compact">
-          <div><span>Interactive impact simulator</span><h2>Scale the opportunity.</h2></div>
-          <strong id="scenario-strategy" class="scenario-chip">Road consolidation</strong>
+          <div><span>Interactive rail scenario</span><h2>Scale the rail shift.</h2></div>
         </div>
 
         <div class="share-control">
-          <div><span>Share of fuel-road shipments optimized</span><output id="share-output" for="candidate-share">10%</output></div>
-          <p class="share-context"><b id="activated-weight">1.67 tonnes</b> of <strong id="candidate-total-weight">16.70 tonnes</strong> selected</p>
-          <input id="candidate-share" type="range" min="5" max="30" step="1" value="10" aria-label="Share of fuel-road shipments optimized">
+          <div><label for="candidate-share">Target road activity shifted to rail</label><output id="share-output" for="candidate-share">10%</output></div>
+          <p class="share-context"><b id="activated-activity">1,742</b> of <strong id="target-total-activity">17,423</strong> tonne-km selected</p>
+          <input id="candidate-share" type="range" min="5" max="30" step="1" value="10" aria-describedby="rail-activity-context">
+          <span id="rail-activity-context" class="sr-only">Percentage of the targeted road transport work, measured in tonne-kilometres, not percentage of waybills.</span>
           <div class="share-presets" aria-label="Scenario presets">
             <button type="button" data-share="5">5%</button>
             <button class="active" type="button" data-share="10">10%</button>
@@ -158,15 +153,20 @@
           </div>
         </div>
 
-        <div class="impact-hero">
-          <span>Estimated monthly WTW reduction</span>
-          <strong id="impact-reduction">1.20 <small>tCO₂e</small></strong>
-          <p>Potential impact from the selected share of fuel-road shipments</p>
-        </div>
-
-        <div class="impact-metrics two">
-          <article><span>Remaining lane footprint</span><strong id="optimized-footprint">16.18 tCO₂e</strong><small id="footprint-change">6.9% reduction</small></article>
-          <article><span>Lane carbon intensity</span><strong id="optimized-intensity">340.4 g/kg</strong><small>from 365.5 g/kg</small></article>
+        <div class="rail-results" aria-live="polite" aria-atomic="true">
+          <div class="impact-hero">
+            <span>Estimated monthly WTW reduction</span>
+            <strong><span id="impact-reduction">1.29</span> <small>tCO₂e</small></strong>
+            <p>From the selected road-to-rail shift</p>
+          </div>
+          <div class="rail-footprint">
+            <div><span>May lane WTW footprint</span><strong id="footprint-change">7.4% reduction</strong></div>
+            <div class="rail-footprint-values">
+              <div><small>Actual</small><strong><span id="actual-footprint">17.37</span> <small>tCO₂e</small></strong></div>
+              <b aria-hidden="true">→</b>
+              <div><small>After scenario</small><strong><span id="optimized-footprint">16.08</span> <small>tCO₂e</small></strong></div>
+            </div>
+          </div>
         </div>
       </article>
     </section>
@@ -189,7 +189,7 @@
 
   <footer class="site-footer"><span><strong>SF Precision Routing</strong> · Shanghai → Beijing case</span><span>Monthly-account sample · May 2026</span></footer>
   <script src="assets/site.js"></script>
-  <script src="data/dashboard-data.js?v=20260903i"></script>
-  <script src="assets/optimization.js?v=20260903f"></script>
+  <script src="data/dashboard-data.js?v=rail-case-1"></script>
+  <script src="assets/optimization.js?v=rail-case-1"></script>
 </body>
 </html>

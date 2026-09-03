@@ -49,25 +49,14 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
     candidateWeightShare: 35.14,
     candidateCarbonShare: 80.91,
     candidateIntensity: 841.7098,
-    strategies: {
-      road: {
-        name: "Road consolidation",
-        matchedPairs: 5756,
-        matchedBaselineIntensity: 756.6214,
-        targetIntensity: 123.2361,
-        targetChainIntensityGPerKg: 125.9253,
-        improvementPercent: 83.7123,
-        freightDeltaPercent: 0.0238,
-      },
-      rail: {
-        name: "Rail-enabled routing",
-        matchedPairs: 7237,
-        matchedBaselineIntensity: 761.2846,
-        targetIntensity: 82.2912,
-        targetChainIntensityGPerKg: 82.3249,
-        improvementPercent: 89.1905,
-        freightDeltaPercent: 0.0380,
-      },
+    railScenario: {
+      targetSource: "Fuel vehicle",
+      targetRoadActivityTonneKm: 17423.449,
+      targetRoadEmissionsKg: 13520.4006,
+      railIntensityKgPerTonneKm: 0.0347023,
+      railDistanceRatio: 1,
+      observedRailWaybills: 17772,
+      observedRailChainIntensityGPerKg: 82.3249,
     },
   },
   optimizationPriorities: [

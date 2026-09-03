@@ -1,54 +1,57 @@
+// Only the selected Fuel vehicle transport rows change; all other emissions stay in the baseline.
+function calculateRailShift(model, share) {
+  const scenario = model.railScenario;
+  const fraction = Math.max(0, Math.min(100, Number(share) || 0)) / 100;
+  const activatedTonneKm = scenario.targetRoadActivityTonneKm * fraction;
+  const replacedRoadKg = scenario.targetRoadEmissionsKg * fraction;
+  const replacementRailKg = activatedTonneKm * scenario.railDistanceRatio * scenario.railIntensityKgPerTonneKm;
+  const reductionTonnes = (replacedRoadKg - replacementRailKg) / 1000;
+  const unchangedFootprintTonnes = model.actualFootprintTonnes - replacedRoadKg / 1000;
+  return {
+    activatedTonneKm,
+    reductionTonnes,
+    unchangedFootprintTonnes,
+    replacementRailTonnes: replacementRailKg / 1000,
+    optimizedFootprintTonnes: unchangedFootprintTonnes + replacementRailKg / 1000,
+    reductionPercent: reductionTonnes / model.actualFootprintTonnes * 100,
+  };
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const model = window.ESTEE_DASHBOARD_DATA?.optimizationCase;
   const slider = document.querySelector("#candidate-share");
-  const strategyButtons = [...document.querySelectorAll("[data-strategy]")];
   const presetButtons = [...document.querySelectorAll("[data-share]")];
-  if (!model || !slider || !strategyButtons.length) return;
-
-  let activeStrategy = "road";
+  if (!model?.railScenario || !slider) return;
 
   const setText = (selector, value) => {
     const element = document.querySelector(selector);
     if (element) element.textContent = value;
   };
 
+  const number = (value) => value.toLocaleString("en-US", { maximumFractionDigits: 0 });
+  setText("#rail-waybills", number(model.railScenario.observedRailWaybills));
+  setText("#rail-chain-intensity", number(model.railScenario.observedRailChainIntensityGPerKg));
+  setText("#target-total-activity", number(model.railScenario.targetRoadActivityTonneKm));
+
   const render = () => {
     const share = Number(slider.value);
-    const strategy = model.strategies[activeStrategy];
-    const activatedWeightKg = model.candidateWeightKg * share / 100;
-    const intensityDelta = model.candidateIntensity - strategy.targetChainIntensityGPerKg;
-    const reductionTonnes = activatedWeightKg * intensityDelta / 1_000_000;
-    const optimizedFootprint = model.actualFootprintTonnes - reductionTonnes;
-    const optimizedIntensity = optimizedFootprint * 1_000_000 / model.totalWeightKg;
-    const footprintImprovement = reductionTonnes / model.actualFootprintTonnes * 100;
+    const result = calculateRailShift(model, share);
     const sliderProgress = (share - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100;
 
     slider.style.setProperty("--range-progress", `${sliderProgress}%`);
-    slider.setAttribute("aria-valuetext", `${share}% of fuel-road shipments optimized, ${(activatedWeightKg / 1000).toFixed(2)} of ${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
+    slider.setAttribute("aria-valuetext", `${share}% of targeted road transport work shifted to rail, ${number(result.activatedTonneKm)} tonne-kilometres`);
     setText("#share-output", `${share}%`);
-    setText("#candidate-total-weight", `${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
-    setText("#scenario-strategy", strategy.name);
-    setText("#impact-reduction", reductionTonnes.toFixed(2));
-    document.querySelector("#impact-reduction")?.insertAdjacentHTML("beforeend", " <small>tCO₂e</small>");
-    setText("#activated-weight", `${(activatedWeightKg / 1000).toFixed(2)} tonnes`);
-    setText("#optimized-footprint", `${optimizedFootprint.toFixed(2)} tCO₂e`);
-    setText("#footprint-change", `${footprintImprovement.toFixed(1)}% improvement`);
-    setText("#optimized-intensity", `${optimizedIntensity.toFixed(1)} g/kg`);
-
-    strategyButtons.forEach((button) => {
-      const active = button.dataset.strategy === activeStrategy;
+    setText("#activated-activity", number(result.activatedTonneKm));
+    setText("#impact-reduction", result.reductionTonnes.toFixed(2));
+    setText("#actual-footprint", model.actualFootprintTonnes.toFixed(2));
+    setText("#optimized-footprint", result.optimizedFootprintTonnes.toFixed(2));
+    setText("#footprint-change", `${result.reductionPercent.toFixed(1)}% reduction`);
+    presetButtons.forEach((button) => {
+      const active = Number(button.dataset.share) === share;
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
-    presetButtons.forEach((button) => button.classList.toggle("active", Number(button.dataset.share) === share));
   };
-
-  strategyButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      activeStrategy = button.dataset.strategy;
-      render();
-    });
-  });
 
   presetButtons.forEach((button) => {
     button.addEventListener("click", () => {
