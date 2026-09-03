@@ -11,8 +11,7 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - `index.html` — client-facing project portal and decision journey.
 - `overview.html` — interactive Jan–Jul SF transport footprint.
 - `drivers.html` — source mix, city and transport-mode concentration analysis.
-- `optimization.html` — interactive matcher connecting three SF data signals to prioritized methods and future estimates.
-- `optimization-2.html` — alternative leadership view showing multiple SF solutions to one observed problem without projected uplift.
+- `optimization.html` — quantified Shanghai-to-Beijing routing case with an interactive carbon-impact scenario.
 - `methodology.html` — formulae, SF data lineage, scenario requirements and the full method library.
 - `assets/site.css` — shared Estée Lauder-inspired visual system and responsive layout.
 - `assets/site.js` — shared navigation behavior.
