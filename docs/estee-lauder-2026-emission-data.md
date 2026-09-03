@@ -4,10 +4,11 @@
 
 - Source repository: https://github.com/jamese5095/fenghe-carbon-platform
 - Source commit: `ff3a3c5`
-- Reporting boundary: SF Express transport only
+- Reporting population: SF waybills recorded under the identified Estée Lauder monthly billing account IDs
+- Geographic attribution: origin and destination follow the corresponding waybill fields; warehouse location does not determine inclusion
 - Coverage: January–July 2026
 - The displayed emissions are the net actual values used by the client dashboard.
-- Historical comparison series and other business sources are outside the current dashboard scope.
+- Historical comparison series are outside the current dashboard scope.
 
 ## Monthly SF Express profile
 

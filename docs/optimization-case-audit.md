@@ -4,6 +4,7 @@
 
 - Source workbook: `单票碳排放统计表_20260902235506 (1).xlsx`
 - Source size: 408,204 data rows plus one header row
+- Account inclusion rule: waybills recorded under the identified Estée Lauder monthly billing account IDs
 - Case filter: May 2026, Shanghai origin, Beijing destination, SF Standard Express
 - Emission boundary: WTW emissions from pick-up, transport and delivery rows; packaging rows excluded
 - Waybill weight and billed freight are counted once per unique waybill

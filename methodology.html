@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Calculation methodology, data coverage and SF decarbonization method library for the Estée Lauder dashboard.">
+  <meta name="description" content="Calculation methodology, monthly-account reporting boundary and SF decarbonization method library for the Estée Lauder dashboard.">
   <title>Methodology & Data · Estée Lauder × SF</title>
   <link rel="stylesheet" href="assets/site.css?v=20260903e">
 </head>
@@ -13,7 +13,7 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a class="brand-link" href="index.html">
           <span class="logo-box"><img src="assets/sf-logo.png" alt="SF Express logo"></span>
-          <span class="brand-copy"><strong>SF × ESTĒE LAUDER</strong><span>Scope 3 carbon decision platform</span></span>
+          <span class="brand-copy"><strong>SF × ESTĒE LAUDER</strong><span>Scope 3 · Monthly-account shipments</span></span>
         </a>
         <div class="nav-links">
           <a href="index.html">Home</a><a href="overview.html">Footprint</a><a href="drivers.html">Drivers</a><a href="optimization.html">Optimization</a><a href="methodology.html">Methodology</a>
@@ -24,7 +24,7 @@
         <div>
           <div class="eyebrow">04 · Govern · Calculation before claim</div>
           <h1>Make every result<br>traceable.</h1>
-          <p>Transparent formulae, visible coverage boundaries and explicit evidence labels keep the dashboard useful in client conversations and ready for further development.</p>
+          <p>Transparent formulae, an account-linked reporting boundary and explicit evidence labels keep every result consistent, traceable and ready for further development.</p>
         </div>
         <aside class="data-stamp" aria-label="Methodology status">
           <span>Evidence model</span><strong>3</strong><small>value classifications</small><em>Actual · Calculated · Scenario</em>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="hero-kpis" aria-label="Methodology summary">
-        <article><span>Source period</span><strong>2026</strong><small>only</small></article>
+        <article><span>Reporting basis</span><strong>ACCOUNT</strong><small>monthly-account waybills</small></article>
         <article><span>Mapped months</span><strong>7</strong><small>SF transport</small></article>
         <article><span>Structural levers</span><strong>5</strong><small>SF framework</small></article>
         <article><span>Methods documented</span><strong>15</strong><small>complete library</small></article>
@@ -57,13 +57,13 @@
     <section class="section" aria-labelledby="formula-title">
       <div class="section-intro">
         <div><div class="section-label">Calculation framework</div><h2 id="formula-title">Four relationships anchor the dashboard.</h2></div>
-        <p>The current dashboard uses the SF Express net actual footprint. Opportunity estimates remain gated until the required operational fields and comparable emission factors are available.</p>
+        <p>The dashboard applies the SF Express net actual footprint reported for the identified Estée Lauder monthly-account population. Opportunity estimates use method-specific operational fields and comparable emission factors.</p>
       </div>
       <div class="formula-grid">
         <article class="formula-card"><span>Actual emissions</span><strong>Activity × Emission factor</strong><p>Activity may be tonne-km, vehicle-km, electricity, material mass or another method-specific driver.</p></article>
         <article class="formula-card"><span>Carbon intensity</span><strong>Actual emissions ÷ Shipment volume</strong><p>SF Jan–Jul weighted intensity is 279.01 gCO₂e/pcs. CN intensity is unavailable, not zero.</p></article>
         <article class="formula-card"><span>Estimated reduction</span><strong>Eligible activity × (Current EF − Target EF)</strong><p>The target scenario also requires adoption, operating feasibility, cost and service-level validation.</p></article>
-        <article class="formula-card"><span>Optimized footprint</span><strong>Current SF actual − Estimated reduction</strong><p>The result remains a scenario until activity, factors and operational constraints are validated.</p></article>
+        <article class="formula-card"><span>Optimized footprint</span><strong>Current account-linked actual − Estimated reduction</strong><p>The result remains a scenario until activity, factors and operational constraints are validated.</p></article>
       </div>
     </section>
 
@@ -81,18 +81,19 @@
 
     <section class="section card" aria-labelledby="coverage-title">
       <div class="section-heading">
-        <div><div class="card-kicker">Coverage matrix</div><h2 id="coverage-title">Available does not mean complete.</h2></div>
-        <p>The reporting view is limited to SF Express Jan–Jul. Scenario fields are shown separately so current actuals are never confused with modeled results.</p>
+        <div><div class="card-kicker">Reporting boundary</div><h2 id="coverage-title">One account-linked population.</h2></div>
+        <p>The same inclusion and attribution rules apply across Footprint, Drivers and Optimization.</p>
       </div>
       <div class="table-wrap">
-        <table class="data-table">
-          <thead><tr><th>SF data view</th><th>Coverage</th><th>Actual</th><th>Intensity</th><th>Known boundary</th></tr></thead>
+        <table class="data-table boundary-table">
+          <thead><tr><th>Boundary</th><th>Definition</th></tr></thead>
           <tbody>
-            <tr><td>Monthly profile</td><td>Jan–Jul</td><td>Available</td><td>Available</td><td>Monthly display rounds 0.01 t below the SF source total.</td></tr>
-            <tr><td>Transport mode</td><td>Jan–Jul</td><td>Available</td><td>Not provided</td><td>Five SF legs and modes; actual emissions only.</td></tr>
-            <tr><td>City view</td><td>Extracted view</td><td>Available</td><td>Not provided</td><td>Emissions, average haul and waybill volume.</td></tr>
-            <tr><td>Lane activity</td><td>To collect</td><td>To calculate</td><td>To calculate</td><td>OD, weight, distance, mode, SLA and cost required.</td></tr>
-            <tr><td>Scenario factors</td><td>To collect</td><td>—</td><td>—</td><td>Current and target factors must use comparable boundaries.</td></tr>
+            <tr><td>System inclusion rule</td><td>SF waybills recorded under the identified Estée Lauder monthly billing account IDs.</td></tr>
+            <tr><td>Client attribution</td><td>Monthly billing account linkage identifies the Estée Lauder reporting population.</td></tr>
+            <tr><td>Geographic attribution</td><td>Origin and destination follow the corresponding waybill fields; warehouse location does not determine inclusion.</td></tr>
+            <tr><td>Footprint coverage</td><td>January–July 2026 actual emissions and activity reported for the account-linked population.</td></tr>
+            <tr><td>Optimization case</td><td>May 2026 Shanghai → Beijing records selected from the same account-linked population.</td></tr>
+            <tr><td>Evidence basis</td><td>Reported values, transparent calculations and prospective scenarios remain separately labeled.</td></tr>
           </tbody>
         </table>
       </div>
@@ -113,7 +114,7 @@
     </section>
   </main>
 
-  <footer class="site-footer"><span><strong>Methodology & Data</strong> · Transparent calculation and coverage</span><span>2026 source data only</span></footer>
+  <footer class="site-footer"><span><strong>Methodology & Data</strong> · Transparent calculation and coverage</span><span>Monthly-account reporting scope · 2026</span></footer>
   <script src="assets/site.js"></script>
 </body>
 </html>

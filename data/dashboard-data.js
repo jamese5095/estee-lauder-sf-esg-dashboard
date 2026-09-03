@@ -2,6 +2,8 @@ window.ESTEE_DASHBOARD_DATA = Object.freeze({
   meta: {
     period: "2026 YTD",
     sfCoverage: "Jan–Jul",
+    reportingBoundary: "Identified Estée Lauder monthly billing accounts",
+    geographicAttribution: "Waybill origin and destination fields",
   },
   months: [
     { month: "Jan", actual: 108.79, intensity: 210.13, volume: 517.73 },

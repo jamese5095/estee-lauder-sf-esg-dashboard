@@ -24,7 +24,9 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 ## Data principles
 
 - Only 2026 data are presented.
-- The Footprint reporting view is limited to Estée Lauder products transported by SF Express from Jan–Jul; Drivers retains the three-source mix for context.
+- The reporting population consists of SF waybills recorded under the identified Estée Lauder monthly billing account IDs.
+- Origin and destination are attributed from the corresponding waybill fields; warehouse location does not determine inclusion.
+- The Footprint view covers Jan–Jul 2026; Drivers retains the three-source mix for context.
 - Actual/reported, calculated/derived and scenario/modeled values remain distinct.
 - The Footprint chart shows monthly actual emissions; selected-month detail retains carbon intensity and shipment volume for context.
 - Missing 3PL and CN intensity data are shown as unavailable, not zero.
