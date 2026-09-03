@@ -3,66 +3,50 @@
 ## Source scope
 
 - Source workbook: `单票碳排放统计表_20260902235506 (1).xlsx`
-- Full source size: 408,204 data rows plus one header row
-- Case filter: May 2026, Shanghai origin, Beijing destination, SF Standard Express
+- Source size: 408,204 data rows plus one header row
 - Account inclusion rule: waybills recorded under the identified Estée Lauder monthly billing account IDs
-- Lane-emission boundary: WTW emissions from pick-up, transport and delivery rows; packaging rows excluded
-- Waybill weight is counted once per unique waybill
+- Case filter: May 2026, Shanghai origin, Beijing destination, SF Standard Express
+- Emission boundary: WTW emissions from pick-up, transport and delivery rows; packaging rows excluded
+- Waybill weight and billed freight are counted once per unique waybill
 
-## May lane baseline
+## Verified lane totals
 
-| Metric | Verified result | Dashboard display |
+| Metric | Source-unit result | Dashboard display |
 | --- | ---: | ---: |
 | Unique waybills | 45,888 | 45,888 |
 | Shipment weight | 47,525.447 kg | 47.53 tonnes |
 | WTW emissions | 17,371.0663 kgCO₂e | 17.37 tCO₂e |
-| Shipment intensity | 365.5108 gCO₂e/kg | not displayed on Optimization |
+| Weight-based WTW intensity | 365.5108 gCO₂e/kg | 365.5 gCO₂e/kg |
 
-## Fuel-road cohort
+The intensity calculation is `17,371.0663 kgCO₂e ÷ 47,525.447 kg × 1,000`.
 
-The cohort contains May land waybills with a `Fuel vehicle` source recorded on a transport leg. Its footprint includes each selected waybill's complete non-packaging chain.
+## Verified high-impact cohort
 
-| Metric | Verified result | Dashboard display |
-| --- | ---: | ---: |
-| Unique waybills | 16,149 | 16,149 |
-| Shipment weight | 16,698.423 kg | 16.70 tonnes |
-| Full-chain WTW emissions | 14,055.2260 kgCO₂e | 14.06 tCO₂e |
-| Share of lane weight | 35.1358% | 35.1% |
-| Share of lane WTW emissions | 80.9117% | 80.9% |
+The cohort contains land waybills with a `Fuel vehicle` source recorded on a transport leg. Its WTW footprint includes the complete non-packaging transport chain for each selected waybill.
 
-## Transport-source mix inside the cohort
+| Metric | Verified result |
+| --- | ---: |
+| Unique waybills | 16,149 |
+| Shipment weight | 16,698.423 kg |
+| WTW emissions | 14,055.2260 kgCO₂e |
+| Share of lane weight | 35.1358% |
+| Share of lane WTW emissions | 80.9117% |
+| WTW intensity | 841.7098 gCO₂e/kg |
 
-This view uses transport rows belonging to the cohort. WTW share is each source's portion of the cohort's transport-leg WTW emissions. Intensity is calculated as:
+## Matched historical comparisons
 
-`transport WTW kgCO₂e ÷ tonne-km × 1,000 = gCO₂e/t·km`.
+Candidate and comparison waybills are grouped into exact shipment-date and shipment-weight strata. Each stratum contributes the smaller observation count from the two groups; group-average emissions and billed freight are used within the stratum to avoid arbitrary waybill selection. The 30T-road comparison uses mutually exclusive land waybills with a 30T diesel transport source and no generic fuel-vehicle source. The rail comparison uses rail waybills.
 
-| Recorded source | Transport WTW share | WTW intensity |
-| --- | ---: | ---: |
-| Main fuel-road leg | 96.4267% | 775.99 gCO₂e/t·km |
-| Diesel 30T | 1.8721% | 87.38 gCO₂e/t·km |
-| Diesel 14T | 0.7811% | 143.97 gCO₂e/t·km |
-| Electric 1.5T | 0.6060% | 219.35 gCO₂e/t·km |
-| Diesel 1.5T | 0.2082% | 349.42 gCO₂e/t·km |
+| Comparison | Matched pairs | Baseline intensity | Target intensity | Intensity improvement | Billed-freight delta |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 30T diesel road | 5,756 | 756.6214 gCO₂e/kg | 123.2361 gCO₂e/kg | 83.7123% | +0.0238% |
+| Rail | 7,237 | 761.2846 gCO₂e/kg | 82.2912 gCO₂e/kg | 89.1905% | +0.0380% |
 
-The five displayed sources represent 99.8941% of the cohort's transport WTW emissions. Display values are rounded for client readability.
+## Scenario unit check
 
-## Planning scenario
+- Activated weight: `candidate kg × selected share`
+- WTW reduction: `activated kg × intensity delta gCO₂e/kg ÷ 1,000,000 = tCO₂e`
+- Optimized footprint: `lane tCO₂e − modeled reduction tCO₂e`
+- Optimized lane intensity: `optimized tCO₂e × 1,000,000 ÷ lane kg = gCO₂e/kg`
 
-The client-facing estimate uses observed full-chain shipment intensity so the pathway value shown on each solution card is also the value used in the calculation.
-
-- Fuel-road cohort weight: `16,698.423 kg`
-- Fuel-road full-chain intensity: `841.7098 gCO₂e/kg`
-- Observed 30T-road full-chain intensity: `125.9253 gCO₂e/kg` across 14,191 May waybills
-- Observed rail full-chain intensity: `82.3249 gCO₂e/kg` across 17,772 May waybills
-- Reduction: `fuel-road kg × eligible share × (fuel-road intensity − selected-path intensity) ÷ 1,000,000`
-
-### Verified dashboard outputs
-
-| Eligible share | Consolidated 30T road | Scheduled rail |
-| --- | ---: | ---: |
-| 5% | 0.5976 tCO₂e | 0.6340 tCO₂e |
-| 10% | 1.1952 tCO₂e | 1.2681 tCO₂e |
-| 20% | 2.3905 tCO₂e | 2.5361 tCO₂e |
-| 30% | 3.5857 tCO₂e | 3.8042 tCO₂e |
-
-The eligible share is a planning input: the portion of observed May fuel-road shipment weight that passes SLA, capacity and cost checks. The displayed output is therefore a technical WTW reduction estimate, not an implemented result.
+At the default 10% road scenario, 1.6698 tonnes of candidate weight produces a modeled 1.0577 tCO₂e reduction, a 16.3134 tCO₂e optimized footprint and 343.2564 gCO₂e/kg optimized lane intensity.

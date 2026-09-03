@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const model = window.ESTEE_DASHBOARD_DATA?.optimizationCase;
-  const slider = document.querySelector("#eligible-share");
+  const slider = document.querySelector("#candidate-share");
   const strategyButtons = [...document.querySelectorAll("[data-strategy]")];
   const presetButtons = [...document.querySelectorAll("[data-share]")];
   if (!model || !slider || !strategyButtons.length) return;
@@ -12,48 +12,39 @@ document.addEventListener("DOMContentLoaded", () => {
     if (element) element.textContent = value;
   };
 
-  const calculateReduction = (share, strategy) => {
-    const intensityDelta =
-      model.fuelRoad.chainIntensityGPerKg -
-      strategy.targetChainIntensityGPerKg;
-    return model.fuelRoad.weightKg * share / 100 * intensityDelta / 1_000_000;
-  };
-
   const render = () => {
     const share = Number(slider.value);
     const strategy = model.strategies[activeStrategy];
-    const reduction = calculateReduction(share, strategy);
-    const sliderProgress =
-      (share - Number(slider.min)) /
-      (Number(slider.max) - Number(slider.min)) *
-      100;
+    const activatedWeightKg = model.candidateWeightKg * share / 100;
+    const intensityDelta = strategy.matchedBaselineIntensity - strategy.targetIntensity;
+    const reductionTonnes = activatedWeightKg * intensityDelta / 1_000_000;
+    const optimizedFootprint = model.actualFootprintTonnes - reductionTonnes;
+    const optimizedIntensity = optimizedFootprint * 1_000_000 / model.totalWeightKg;
+    const footprintImprovement = reductionTonnes / model.actualFootprintTonnes * 100;
+    const sliderProgress = (share - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100;
 
     slider.style.setProperty("--range-progress", `${sliderProgress}%`);
-    slider.setAttribute(
-      "aria-valuetext",
-      `${share}% eligible share, ${reduction.toFixed(2)} tonnes of estimated WTW reduction`,
-    );
-
-    setText("#scenario-strategy", strategy.name);
+    slider.setAttribute("aria-valuetext", `${share}% of candidate cohort optimized, ${(activatedWeightKg / 1000).toFixed(2)} of ${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
     setText("#share-output", `${share}%`);
-    setText("#selected-reduction", reduction.toFixed(2));
-
-    model.scenarioShares.forEach((referenceShare) => {
-      setText(
-        `#scenario-${referenceShare}`,
-        calculateReduction(referenceShare, strategy).toFixed(2),
-      );
-    });
+    setText("#candidate-total-weight", `${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
+    setText("#scenario-strategy", strategy.name);
+    setText("#impact-reduction", reductionTonnes.toFixed(2));
+    document.querySelector("#impact-reduction")?.insertAdjacentHTML("beforeend", " <small>tCO₂e</small>");
+    setText("#activated-weight", `${(activatedWeightKg / 1000).toFixed(2)} tonnes`);
+    setText("#optimized-footprint", `${optimizedFootprint.toFixed(2)} tCO₂e`);
+    setText("#footprint-change", `${footprintImprovement.toFixed(1)}% improvement`);
+    setText("#optimized-intensity", `${optimizedIntensity.toFixed(1)} g/kg`);
+    setText("#freight-delta", `${strategy.freightDeltaPercent >= 0 ? "+" : ""}${strategy.freightDeltaPercent.toFixed(2)}%`);
+    setText("#matched-baseline", strategy.matchedBaselineIntensity.toFixed(1));
+    setText("#target-intensity", strategy.targetIntensity.toFixed(1));
+    setText("#intensity-delta", intensityDelta.toFixed(1));
 
     strategyButtons.forEach((button) => {
       const active = button.dataset.strategy === activeStrategy;
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
-
-    presetButtons.forEach((button) => {
-      button.classList.toggle("active", Number(button.dataset.share) === share);
-    });
+    presetButtons.forEach((button) => button.classList.toggle("active", Number(button.dataset.share) === share));
   };
 
   strategyButtons.forEach((button) => {
