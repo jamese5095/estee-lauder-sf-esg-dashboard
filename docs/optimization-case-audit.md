@@ -3,66 +3,66 @@
 ## Source scope
 
 - Source workbook: `单票碳排放统计表_20260902235506 (1).xlsx`
-- Source size: 408,204 data rows plus one header row
+- Full source size: 408,204 data rows plus one header row
+- Case filter: May 2026, Shanghai origin, Beijing destination, SF Standard Express
 - Account inclusion rule: waybills recorded under the identified Estée Lauder monthly billing account IDs
-- Case filter: May–June 2026, Shanghai origin, Beijing destination, SF Standard Express
 - Lane-emission boundary: WTW emissions from pick-up, transport and delivery rows; packaging rows excluded
-- Transport-source analysis: transport rows only
 - Waybill weight is counted once per unique waybill
 
-## Verified lane totals
+## May lane baseline
 
-| Period | Unique waybills | Shipment weight | WTW emissions | Shipment intensity |
-| --- | ---: | ---: | ---: | ---: |
-| May 2026 | 45,888 | 47,525.447 kg | 17,371.0663 kgCO₂e | 365.5108 gCO₂e/kg |
-| June 2026 | 32,067 | 31,920.530 kg | 12,123.5537 kgCO₂e | 379.8043 gCO₂e/kg |
-| May–June | 77,955 | 79,445.977 kg | 29,494.6200 kgCO₂e | 371.2538 gCO₂e/kg |
+| Metric | Verified result | Dashboard display |
+| --- | ---: | ---: |
+| Unique waybills | 45,888 | 45,888 |
+| Shipment weight | 47,525.447 kg | 47.53 tonnes |
+| WTW emissions | 17,371.0663 kgCO₂e | 17.37 tCO₂e |
+| Shipment intensity | 365.5108 gCO₂e/kg | not displayed on Optimization |
 
-The combined shipment-intensity calculation is:
+## Fuel-road cohort
 
-`29,494.6200 kgCO₂e ÷ 79,445.977 kg × 1,000 = 371.2538 gCO₂e/kg`.
+The cohort contains May land waybills with a `Fuel vehicle` source recorded on a transport leg. Its footprint includes each selected waybill's complete non-packaging chain.
 
-## Observed transport-source intensity
+| Metric | Verified result | Dashboard display |
+| --- | ---: | ---: |
+| Unique waybills | 16,149 | 16,149 |
+| Shipment weight | 16,698.423 kg | 16.70 tonnes |
+| Full-chain WTW emissions | 14,055.2260 kgCO₂e | 14.06 tCO₂e |
+| Share of lane weight | 35.1358% | 35.1% |
+| Share of lane WTW emissions | 80.9117% | 80.9% |
 
-Transport-source intensity is calculated directly from transport-leg activity:
+## Transport-source mix inside the cohort
 
-`transport-leg WTW kgCO₂e ÷ tonne-km = kgCO₂e/t·km`.
+This view uses transport rows belonging to the cohort. WTW share is each source's portion of the cohort's transport-leg WTW emissions. Intensity is calculated as:
 
-The dashboard displays the result as `gCO₂e/t·km`, so the calculated kg value is multiplied by 1,000.
+`transport WTW kgCO₂e ÷ tonne-km × 1,000 = gCO₂e/t·km`.
 
-| Recorded transport source | Source records | Tonne-km | WTW emissions | Dashboard intensity |
-| --- | ---: | ---: | ---: | ---: |
-| Fuel-powered road | 40,372 | 30,428.8064 | 23,612.4408 kgCO₂e | 776 gCO₂e/t·km |
-| Diesel 1.5T | 14,361 | 506.0457 | 176.8312 kgCO₂e | 349 gCO₂e/t·km |
-| Electric 1.5T | 59,379 | 1,994.2463 | 437.4576 kgCO₂e | 219 gCO₂e/t·km |
-| Diesel 14T | 76,106 | 4,799.1089 | 690.8966 kgCO₂e | 144 gCO₂e/t·km |
-| Diesel 30T | 22,356 | 28,235.7997 | 2,467.1636 kgCO₂e | 87 gCO₂e/t·km |
-| Rail | 31,409 | 46,176.2084 | 1,602.4270 kgCO₂e | 35 gCO₂e/t·km |
+| Recorded source | Transport WTW share | WTW intensity |
+| --- | ---: | ---: |
+| Main fuel-road leg | 96.4267% | 775.99 gCO₂e/t·km |
+| Diesel 30T | 1.8721% | 87.38 gCO₂e/t·km |
+| Diesel 14T | 0.7811% | 143.97 gCO₂e/t·km |
+| Electric 1.5T | 0.6060% | 219.35 gCO₂e/t·km |
+| Diesel 1.5T | 0.2082% | 349.42 gCO₂e/t·km |
 
-The fuel-powered-road source contributes:
+The five displayed sources represent 99.8941% of the cohort's transport WTW emissions. Display values are rounded for client readability.
 
-`23.6124408 tCO₂e ÷ 29.4946200 tCO₂e = 80.1%` of the lane's May–June WTW footprint.
+## Planning scenario
 
-Source-record counts describe transport rows, not mutually exclusive shipment cohorts. A waybill can contain more than one recorded transport source across its operating chain.
+The estimate applies an eligible share to the May main fuel-road transport activity:
 
-## Planning-scenario calculation
+- Observed activity: `17,423.449 tonne-km`
+- Observed fuel-road intensity: `0.7759879 kgCO₂e/t·km`
+- Consolidated 30T-road intensity: `0.0873773 kgCO₂e/t·km`
+- Scheduled-rail intensity: `0.0347023 kgCO₂e/t·km`
+- Reduction: `observed activity × eligible share × (fuel-road intensity − selected-path intensity) ÷ 1,000`
 
-The visible scenario uses the actual fuel-powered-road transport activity as its baseline pool. The selected share is the only user-defined planning assumption.
+### Verified dashboard outputs
 
-- Assessed activity: `30,428.8064 tonne-km × selected share`
-- Observed baseline intensity: `0.7759897 kgCO₂e/t·km`
-- 30T-road target intensity: `0.0873771 kgCO₂e/t·km`
-- Rail target intensity: `0.0347024 kgCO₂e/t·km`
-- Indicative reduction: `assessed tonne-km × (baseline intensity − target intensity) ÷ 1,000 = tCO₂e`
-- Remaining lane footprint: `29.4946200 tCO₂e − indicative reduction`
+| Eligible share | Consolidated 30T road | Scheduled rail |
+| --- | ---: | ---: |
+| 5% | 0.5999 tCO₂e | 0.6458 tCO₂e |
+| 10% | 1.1998 tCO₂e | 1.2916 tCO₂e |
+| 20% | 2.3996 tCO₂e | 2.5832 tCO₂e |
+| 30% | 3.5994 tCO₂e | 3.8747 tCO₂e |
 
-### Verified scenario outputs
-
-| Pathway | Assessed share | Assessed activity | Indicative reduction | Remaining footprint | Lane-level reduction |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Consolidated 30T road | 10% | 3,042.8806 t·km | 2.095366 tCO₂e | 27.399254 tCO₂e | 7.1042% |
-| Scheduled rail | 10% | 3,042.8806 t·km | 2.255649 tCO₂e | 27.238971 tCO₂e | 7.6477% |
-| Consolidated 30T road | 30% | 9,128.6419 t·km | 6.286098 tCO₂e | 23.208522 tCO₂e | 21.3127% |
-| Scheduled rail | 30% | 9,128.6419 t·km | 6.766946 tCO₂e | 22.727674 tCO₂e | 22.9430% |
-
-The scenario is a technical planning estimate. Service promise, departure capacity and total logistics cost remain operating gates before an implementation case is finalized.
+The eligible share is a planning input: the portion of observed May fuel-road tonne-km that passes SLA, capacity and cost checks. The displayed output is therefore a technical WTW reduction estimate, not an implemented result.

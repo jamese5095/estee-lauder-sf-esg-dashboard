@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A transparent Shanghai-to-Beijing optimization planning scenario built from Estée Lauder's May–June SF shipment records.">
-  <title>Optimization Planning · Estée Lauder × SF</title>
-  <link rel="stylesheet" href="assets/site.css?v=20260903g">
+  <meta name="description" content="A concise May 2026 Shanghai-to-Beijing carbon optimization case for Estée Lauder shipments carried by SF Express.">
+  <title>Optimization · Estée Lauder × SF</title>
+  <link rel="stylesheet" href="assets/site.css?v=20260903h">
 </head>
 <body>
   <header class="site-header">
@@ -20,206 +20,134 @@
         </div>
       </nav>
 
-      <div class="page-hero precision-hero">
+      <div class="page-hero opt-simple-hero">
         <div>
-          <div class="eyebrow">03 · Optimize · Shanghai → Beijing case</div>
-          <h1>One lane.<br>A transparent planning scenario.</h1>
-          <p>May–June shipment evidence identifies where carbon concentrates, then translates the observed operating mix into a clear optimization scenario with service, capacity and cost gates.</p>
+          <div class="eyebrow">03 · Optimize · Shanghai → Beijing</div>
+          <h1>May’s carbon hotspot.<br>A clearer path forward.</h1>
+          <p>One observed lane turns actual shipment data into two practical operating choices and a transparent carbon estimate.</p>
         </div>
-        <aside class="data-stamp" aria-label="Observed data window">
-          <span>Observed window</span><strong>MAY–JUN</strong><small>Two complete months</small><em>2026 · Actual records</em>
+        <aside class="data-stamp opt-month-stamp" aria-label="Case month">
+          <span>Case month</span><strong>MAY</strong><small>Higher-emission month in the available lane sample</small><em>2026 · Actual records</em>
         </aside>
       </div>
 
-      <div class="hero-kpis" aria-label="Shanghai to Beijing case baseline">
-        <article><span>Unique waybills</span><strong>77,955</strong><small>SF Standard Express</small></article>
-        <article><span>Shipment weight</span><strong>79.45</strong><small>tonnes</small></article>
-        <article><span>Actual WTW footprint</span><strong>29.49</strong><small>tCO₂e</small></article>
-        <article><span>Shipment intensity</span><strong>371.3</strong><small>gCO₂e/kg</small></article>
+      <div class="hero-kpis three-up" aria-label="May Shanghai to Beijing baseline">
+        <article><span>Unique waybills</span><strong>45,888</strong></article>
+        <article><span>Shipment weight</span><strong>47.53</strong><small>tonnes</small></article>
+        <article><span>Actual WTW footprint</span><strong>17.37</strong><small>tCO₂e</small></article>
       </div>
     </div>
   </header>
 
-  <main class="main-shell opt-main">
-    <section class="opt-case-strip" aria-label="Why the Shanghai to Beijing case was selected">
-      <div>
-        <span>Why this lane</span>
-        <strong>High-volume, multi-path operations</strong>
-      </div>
-      <p><b>Shanghai–Beijing includes road and rail pathways across 77,955 waybills.</b> May carries the higher carbon load in the available two-month window, while June provides a second full month to validate the operating signal.</p>
-      <div class="opt-month-facts" aria-label="Monthly actual footprint">
-        <span><b>17.37</b>May tCO₂e</span>
-        <span><b>12.12</b>June tCO₂e</span>
-      </div>
-    </section>
-
-    <section class="opt-evidence card" aria-labelledby="evidence-title">
-      <div class="precision-section-head">
+  <main class="main-shell opt-simple-main">
+    <section class="opt-simple-card card" aria-labelledby="hotspot-title">
+      <div class="opt-simple-head">
         <div>
-          <span>What the data shows</span>
-          <h2 id="evidence-title">The carbon signal is concentrated and actionable.</h2>
+          <span>01 · Carbon hotspot</span>
+          <h2 id="hotspot-title">Fuel-road dominates the May footprint.</h2>
         </div>
-        <div class="evidence-badge"><i></i><span>Actual source records</span><strong>May–June 2026</strong></div>
+        <p>Actual May records · Shanghai → Beijing</p>
       </div>
 
-      <div class="opt-evidence-layout">
-        <article class="opt-focus-card">
-          <span>Priority operating pool</span>
-          <h3>Fuel-powered road</h3>
-          <p>The largest recorded transport-source contribution on this lane and the first pool for operational eligibility screening.</p>
-          <div class="opt-focus-metric">
-            <strong>23.61 <small>tCO₂e</small></strong>
-            <span>80.1% of the lane’s total WTW footprint</span>
-          </div>
-          <div class="opt-focus-grid">
-            <div><strong>40,372</strong><span>transport records</span></div>
-            <div><strong>30,428.8</strong><span>tonne-km</span></div>
-            <div><strong>776</strong><span>gCO₂e/t·km</span></div>
+      <div class="opt-hotspot-grid">
+        <article class="opt-share-card">
+          <span>Fuel-road share of lane WTW</span>
+          <strong>80.9<small>%</small></strong>
+          <p>16,149 waybills · 14.06 tCO₂e</p>
+          <div class="opt-share-contrast" aria-label="Fuel-road represents 35.1 percent of shipment weight and 80.9 percent of WTW emissions">
+            <div><span>Shipment weight</span><b>35.1%</b><i style="--share:35.1%"></i></div>
+            <div class="is-carbon"><span>WTW emissions</span><b>80.9%</b><i style="--share:80.9%"></i></div>
           </div>
         </article>
 
-        <article class="opt-intensity-card">
-          <div class="opt-intensity-head">
-            <div>
-              <span>Observed transport-leg intensity</span>
-              <h3>WTW carbon by recorded source</h3>
+        <article class="opt-mix-card">
+          <header>
+            <div><span>Inside the fuel-road cohort</span><h3>Transport-source mix</h3></div>
+            <div><b>WTW share</b><b>Intensity</b><small>gCO₂e/t·km</small></div>
+          </header>
+          <div class="opt-mix-list" aria-label="Fuel-road cohort transport source mix">
+            <div class="opt-mix-row is-primary">
+              <span>Main fuel-road leg</span><i><b style="--share:96.43%"></b></i><strong>96.43%</strong><em>776</em>
             </div>
-            <strong>gCO₂e / tonne-km</strong>
+            <div class="opt-mix-row">
+              <span>Diesel 30T</span><i><b style="--share:1.87%"></b></i><strong>1.87%</strong><em>87</em>
+            </div>
+            <div class="opt-mix-row">
+              <span>Diesel 14T</span><i><b style="--share:0.78%"></b></i><strong>0.78%</strong><em>144</em>
+            </div>
+            <div class="opt-mix-row">
+              <span>Electric 1.5T</span><i><b style="--share:0.61%"></b></i><strong>0.61%</strong><em>219</em>
+            </div>
+            <div class="opt-mix-row">
+              <span>Diesel 1.5T</span><i><b style="--share:0.21%"></b></i><strong>0.21%</strong><em>349</em>
+            </div>
           </div>
-          <div class="opt-source-chart" role="list" aria-label="Observed WTW intensity by transport source">
-            <button class="opt-source-row active" type="button" data-source="fuel-road" aria-pressed="true" style="--level:100%">
-              <span class="opt-source-label">Fuel-powered road<small>40,372 records</small></span><i></i><strong>776</strong>
+          <p>Top five recorded sources represent 99.9% of the cohort’s transport WTW emissions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="opt-simple-card card" aria-labelledby="solution-title">
+      <div class="opt-simple-head">
+        <div>
+          <span>02 · Optimization planning</span>
+          <h2 id="solution-title">Two operating choices. Four clear scenarios.</h2>
+        </div>
+        <p>Observed May WTW intensity · gCO₂e/t·km</p>
+      </div>
+
+      <div class="opt-solution-grid">
+        <article class="opt-choice-panel">
+          <div class="opt-choice-label">Select an operating choice</div>
+          <div class="opt-choice-list" role="group" aria-label="Select an optimization pathway">
+            <button class="opt-choice active" type="button" data-strategy="road" aria-pressed="true">
+              <span>Service-led</span>
+              <strong>Consolidated 30T road</strong>
+              <div><b>87</b><small>WTW intensity</small></div>
             </button>
-            <button class="opt-source-row" type="button" data-source="diesel-1-5t" aria-pressed="false" style="--level:45%">
-              <span class="opt-source-label">Diesel 1.5T<small>14,361 records</small></span><i></i><strong>349</strong>
-            </button>
-            <button class="opt-source-row" type="button" data-source="electric-1-5t" aria-pressed="false" style="--level:28.3%">
-              <span class="opt-source-label">Electric 1.5T<small>59,379 records</small></span><i></i><strong>219</strong>
-            </button>
-            <button class="opt-source-row" type="button" data-source="diesel-14t" aria-pressed="false" style="--level:18.6%">
-              <span class="opt-source-label">Diesel 14T<small>76,106 records</small></span><i></i><strong>144</strong>
-            </button>
-            <button class="opt-source-row" type="button" data-source="diesel-30t" aria-pressed="false" style="--level:11.3%">
-              <span class="opt-source-label">Diesel 30T<small>22,356 records</small></span><i></i><strong>87</strong>
-            </button>
-            <button class="opt-source-row" type="button" data-source="rail" aria-pressed="false" style="--level:4.5%">
-              <span class="opt-source-label">Rail<small>31,409 records</small></span><i></i><strong>35</strong>
+            <button class="opt-choice" type="button" data-strategy="rail" aria-pressed="false">
+              <span>Carbon-led</span>
+              <strong>Scheduled rail</strong>
+              <div><b>35</b><small>WTW intensity</small></div>
             </button>
           </div>
-          <div class="opt-source-detail" aria-live="polite">
-            <span id="source-detail-name">Fuel-powered road</span>
-            <strong id="source-detail-intensity">776 gCO₂e/t·km</strong>
-            <p><b id="source-detail-records">40,372</b> transport records · <b id="source-detail-tkm">30,428.8</b> tonne-km · <b id="source-detail-carbon">23.61</b> tCO₂e</p>
+          <div class="opt-choice-gates">
+            <span>SLA</span><span>Capacity</span><span>Cost</span>
           </div>
+        </article>
+
+        <article class="opt-scenario-panel" aria-live="polite">
+          <header>
+            <div><span>Estimated WTW reduction</span><h3 id="scenario-strategy">Consolidated 30T road</h3></div>
+            <strong>tCO₂e</strong>
+          </header>
+          <p class="opt-scenario-definition"><b>Eligible share</b> is the portion of May fuel-road tonne-km that passes SLA, capacity and cost checks.</p>
+          <div class="opt-scenario-list" id="scenario-list">
+            <div><span>5% eligible</span><i><b style="--level:16.67%"></b></i><strong id="scenario-5">0.60</strong></div>
+            <div><span>10% eligible</span><i><b style="--level:33.33%"></b></i><strong id="scenario-10">1.20</strong></div>
+            <div><span>20% eligible</span><i><b style="--level:66.67%"></b></i><strong id="scenario-20">2.40</strong></div>
+            <div class="is-max"><span>30% eligible</span><i><b style="--level:100%"></b></i><strong id="scenario-30">3.60</strong></div>
+          </div>
+          <footer>
+            <span>Observed activity</span>
+            <strong>17,423 tonne-km</strong>
+            <small>May main fuel-road leg</small>
+          </footer>
         </article>
       </div>
 
-      <div class="opt-definition-strip">
-        <p><b>Shipment intensity</b><span>Full-chain WTW emissions per kilogram shipped.</span></p>
-        <p><b>Transport-leg intensity</b><span>WTW emissions normalized by cargo weight and distance.</span></p>
-        <p><b>Transport records</b><span>Source-level operating rows; one waybill can contain more than one source.</span></p>
-        <p><b>Data boundary</b><span>Monthly-account records · pickup, transport and delivery · packaging excluded.</span></p>
-      </div>
-    </section>
-
-    <section class="opt-workbench" aria-label="Optimization path and planning scenario">
-      <article class="opt-path-card card">
-        <div class="precision-section-head compact">
-          <div><span>SF optimization path</span><h2>Choose an operating direction.</h2></div>
-          <strong class="engine-chip">OBSERVED PATHWAYS</strong>
-        </div>
-
-        <div class="opt-path-origin">
-          <span>Start with the priority pool</span>
-          <strong>Fuel-powered road activity</strong>
-          <small>30,428.8 tonne-km · observed WTW intensity 776 gCO₂e/t·km</small>
-        </div>
-
-        <div class="opt-path-options" role="group" aria-label="Choose an optimization pathway">
-          <button class="opt-path-option active" type="button" data-strategy="road" aria-pressed="true">
-            <span>01 · Service-led</span>
-            <strong>Consolidated 30T road</strong>
-            <small>SLA-sensitive volume with sufficient consolidation.</small>
-            <div><b>87</b><em>observed gCO₂e/t·km</em></div>
-          </button>
-          <button class="opt-path-option" type="button" data-strategy="rail" aria-pressed="false">
-            <span>02 · Carbon-led</span>
-            <strong>Scheduled rail</strong>
-            <small>Pre-plannable volume aligned with rail schedules.</small>
-            <div><b>35</b><em>observed gCO₂e/t·km</em></div>
-          </button>
-        </div>
-
-        <div class="opt-gates" aria-label="Operational decision gates">
-          <span><i>01</i><b>Service</b><small>SLA threshold</small></span>
-          <span><i>02</i><b>Capacity</b><small>Schedule fit</small></span>
-          <span><i>03</i><b>Cost</b><small>Business case</small></span>
-          <span><i>04</i><b>Carbon</b><small>WTW potential</small></span>
-        </div>
-      </article>
-
-      <article class="opt-simulator card" aria-live="polite">
-        <div class="precision-section-head compact">
-          <div><span>Optimization planning scenario</span><h2>Size the technical potential.</h2></div>
-          <strong id="scenario-strategy" class="scenario-chip">Consolidated 30T road</strong>
-        </div>
-
-        <div class="opt-share-control">
-          <div><span>Fuel-road activity assessed</span><output id="share-output" for="candidate-share">10%</output></div>
-          <p><b id="assessed-tkm">3,042.9 tonne-km</b> of <strong id="candidate-total-tkm">30,428.8 tonne-km</strong> observed activity</p>
-          <input id="candidate-share" type="range" min="5" max="30" step="5" value="10" aria-label="Share of fuel-road tonne-km assessed">
-          <div class="opt-share-presets" aria-label="Scenario presets">
-            <button type="button" data-share="5">5%</button>
-            <button class="active" type="button" data-share="10">10%</button>
-            <button type="button" data-share="20">20%</button>
-            <button type="button" data-share="30">30%</button>
-          </div>
-        </div>
-
-        <div class="opt-impact-hero">
-          <span>Indicative WTW reduction</span>
-          <strong><b id="impact-reduction">2.10</b> <small>tCO₂e</small></strong>
-          <p>Technical potential for the selected activity share and observed target pathway.</p>
-        </div>
-
-        <div class="opt-impact-metrics">
-          <article><span>Activity assessed</span><strong id="impact-activity">3,042.9 t·km</strong><small id="activity-share">10% of actual fuel-road activity</small></article>
-          <article><span>Remaining lane footprint</span><strong id="optimized-footprint">27.40 tCO₂e</strong><small>from 29.49 tCO₂e</small></article>
-          <article><span>Lane-level reduction</span><strong id="footprint-change">7.1%</strong><small>planning estimate</small></article>
-        </div>
-
-        <div class="opt-model-trace">
-          <div><span>Fuel-road intensity</span><strong id="baseline-intensity">776</strong><small>gCO₂e/t·km</small></div>
-          <b aria-hidden="true">→</b>
-          <div><span>Selected pathway</span><strong id="target-intensity">87</strong><small>gCO₂e/t·km</small></div>
-          <b aria-hidden="true">→</b>
-          <div class="is-result"><span>Observed difference</span><strong id="intensity-delta">689</strong><small>gCO₂e/t·km</small></div>
-        </div>
-
-        <p class="opt-model-note"><b>Transparent scenario</b><span>Assessed tonne-km × observed WTW intensity difference</span></p>
-        <p class="opt-validation-note">Planning estimate based on observed May–June activity and WTW intensity; finalized through SLA, capacity and cost validation.</p>
-      </article>
-    </section>
-
-    <section class="playbook-overview" aria-labelledby="playbook-title">
-      <div class="playbook-copy">
-        <span>SF methodology activation</span>
-        <h2 id="playbook-title">Observed data.<br>An operational path. Quantified ESG value.</h2>
-        <a href="methodology.html">Explore the full methodology <b>→</b></a>
-      </div>
-      <div class="playbook-map" aria-label="Fifteen methods grouped into five levers">
-        <article><span>01–03</span><strong>Network</strong><div><i></i><i></i><i></i></div></article>
-        <article><span>04–06</span><strong>Fleet</strong><div><i></i><i></i><i></i></div></article>
-        <article><span>07–09</span><strong>Energy</strong><div><i></i><i></i><i></i></div></article>
-        <article><span>10–12</span><strong>Operations</strong><div><i></i><i></i><i></i></div></article>
-        <article><span>13–15</span><strong>Ecosystem</strong><div><i></i><i></i><i></i></div></article>
+      <div class="opt-simple-note">
+        <span>Observed data sets the baseline.</span>
+        <span>Operating checks set the eligible share.</span>
+        <span>The dashboard quantifies the carbon potential.</span>
+        <a href="methodology.html">Methodology →</a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><span><strong>SF Optimization Planning</strong> · Shanghai → Beijing case</span><span>Monthly-account records · May–June 2026</span></footer>
+  <footer class="site-footer"><span><strong>SF Optimization Planning</strong> · Shanghai → Beijing</span><span>Monthly-account records · May 2026</span></footer>
   <script src="assets/site.js"></script>
-  <script src="data/dashboard-data.js?v=20260903f"></script>
-  <script src="assets/optimization.js?v=20260903c"></script>
+  <script src="data/dashboard-data.js?v=20260903g"></script>
+  <script src="assets/optimization.js?v=20260903d"></script>
 </body>
 </html>
