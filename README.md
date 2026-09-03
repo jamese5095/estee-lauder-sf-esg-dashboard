@@ -16,7 +16,7 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - `assets/site.css` — shared Estée Lauder-inspired visual system and responsive layout.
 - `assets/site.js` — shared navigation behavior.
 - `assets/overview.js` — monthly metric and selected-month interaction.
-- `assets/optimization.js` — two-path May tonne-km scenario logic.
+- `assets/optimization.js` — two-path May full-chain intensity scenario logic.
 - `assets/sf-logo.png` — local SF logo asset used by the Ecco dashboard project.
 - `data/dashboard-data.js` — centralized 2026 dashboard data and fifteen-method model.
 - `docs/` — source records plus the optimization data and emission-factor request.
@@ -30,7 +30,7 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - Actual/reported, calculated/derived and scenario/modeled values remain distinct.
 - The Footprint chart shows monthly actual emissions; selected-month detail retains carbon intensity and shipment volume for context.
 - The Optimization view uses the complete May lane export: 45,888 unique waybills, 47.53 tonnes and 17.37 tCO₂e.
-- Optimization estimates use actual May fuel-road tonne-km and observed transport-source WTW intensity; the eligible activity share is the explicit planning assumption.
+- Optimization estimates use actual May fuel-road shipment weight and observed full-chain WTW intensity; the eligible activity share is the explicit planning assumption.
 - Missing 3PL and CN intensity data are shown as unavailable, not zero.
 - Monthly SF values total 1,063.06 tCO₂e at two decimal places, while the source aggregate is 1,063.07 tCO₂e due to source rounding.
 

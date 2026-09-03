@@ -48,21 +48,21 @@ The five displayed sources represent 99.8941% of the cohort's transport WTW emis
 
 ## Planning scenario
 
-The estimate applies an eligible share to the May main fuel-road transport activity:
+The client-facing estimate uses observed full-chain shipment intensity so the pathway value shown on each solution card is also the value used in the calculation.
 
-- Observed activity: `17,423.449 tonne-km`
-- Observed fuel-road intensity: `0.7759879 kgCO₂e/t·km`
-- Consolidated 30T-road intensity: `0.0873773 kgCO₂e/t·km`
-- Scheduled-rail intensity: `0.0347023 kgCO₂e/t·km`
-- Reduction: `observed activity × eligible share × (fuel-road intensity − selected-path intensity) ÷ 1,000`
+- Fuel-road cohort weight: `16,698.423 kg`
+- Fuel-road full-chain intensity: `841.7098 gCO₂e/kg`
+- Observed 30T-road full-chain intensity: `125.9253 gCO₂e/kg` across 14,191 May waybills
+- Observed rail full-chain intensity: `82.3249 gCO₂e/kg` across 17,772 May waybills
+- Reduction: `fuel-road kg × eligible share × (fuel-road intensity − selected-path intensity) ÷ 1,000,000`
 
 ### Verified dashboard outputs
 
 | Eligible share | Consolidated 30T road | Scheduled rail |
 | --- | ---: | ---: |
-| 5% | 0.5999 tCO₂e | 0.6458 tCO₂e |
-| 10% | 1.1998 tCO₂e | 1.2916 tCO₂e |
-| 20% | 2.3996 tCO₂e | 2.5832 tCO₂e |
-| 30% | 3.5994 tCO₂e | 3.8747 tCO₂e |
+| 5% | 0.5976 tCO₂e | 0.6340 tCO₂e |
+| 10% | 1.1952 tCO₂e | 1.2681 tCO₂e |
+| 20% | 2.3905 tCO₂e | 2.5361 tCO₂e |
+| 30% | 3.5857 tCO₂e | 3.8042 tCO₂e |
 
-The eligible share is a planning input: the portion of observed May fuel-road tonne-km that passes SLA, capacity and cost checks. The displayed output is therefore a technical WTW reduction estimate, not an implemented result.
+The eligible share is a planning input: the portion of observed May fuel-road shipment weight that passes SLA, capacity and cost checks. The displayed output is therefore a technical WTW reduction estimate, not an implemented result.

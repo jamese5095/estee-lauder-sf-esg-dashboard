@@ -91,9 +91,9 @@
       <div class="opt-simple-head">
         <div>
           <span>02 · Optimization planning</span>
-          <h2 id="solution-title">Two operating choices. Four clear scenarios.</h2>
+          <h2 id="solution-title">Choose a path. Set an eligible share.</h2>
         </div>
-        <p>Observed May WTW intensity · gCO₂e/t·km</p>
+        <p>Observed full-chain intensity · gCO₂e/kg</p>
       </div>
 
       <div class="opt-solution-grid">
@@ -103,12 +103,12 @@
             <button class="opt-choice active" type="button" data-strategy="road" aria-pressed="true">
               <span>Service-led</span>
               <strong>Consolidated 30T road</strong>
-              <div><b>87</b><small>WTW intensity</small></div>
+              <div><b>126</b><small>Observed chain intensity</small></div>
             </button>
             <button class="opt-choice" type="button" data-strategy="rail" aria-pressed="false">
               <span>Carbon-led</span>
               <strong>Scheduled rail</strong>
-              <div><b>35</b><small>WTW intensity</small></div>
+              <div><b>82</b><small>Observed chain intensity</small></div>
             </button>
           </div>
           <div class="opt-choice-gates">
@@ -121,17 +121,33 @@
             <div><span>Estimated WTW reduction</span><h3 id="scenario-strategy">Consolidated 30T road</h3></div>
             <strong>tCO₂e</strong>
           </header>
-          <p class="opt-scenario-definition"><b>Eligible share</b> is the portion of May fuel-road tonne-km that passes SLA, capacity and cost checks.</p>
-          <div class="opt-scenario-list" id="scenario-list">
-            <div><span>5% eligible</span><i><b style="--level:16.67%"></b></i><strong id="scenario-5">0.60</strong></div>
-            <div><span>10% eligible</span><i><b style="--level:33.33%"></b></i><strong id="scenario-10">1.20</strong></div>
-            <div><span>20% eligible</span><i><b style="--level:66.67%"></b></i><strong id="scenario-20">2.40</strong></div>
-            <div class="is-max"><span>30% eligible</span><i><b style="--level:100%"></b></i><strong id="scenario-30">3.60</strong></div>
+          <p class="opt-scenario-definition"><b>Eligible share</b> is the portion of May fuel-road shipment weight that passes SLA, capacity and cost checks.</p>
+
+          <div class="opt-selected-scenario">
+            <div><span>Selected estimate</span><strong><b id="selected-reduction">1.20</b><small> tCO₂e</small></strong></div>
+            <output id="share-output" for="eligible-share">10%</output>
+          </div>
+
+          <div class="opt-manual-control">
+            <input id="eligible-share" type="range" min="5" max="30" step="1" value="10" aria-label="Eligible share of May fuel-road shipment weight">
+            <div class="opt-share-presets" aria-label="Eligible share presets">
+              <button type="button" data-share="5">5%</button>
+              <button class="active" type="button" data-share="10">10%</button>
+              <button type="button" data-share="20">20%</button>
+              <button type="button" data-share="30">30%</button>
+            </div>
+          </div>
+
+          <div class="opt-scenario-reference" id="scenario-list" aria-label="Reference reduction estimates">
+            <div><span>5%</span><strong id="scenario-5">0.60</strong></div>
+            <div><span>10%</span><strong id="scenario-10">1.20</strong></div>
+            <div><span>20%</span><strong id="scenario-20">2.39</strong></div>
+            <div><span>30%</span><strong id="scenario-30">3.59</strong></div>
           </div>
           <footer>
-            <span>Observed activity</span>
-            <strong>17,423 tonne-km</strong>
-            <small>May main fuel-road leg</small>
+            <span>Observed fuel-road baseline</span>
+            <strong>16.70 tonnes</strong>
+            <small>841.7 gCO₂e/kg · May full-chain WTW</small>
           </footer>
         </article>
       </div>
@@ -147,7 +163,7 @@
 
   <footer class="site-footer"><span><strong>SF Optimization Planning</strong> · Shanghai → Beijing</span><span>Monthly-account records · May 2026</span></footer>
   <script src="assets/site.js"></script>
-  <script src="data/dashboard-data.js?v=20260903g"></script>
-  <script src="assets/optimization.js?v=20260903d"></script>
+  <script src="data/dashboard-data.js?v=20260903h"></script>
+  <script src="assets/optimization.js?v=20260903e"></script>
 </body>
 </html>
