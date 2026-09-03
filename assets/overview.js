@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const data = window.ESTEE_DASHBOARD_DATA;
   const chart = document.querySelector("#month-chart");
-  const metricButtons = Array.from(document.querySelectorAll("[data-metric]"));
-  if (!data || !chart || !metricButtons.length) return;
+  if (!data || !chart) return;
 
-  let activeMetric = "actual";
   let selectedIndex = 4;
 
   const format = (value, digits = 2) => Number(value).toLocaleString("en-US", {
@@ -34,14 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderChart() {
-    const metric = data.metrics[activeMetric];
+    const metric = data.metrics.actual;
     const values = data.months.map((month) => month[metric.field]);
     const maximum = Math.max(...values);
     const average = values.reduce((sum, value) => sum + value, 0) / values.length;
     chart.replaceChildren();
     chart.style.setProperty("--average-position", `calc(31px + ${(average / maximum) * 72}%)`);
     setText("#chart-metric-label", `${metric.label} · ${metric.unit}`);
-    setText("#chart-average", `2026 average ${format(average)} ${metric.unit}`);
+    setText("#chart-average", `Jan–Jul average ${format(average)} ${metric.unit}`);
 
     data.months.forEach((month, index) => {
       const button = document.createElement("button");
@@ -67,15 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       chart.appendChild(button);
     });
   }
-
-  metricButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      activeMetric = button.dataset.metric;
-      metricButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-      renderChart();
-      updateDetail(selectedIndex);
-    });
-  });
 
   renderChart();
   updateDetail(selectedIndex);

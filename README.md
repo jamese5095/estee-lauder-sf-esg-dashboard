@@ -26,7 +26,7 @@ An English-language, multi-page static web project for presenting Estée Lauder'
 - Only 2026 data are presented.
 - The Footprint reporting view is limited to Estée Lauder products transported by SF Express from Jan–Jul; Drivers retains the three-source mix for context.
 - Actual/reported, calculated/derived and scenario/modeled values remain distinct.
-- The Footprint chart shows only net actual emissions and carbon intensity.
+- The Footprint chart shows monthly actual emissions; selected-month detail retains carbon intensity and shipment volume for context.
 - Missing 3PL and CN intensity data are shown as unavailable, not zero.
 - Monthly SF values total 1,063.06 tCO₂e at two decimal places, while the source aggregate is 1,063.07 tCO₂e due to source rounding.
 

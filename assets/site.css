@@ -31,7 +31,7 @@ body {
   background:
     radial-gradient(circle at 90% 0%, rgba(200, 164, 94, 0.1), transparent 28%),
     var(--ivory);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
   line-height: 1.55;
 }
 
@@ -454,11 +454,6 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .library-card ol { margin: 20px 0 0; padding: 0; list-style: none; }
 .library-card li { padding: 10px 0; color: var(--muted); border-top: 1px solid var(--soft-line); font-size: 8px; line-height: 1.45; }
 .library-card li strong { display: block; margin-bottom: 2px; color: var(--blue); font-size: 8px; }
-.source-link { margin-top: 20px; padding: 18px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--navy); border: 1px solid var(--line); border-radius: 13px; background: #fff; text-decoration: none; }
-.source-link span { color: var(--muted); font-size: 9px; }
-.source-link strong { display: block; margin-top: 4px; font-size: 12px; }
-.source-link b { color: var(--gold-deep); }
-
 .site-footer { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 26px 0 34px; display: flex; align-items: center; justify-content: space-between; gap: 30px; color: var(--muted); border-top: 1px solid var(--line); font-size: 9px; }
 .site-footer strong { color: var(--navy); }
 
