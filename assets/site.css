@@ -605,6 +605,15 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 
 /* Quantified routing case */
 .precision-hero h1 { max-width: 900px; }
+.sample-rationale { margin-top: 14px; padding: 18px 22px; display: grid; grid-template-columns: 165px minmax(0, 1fr) auto; gap: 22px; align-items: center; border: 1px solid rgba(200, 164, 94, 0.45); border-left: 4px solid var(--gold); border-radius: 14px; background: #fff; box-shadow: var(--shadow); }
+.sample-rationale-title span, .sample-rationale-title strong { display: block; }
+.sample-rationale-title span { color: var(--gold-deep); font-size: 10px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; }
+.sample-rationale-title strong { margin-top: 4px; color: var(--navy); font-size: 16px; }
+.sample-rationale p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.sample-rationale p b { color: var(--navy); }
+.sample-rationale-facts { display: grid; grid-template-columns: auto auto; gap: 18px; }
+.sample-rationale-facts span { color: var(--muted); font-size: 10px; white-space: nowrap; }
+.sample-rationale-facts b { display: block; color: var(--blue); font-size: 18px; line-height: 1.15; }
 .precision-signal { margin-top: 14px; padding: 30px; }
 .precision-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; }
 .precision-section-head > div:first-child > span { color: var(--gold-deep); font-size: 10px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; }
@@ -651,8 +660,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .evidence-ribbon > span:last-child { border-right: 0; }
 .evidence-ribbon i { width: 27px; height: 27px; grid-row: 1 / 3; display: grid; place-items: center; color: var(--gold-deep); border-radius: 50%; background: var(--champagne); font-size: 8px; font-style: normal; font-weight: 800; }
 .evidence-ribbon b { color: var(--navy); font-size: 10px; }
-.precision-workbench { margin-top: 14px; display: grid; grid-template-columns: 1fr; gap: 14px; align-items: stretch; }
-.routing-strategy, .impact-simulator { min-width: 0; padding: 34px; }
+.precision-workbench { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 14px; align-items: stretch; }
+.routing-strategy, .impact-simulator { min-width: 0; padding: 28px; }
 .engine-chip, .scenario-chip { padding: 8px 11px; color: var(--blue); border-radius: 999px; background: var(--powder-2); font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
 .routing-origin { margin-top: 24px; padding: 17px 19px; border: 1px solid rgba(200, 164, 94, 0.35); border-radius: 12px; background: #faf7f0; }
 .routing-origin span, .routing-origin strong, .routing-origin small { display: block; }
@@ -715,11 +724,27 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .model-note { margin: 14px 0 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 9px; }
 .model-note b { color: var(--gold-deep); text-transform: uppercase; }
 
+/* Keep the compact two-column workbench while making the Scale panel presentation-safe. */
+.impact-simulator .precision-section-head > div:first-child > span { font-size: 10px; }
+.impact-simulator .share-control span { font-size: 11px; }
+.impact-simulator .share-presets button { min-height: 31px; font-size: 10px; }
+.impact-simulator .impact-hero > span { font-size: 11px; }
+.impact-simulator .impact-hero p { font-size: 12px; line-height: 1.45; }
+.impact-simulator .impact-metrics span { min-height: 27px; font-size: 10px; line-height: 1.35; }
+.impact-simulator .impact-metrics strong { font-size: 17px; }
+.impact-simulator .impact-metrics small { font-size: 10px; line-height: 1.35; }
+.impact-simulator .model-trace span { font-size: 10px; line-height: 1.3; }
+.impact-simulator .model-trace strong { font-size: 16px; }
+.impact-simulator .model-trace small { margin-top: 2px; font-size: 10px; }
+.impact-simulator .model-note { font-size: 11px; line-height: 1.45; }
+
 @media (max-width: 1000px) {
   .precision-workbench { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
+  .sample-rationale { grid-template-columns: 1fr; gap: 13px; }
+  .sample-rationale-facts { justify-content: start; }
   .signal-layout { grid-template-columns: 1fr; }
   .evidence-ribbon { grid-template-columns: 1fr 1fr; }
   .evidence-ribbon > span:nth-child(2) { border-right: 0; }
@@ -727,6 +752,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 }
 
 @media (max-width: 520px) {
+  .sample-rationale-facts { grid-template-columns: 1fr 1fr; gap: 12px; }
   .precision-signal, .routing-strategy, .impact-simulator { padding: 21px; }
   .precision-section-head { align-items: flex-start; flex-direction: column; }
   .evidence-badge { width: 100%; }
