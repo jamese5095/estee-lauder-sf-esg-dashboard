@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sliderProgress = (share - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100;
 
     slider.style.setProperty("--range-progress", `${sliderProgress}%`);
-    slider.setAttribute("aria-valuetext", `${share}% of candidate weight activated`);
+    slider.setAttribute("aria-valuetext", `${share}% of candidate cohort optimized, ${(activatedWeightKg / 1000).toFixed(2)} of ${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
     setText("#share-output", `${share}%`);
+    setText("#candidate-total-weight", `${(model.candidateWeightKg / 1000).toFixed(2)} tonnes`);
     setText("#scenario-strategy", strategy.name);
     setText("#impact-reduction", reductionTonnes.toFixed(2));
     document.querySelector("#impact-reduction")?.insertAdjacentHTML("beforeend", " <small>tCO₂e</small>");

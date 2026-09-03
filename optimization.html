@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A shipment-level SF routing case that turns Estée Lauder carbon data into measurable ESG value.">
   <title>Precision Routing · Estée Lauder × SF</title>
-  <link rel="stylesheet" href="assets/site.css?v=20260903e">
+  <link rel="stylesheet" href="assets/site.css?v=20260903f">
 </head>
 <body>
   <header class="site-header">
@@ -155,8 +155,9 @@
         </div>
 
         <div class="share-control">
-          <div><span>Candidate weight activated</span><output id="share-output" for="candidate-share">10%</output></div>
-          <input id="candidate-share" type="range" min="5" max="30" step="5" value="10" aria-label="Candidate weight activated">
+          <div><span>Share of candidate cohort optimized</span><output id="share-output" for="candidate-share">10%</output></div>
+          <p class="share-context"><b id="activated-weight">1.67 tonnes</b> of <strong id="candidate-total-weight">16.70 tonnes</strong> candidate weight</p>
+          <input id="candidate-share" type="range" min="5" max="30" step="5" value="10" aria-label="Share of candidate cohort optimized">
           <div class="share-presets" aria-label="Scenario presets">
             <button type="button" data-share="5">5%</button>
             <button class="active" type="button" data-share="10">10%</button>
@@ -168,13 +169,13 @@
         <div class="impact-hero">
           <span>Modeled monthly WTW reduction</span>
           <strong id="impact-reduction">1.06 <small>tCO₂e</small></strong>
-          <p><b id="activated-weight">1.67 tonnes</b> routed through the selected strategy</p>
+          <p>Estimated impact from the selected share of the candidate cohort</p>
         </div>
 
         <div class="impact-metrics">
           <article><span>Optimized footprint</span><strong id="optimized-footprint">16.31 tCO₂e</strong><small id="footprint-change">6.1% improvement</small></article>
           <article><span>Lane intensity</span><strong id="optimized-intensity">343.3 g/kg</strong><small>from 365.5 g/kg</small></article>
-          <article><span>Historical billed freight</span><strong id="freight-delta">+0.02%</strong><small>matched comparison</small></article>
+          <article><span>Observed freight difference</span><strong id="freight-delta">+0.02%</strong><small>matched historical waybills</small></article>
         </div>
 
         <div class="model-trace">
@@ -208,6 +209,6 @@
   <footer class="site-footer"><span><strong>SF Precision Routing</strong> · Shipment-level carbon intelligence</span><span>Estée Lauder × SF · 2026</span></footer>
   <script src="assets/site.js"></script>
   <script src="data/dashboard-data.js?v=20260903e"></script>
-  <script src="assets/optimization.js?v=20260903a"></script>
+  <script src="assets/optimization.js?v=20260903b"></script>
 </body>
 </html>
