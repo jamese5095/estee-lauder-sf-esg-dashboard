@@ -167,6 +167,44 @@
       <noscript><p class="rail-selection-note">Enable JavaScript to explore the rail-shift scenario.</p></noscript>
     </section>
 
+    <section class="road-consolidation card" aria-labelledby="road-consolidation-title">
+      <div class="precision-section-head">
+        <div><span>SF fleet pathway</span><h2 id="road-consolidation-title">30T diesel substitution pathway.</h2></div>
+        <span class="rail-case-period">Shanghai → Beijing · May 2026</span>
+      </div>
+      <div class="road-intensity-layout">
+        <div class="road-intensity-panel">
+          <div class="road-panel-label"><span>Transport-only intensity</span><strong>gCO₂e / tonne-km</strong></div>
+          <div class="road-intensity-bars" aria-label="Transport-only intensity references: 30T diesel reference 87.4, all fuel-road records 416.1, 1.5T diesel reference 349.4, 5T diesel reference 311.7, 1.5T gasoline reference 242.7 and 14T diesel reference 144.0 grams of carbon dioxide equivalent per tonne-kilometre">
+            <div class="road-intensity-row is-thirty"><div><span>30T diesel reference</span><strong id="thirty-t-intensity">87.4</strong></div><i style="--level:21.0%"></i></div>
+            <div class="road-intensity-row is-current"><div><span>All fuel-road records <small>(weighted overall)</small></span><strong id="fuel-road-intensity">416.1</strong></div><i style="--level:100%"></i></div>
+            <div class="road-intensity-row is-diesel-small"><div><span>1.5T diesel reference</span><strong id="one-point-five-t-diesel-intensity">349.4</strong></div><i style="--level:84.0%"></i></div>
+            <div class="road-intensity-row is-diesel-small"><div><span>5T diesel reference</span><strong id="five-t-intensity">311.7</strong></div><i style="--level:74.9%"></i></div>
+            <div class="road-intensity-row is-gasoline"><div><span>1.5T gasoline reference</span><strong id="gasoline-intensity">242.7</strong></div><i style="--level:58.3%"></i></div>
+            <div class="road-intensity-row is-middle"><div><span>14T diesel reference</span><strong id="fourteen-t-intensity">144.0</strong></div><i style="--level:34.6%"></i></div>
+          </div>
+        </div>
+        <div class="road-scenario-panel">
+          <div class="road-panel-label"><span>Substitution scenario</span><strong>30T diesel candidate pool</strong></div>
+          <div class="road-screening-tags" aria-label="30T candidate screening rules">
+            <span>Long-haul <b>≥1,000 km</b></span>
+            <span><b>Fuel-road</b> activity</span>
+            <span><b>No existing 30T</b> record</span>
+          </div>
+          <div class="road-candidate-callout"><span>30T diesel candidate waybills</span><strong id="road-candidate-count">13,843</strong><small>Each waybill counted once after screening</small></div>
+          <div class="road-share-label">Share shifted to 30T diesel</div>
+          <div class="road-scenario-options" role="group" aria-label="Share of candidate waybills shifted to 30T diesel">
+            <button type="button" class="road-scenario-option" data-road-share="5"><strong>5%</strong></button>
+            <button type="button" class="road-scenario-option" data-road-share="10"><strong>10%</strong></button>
+            <button type="button" class="road-scenario-option active" data-road-share="20"><strong>20%</strong></button>
+            <button type="button" class="road-scenario-option" data-road-share="30"><strong>30%</strong></button>
+          </div>
+          <div class="road-scenario-output" aria-live="polite" aria-atomic="true"><span id="road-output-label">20% shifted to 30T diesel · estimated WTW reduction</span><strong><span id="road-reduction-output">2.40</span> <small>tCO₂e</small></strong><p><span id="road-after-output">14.97</span> tCO₂e remaining on the May lane</p></div>
+        </div>
+      </div>
+      <div class="road-pathway-footer"><span><b>Eligibility</b> Long-haul fuel-road activity with no existing 30T record</span><span><b>Activation gate</b> Match capacity, load and service window before rollout</span></div>
+    </section>
+
     <section class="playbook-overview" aria-labelledby="playbook-title">
       <div class="playbook-copy">
         <span>SF methodology activation</span>

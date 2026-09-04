@@ -119,7 +119,7 @@ test("public scenario inputs contain aggregates only", () => {
 
 test("client page explains screening, removes rail evidence and keeps manual control", () => {
   const html = fs.readFileSync(path.join(root, "optimization.html"), "utf8");
-  assert.doesNotMatch(html, /matched|comparison|30T|Observed rail|17,772|rail-chain intensity|tonne-km selected|target-total-activity/i);
+  assert.doesNotMatch(html, /Observed rail|17,772|rail-chain intensity|tonne-km selected|target-total-activity/i);
   assert.match(html, /min="5" max="30" step="1"/);
   assert.match(html, /Potential rail-shift shipments/);
   assert.match(html, /≥1,000 km/);
@@ -150,4 +150,58 @@ test("every page's local links and assets resolve", () => {
       assert.ok(fs.existsSync(path.join(root, local)), `${name}: missing ${local}`);
     }
   }
+});
+
+test("30T consolidation case uses one transport-intensity basis", () => {
+  const scenario = model.roadConsolidationScenario;
+  assert.equal(scenario.screenedWaybills, 13843);
+  assert.equal(scenario.excludedExistingThirtyTWaybills, 14187);
+  near(scenario.fuelRoadCategoryIntensityGPerTonneKm, 416.0798);
+  near(scenario.thirtyTIntensityGPerTonneKm, 87.3773);
+  near(scenario.gasolineReferenceIntensityGPerTonneKm, 242.7337);
+  near(scenario.middleReferenceIntensityGPerTonneKm, 143.9655);
+  assert.ok(scenario.gasolineReferenceIntensityGPerTonneKm < scenario.fuelRoadCategoryIntensityGPerTonneKm);
+  assert.ok(scenario.thirtyTIntensityGPerTonneKm < scenario.middleReferenceIntensityGPerTonneKm);
+  assert.ok(scenario.thirtyTIntensityGPerTonneKm < scenario.fuelRoadCategoryIntensityGPerTonneKm);
+  near(scenario.screenedActivityTonneKm, 18085.6460);
+  near(scenario.screenedRoadActivityTonneKm, 36861.0215);
+  near(scenario.existingThirtyTActivityTonneKm, 17979.5366);
+  near(scenario.allFuelRoadWtwKg, 15337.1281);
+  near(scenario.existingThirtyTWtwKg, 1571.0033);
+  assert.equal(scenario.additionalVehicleReferences.length, 4);
+  near(scenario.additionalVehicleReferences[1].intensityGPerTonneKm, 349.4210);
+});
+
+for (const [share, expected] of [[10, "1.20"], [20, "2.40"], [30, "3.61"]]) {
+  test(`${share}% 30T consolidation returns a conditional estimate`, () => {
+    const result = context.calculateRoadConsolidation(model, share);
+    assert.equal(result.reductionTonnes.toFixed(2), expected);
+    near(result.remainingFootprintTonnes + result.reductionTonnes, model.actualFootprintTonnes);
+  });
+}
+
+test("30T card is separate from the rail workbench", () => {
+  const html = fs.readFileSync(path.join(root, "optimization.html"), "utf8");
+  assert.match(html, /30T diesel substitution pathway/);
+  assert.match(html, /gCO₂e \/ tonne-km/);
+  assert.match(html, /All fuel-road records/);
+  assert.match(html, /weighted overall/);
+  assert.match(html, /30T diesel reference/);
+  assert.match(html, /1.5T gasoline reference/);
+  assert.match(html, /14T diesel reference/);
+  assert.doesNotMatch(html, /lowest in this comparison/);
+  assert.match(html, /5T diesel reference/);
+  assert.match(html, /1\.5T diesel reference/);
+  assert.doesNotMatch(html, /additional-road-references/);
+  assert.match(html, /30T diesel candidate waybills/);
+  assert.match(html, /Long-haul <b>≥1,000 km<\/b>/);
+  assert.doesNotMatch(html, /Share means the portion of this screened activity/);
+  assert.match(html, /Substitution scenario/);
+  assert.match(html, /30T diesel candidate pool/);
+  assert.match(html, /Share shifted to 30T diesel/);
+  assert.match(html, /shifted to 30T diesel · estimated WTW reduction/);
+  assert.equal((html.match(/data-road-share=/g) || []).length, 4);
+  assert.doesNotMatch(html, /data-road-reduction/);
+  assert.match(html, /Eligibility/);
+  assert.equal((html.match(/class="road-consolidation card"/g) || []).length, 1);
 });

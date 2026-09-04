@@ -75,3 +75,38 @@ document.addEventListener("DOMContentLoaded", () => {
   slider.disabled = false;
   presetButtons.forEach((button) => { button.disabled = false; });
 });
+
+function calculateRoadConsolidation(model, share) {
+  const scenario = model.roadConsolidationScenario;
+  const fraction = Math.max(0, Math.min(100, Number(share) || 0)) / 100;
+  const replacedRoadKg = scenario.screenedRoadWtwKg * fraction;
+  const replacementThirtyTKg = scenario.screenedActivityTonneKm * fraction * scenario.thirtyTIntensityGPerTonneKm / 1000;
+  const reductionTonnes = (replacedRoadKg - replacementThirtyTKg) / 1000;
+  return { share: fraction * 100, reductionTonnes, remainingFootprintTonnes: model.actualFootprintTonnes - reductionTonnes, selectedActivityTonneKm: scenario.screenedActivityTonneKm * fraction };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const model = window.ESTEE_DASHBOARD_DATA?.optimizationCase;
+  const scenario = model?.roadConsolidationScenario;
+  const options = [...document.querySelectorAll("[data-road-share]")];
+  if (!scenario || !options.length) return;
+  const number = (value) => value.toLocaleString("en-US", { maximumFractionDigits: 0 });
+  const setText = (selector, value) => { const element = document.querySelector(selector); if (element) element.textContent = value; };
+  setText("#fuel-road-intensity", scenario.fuelRoadCategoryIntensityGPerTonneKm.toFixed(1));
+  setText("#gasoline-intensity", scenario.gasolineReferenceIntensityGPerTonneKm.toFixed(1));
+  setText("#fourteen-t-intensity", scenario.middleReferenceIntensityGPerTonneKm.toFixed(1));
+  setText("#thirty-t-intensity", scenario.thirtyTIntensityGPerTonneKm.toFixed(1));
+  setText("#road-candidate-count", number(scenario.screenedWaybills));
+  const referenceValue = (label) => scenario.additionalVehicleReferences?.find((item) => item.label === label)?.intensityGPerTonneKm;
+  setText("#one-point-five-t-diesel-intensity", referenceValue("1.5T diesel")?.toFixed(1));
+  setText("#five-t-intensity", referenceValue("5T diesel")?.toFixed(1));
+  const render = (share) => {
+    const result = calculateRoadConsolidation(model, share);
+    setText("#road-output-label", `${result.share}% shifted to 30T diesel · estimated WTW reduction`);
+    setText("#road-reduction-output", result.reductionTonnes.toFixed(2));
+    setText("#road-after-output", result.remainingFootprintTonnes.toFixed(2));
+    options.forEach((option) => { const active = Number(option.dataset.roadShare) === result.share; option.classList.toggle("active", active); option.setAttribute("aria-pressed", String(active)); });
+  };
+  options.forEach((option) => option.addEventListener("click", () => render(option.dataset.roadShare)));
+  render(20);
+});

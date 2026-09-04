@@ -222,13 +222,20 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .donut strong { color: var(--navy); font-size: 28px; }
 .donut span { margin-top: 2px; color: var(--muted); font-size: 8px; text-transform: uppercase; }
 .mode-list { display: grid; gap: 9px; }
-.mode-row { display: grid; grid-template-columns: 8px 1fr auto; gap: 9px; align-items: center; color: var(--muted); font-size: 9px; }
-.mode-row i { width: 7px; height: 7px; border-radius: 2px; background: var(--blue); }
-.mode-row:nth-child(2) i { background: var(--gold); }
-.mode-row:nth-child(3) i { background: var(--blue-3); }
-.mode-row:nth-child(4) i { background: #aab8ce; }
-.mode-row:nth-child(5) i { background: #c7c4bb; }
+.mode-row { display: grid; grid-template-columns: 8px 76px minmax(80px, 1fr) 106px; gap: 11px; align-items: center; color: var(--muted); font-size: 9px; }
+.mode-row > i { width: 7px; height: 7px; border-radius: 2px; background: var(--blue); }
+.mode-row:nth-child(2) > i { background: var(--gold); }
+.mode-row:nth-child(3) > i { background: var(--blue-3); }
+.mode-row:nth-child(4) > i { background: #aab8ce; }
+.mode-row:nth-child(5) > i { background: #c7c4bb; }
+.mode-track { height: 8px; overflow: hidden; border-radius: 99px; background: var(--powder); }
+.mode-track i { display: block; height: 100%; min-width: 3px; border-radius: inherit; background: var(--blue); }
+.mode-row:nth-child(2) .mode-track i { background: var(--gold); }
+.mode-row:nth-child(3) .mode-track i { background: var(--blue-3); }
+.mode-row:nth-child(4) .mode-track i { background: #aab8ce; }
+.mode-row:nth-child(5) .mode-track i { background: #c7c4bb; }
 .mode-row strong { color: var(--navy); }
+.mode-row strong small { margin-left: 3px; color: var(--muted); font-size: 8px; font-weight: 600; }
 
 .city-card { margin-top: 14px; }
 .table-wrap { margin-top: 22px; overflow-x: auto; }
@@ -757,6 +764,65 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .rail-footer .execution-guardrails { margin: 0; display: flex; flex-wrap: wrap; gap: 20px; }
 .rail-footer .execution-guardrails span { padding: 0; background: transparent; }
 .rail-footer .execution-guardrails b { font-size: 12px; }
+
+/* 30T road consolidation card: a benchmark + stage-gate view, separate from rail. */
+.road-consolidation { margin-top: 14px; padding: 30px; }
+.road-intensity-layout { margin-top: 24px; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 24px; }
+.road-intensity-panel, .road-scenario-panel { min-width: 0; padding: 24px; border-radius: 14px; background: var(--cream); }
+.road-scenario-panel { background: var(--powder-2); }
+.road-panel-label { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.road-panel-label span { color: var(--gold-deep); font-size: 11px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; }
+.road-panel-label strong { color: var(--navy); font-size: 12px; white-space: nowrap; }
+.road-intensity-bars { margin-top: 24px; display: grid; gap: 18px; }
+.road-intensity-row > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.road-intensity-row span { color: var(--muted); font-size: 13px; font-weight: 700; }
+.road-intensity-row span small { color: var(--muted); font-size: 10px; font-weight: 600; }
+.road-intensity-row strong { color: var(--navy); font-size: 23px; font-variant-numeric: tabular-nums; }
+.road-intensity-row > i { display: block; height: 8px; margin-top: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--bar-color, var(--blue)) 0 var(--level), #dce1e9 var(--level) 100%); }
+.road-intensity-row.is-current { --bar-color: var(--blue); }
+.road-intensity-row.is-gasoline { --bar-color: var(--blue-2); }
+.road-intensity-row.is-diesel-small { --bar-color: var(--blue-3); }
+.road-intensity-row.is-middle { --bar-color: var(--teal); }
+.road-intensity-row.is-thirty { --bar-color: var(--gold); margin: -7px -10px; padding: 12px 10px; border: 1px solid var(--navy); border-radius: 10px; background: var(--navy); }
+.road-intensity-row.is-thirty span, .road-intensity-row.is-thirty strong { color: #fff; }
+.road-intensity-row.is-thirty span small { color: #d9e1f0; }
+.road-screening-tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
+.road-screening-tags span { padding: 7px 9px; border-radius: 7px; background: rgba(255,255,255,.78); color: var(--muted); font-size: 10px; line-height: 1.25; }
+.road-screening-tags b { color: var(--navy); }
+.road-candidate-callout { margin-top: 17px; padding: 17px 18px 16px; border-left: 4px solid var(--gold-deep); background: rgba(255,255,255,.86); }
+.road-candidate-callout span, .road-candidate-callout strong, .road-candidate-callout small { display: block; }
+.road-candidate-callout span { color: var(--gold-deep); font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; }
+.road-candidate-callout strong { margin-top: 7px; color: var(--navy); font-size: 42px; line-height: .95; font-variant-numeric: tabular-nums; }
+.road-candidate-callout small { margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.road-share-label { margin-top: 20px; color: var(--navy); font-size: 11px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; }
+.road-scenario-options { margin-top: 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.road-scenario-option { min-width: 0; min-height: 58px; padding: 12px 8px; display: grid; place-items: center; border: 1px solid transparent; border-radius: 10px; color: var(--navy); background: #fff; text-align: center; cursor: pointer; transition: border-color .18s ease, background .18s ease, transform .18s ease; }
+.road-scenario-option:hover { transform: translateY(-2px); border-color: var(--gold); }
+.road-scenario-option:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 3px; }
+.road-scenario-option.active { border-color: var(--navy); background: var(--navy); box-shadow: 0 8px 20px rgba(4, 10, 43, .12); }
+.road-scenario-option strong { display: block; color: var(--navy); font-size: 27px; font-variant-numeric: tabular-nums; }
+.road-scenario-option.active strong { color: #fff; }
+.road-scenario-output { margin-top: 18px; padding: 20px; border-radius: 12px; background: var(--navy); }
+.road-scenario-output > span, .road-scenario-output > strong, .road-scenario-output > p { display: block; }
+.road-scenario-output > span { color: #d9e1f0; font-size: 12px; }
+.road-scenario-output > strong { margin-top: 7px; color: #fff; font-size: 42px; line-height: 1; font-variant-numeric: tabular-nums; }
+.road-scenario-output > strong small { color: var(--gold); font-size: 13px; }
+.road-scenario-output > p { margin: 10px 0 0; color: #b6bfd3; font-size: 12px; }
+.road-pathway-footer { margin-top: 18px; padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; border-top: 1px solid var(--soft-line); color: var(--muted); font-size: 12px; line-height: 1.45; }
+.road-pathway-footer b { color: var(--gold-deep); font-size: 10px; letter-spacing: .4px; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .road-intensity-layout { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 520px) {
+  .road-consolidation { padding: 21px; }
+  .road-intensity-panel, .road-scenario-panel { padding: 18px; }
+  .road-panel-label { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .road-scenario-options { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .road-scenario-option { min-height: 52px; padding: 12px 8px; }
+  .road-scenario-option strong { font-size: 22px; }
+  .road-scenario-output > strong { font-size: 38px; }
+  .road-pathway-footer { align-items: flex-start; flex-direction: column; }
+}
 @media (max-width: 900px) {
   .rail-interaction-row { grid-template-columns: 1fr; gap: 22px; }
   .rail-candidate-summary { gap: 20px; padding: 22px; }
@@ -785,7 +851,9 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 /* Methodology: compliant accounting system without dashboard clutter */
 .driver-overview.single { grid-template-columns: 1fr; }
 .driver-overview.single > .card { padding: 30px; }
-.driver-overview.single .mode-layout { grid-template-columns: 190px minmax(0, 1fr); max-width: 760px; }
+.driver-overview.single .mode-layout { grid-template-columns: 220px minmax(0, 1fr); max-width: none; gap: 42px; }
+.driver-overview.single .donut { width: 180px; height: 180px; }
+.driver-overview.single .donut::before { width: 130px; height: 130px; }
 
 .methodology-header::after { background: radial-gradient(circle at 78% 12%, rgba(200, 164, 94, 0.16), transparent 32%); }
 .methodology-hero p { max-width: 720px; }
@@ -878,7 +946,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .tier-heading, .method-boundary { align-items: flex-start; flex-direction: column; }
   .method-boundary p { text-align: left; }
   .impact-band { grid-template-columns: 1fr 1fr; }
-  .driver-overview.single .mode-layout { grid-template-columns: 150px minmax(0, 1fr); }
+  .driver-overview.single .mode-layout { grid-template-columns: 175px minmax(0, 1fr); gap: 26px; }
 }
 
 @media (max-width: 520px) {
@@ -886,4 +954,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .standards-grid, .impact-band { grid-template-columns: 1fr; }
   .core-formula { padding: 23px; }
   .driver-overview.single .mode-layout { grid-template-columns: 1fr; }
+  .driver-overview.single .donut { width: 155px; height: 155px; }
+  .driver-overview.single .donut::before { width: 112px; height: 112px; }
+  .mode-row { grid-template-columns: 8px 68px minmax(60px, 1fr) 88px; gap: 7px; }
 }
