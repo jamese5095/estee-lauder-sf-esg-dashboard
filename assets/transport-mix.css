@@ -1,0 +1,71 @@
+/* Composition and current adoption use the complete May lane transport scope. */
+.mix-scope { text-align: right; color: var(--muted); font-size: 13px; }
+.mix-scope b { color: var(--navy); font-weight: 600; }
+.mix-intro { margin: 12px 0 24px; color: var(--muted); font-size: 15px; }
+.mix-layout { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 24px; }
+.mix-chart { min-width: 0; padding: 23px 20px 20px; border-radius: 14px; background: var(--cream); text-align: center; }
+.mix-chart h3 { display: flex; align-items: center; justify-content: center; min-height: 2.4em; margin: 0; color: var(--navy); font-size: 20px; line-height: 1.2; }
+.mix-chart > p { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+.mix-plot { position: relative; height: 260px; padding: 0 26px 0 42px; }
+.mix-axis { position: absolute; top: -8px; bottom: -8px; left: 0; display: flex; flex-direction: column; justify-content: space-between; color: var(--muted); font-size: 12px; }
+.mix-stack { display: flex; flex-direction: column-reverse; height: 100%; max-width: 132px; margin: 0 auto; border-radius: 8px; overflow: hidden; background: var(--powder); }
+.mix-segment { display: block; flex: none; width: 100%; margin: 0; padding: 0; border: 0; border-top: 1px solid rgba(255,255,255,.35); background: var(--segment-color); color: #fff; font-weight: 700; font-size: 17px; cursor: pointer; transition: opacity .15s; }
+.mix-segment.mix-thirty, .mix-segment.mix-other { color: var(--navy); }
+.mix-segment:focus-visible { outline: 3px solid white; outline-offset: -4px; }
+.mix-segment.is-muted { opacity: .3; }
+.mix-total { display: block; margin-top: 22px; color: var(--navy); font-size: 24px; font-variant-numeric: tabular-nums; }
+.mix-total small { color: var(--muted); font-size: 12px; font-weight: 500; }
+.mix-findings { min-width: 0; padding: 24px; border-radius: 14px; background: var(--powder-2); }
+.mix-eyebrow, .mix-next > span { color: var(--gold-deep); font-size: 11px; letter-spacing: .5px; font-weight: 800; text-transform: uppercase; }
+.mix-findings h3 { margin: 10px 0 18px; color: var(--navy); font-size: 24px; line-height: 1.2; letter-spacing: -.5px; }
+.mix-key-fact strong, .mix-key-fact span { display: block; }
+.mix-key-fact strong { color: var(--blue); font-size: 48px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.mix-key-fact span { color: var(--muted); font-size: 14px; }
+.mix-findings > p { margin: 15px 0 20px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.mix-findings > p b { color: var(--navy); }
+.mix-findings > .mix-why { margin: 14px 0 18px; color: var(--navy); font-size: 14px; line-height: 1.5; }
+.mix-next { padding-top: 17px; border-top: 1px solid var(--line); }
+.mix-next a { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; color: var(--navy); text-decoration: none; font-size: 14px; font-weight: 700; }
+.mix-next a b { color: var(--gold-deep); }
+.mix-legend { margin-top: 24px; }
+.mix-legend-head, .mix-legend-row { display: grid; grid-template-columns: minmax(0,1fr) 100px 100px; align-items: center; gap: 18px; width: 100%; text-align: right; }
+.mix-legend-head { padding: 0 12px 9px; color: var(--muted); font-size: 12px; }
+.mix-legend-head > :first-child, .mix-legend-row > :first-child { text-align: left; }
+.mix-legend-row { padding: 10px 12px; border: 0; border-top: 1px solid var(--soft-line); background: transparent; color: var(--navy); cursor: pointer; border-radius: 4px; font-size: 14px; }
+.mix-legend-row > span { display: flex; align-items: center; gap: 10px; }
+.mix-legend-row i { flex-shrink: 0; width: 10px; height: 10px; border-radius: 2px; }
+.mix-legend-row strong { font-variant-numeric: tabular-nums; }
+.mix-legend-row:hover, .mix-legend-row.is-selected { background: var(--powder-2); }
+.mix-selection { min-height: 38px; margin: 12px 0 0; color: var(--navy); font-size: 13px; line-height: 1.45; }
+.mix-boundary { margin: 8px 0 0; padding-top: 12px; border-top: 1px solid var(--soft-line); color: var(--muted); font-size: 12px; }
+.pathway-current { display: grid; grid-template-columns: minmax(230px,.65fr) 1fr; align-items: center; gap: 24px; margin-top: 20px; padding: 15px 20px; border-radius: 12px; background: var(--cream); border-left: 3px solid var(--gold); }
+.pathway-current > div > span, .pathway-current small { display: block; color: var(--muted); font-size: 13px; }
+.pathway-current strong { display: block; margin: 4px 0; color: var(--navy); font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.pathway-current p { margin: 0; padding-left: 22px; border-left: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.5; }
+.pathway-current p b { color: var(--navy); }
+.road-reference-scope { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
+.pathway-shared-note { margin: 15px 4px 22px; color: var(--muted); font-size: 12px; }
+.scenario-adoption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 15px; margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.15); }
+.scenario-adoption > span { color: #b6bfd3; font-size: 12px; }
+.scenario-adoption > strong { color: var(--gold); font-size: 20px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) {
+  .mix-layout { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .mix-findings { grid-column: 1 / -1; }
+  .mix-findings h3 { font-size: 22px; }
+  .mix-findings > p { margin-bottom: 12px; }
+}
+@media (max-width: 560px) {
+  .mix-scope { text-align: left; font-size: 12px; }
+  .mix-chart { padding: 18px 10px; }
+  .mix-chart h3 { font-size: 16px; }
+  .mix-chart > p { min-height: 36px; font-size: 12px; margin-bottom: 14px; }
+  .mix-plot { height: 220px; padding: 0 2px 0 32px; }
+  .mix-axis { font-size: 10px; }
+  .mix-segment { font-size: 12px; }
+  .mix-total { font-size: 20px; }
+  .mix-total small { display: block; }
+  .mix-legend-head, .mix-legend-row { grid-template-columns: minmax(0,1fr) 48px 62px; gap: 8px; padding-right: 0; padding-left: 0; font-size: 12px; }
+  .mix-selection { min-height: 54px; }
+  .pathway-current { grid-template-columns: 1fr; gap: 15px; padding: 20px; }
+  .pathway-current p { padding: 14px 0 0; border-left: 0; border-top: 1px solid var(--line); font-size: 14px; }
+}

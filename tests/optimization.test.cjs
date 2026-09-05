@@ -117,9 +117,9 @@ test("public scenario inputs contain aggregates only", () => {
   assert.doesNotMatch(source, /SF\d{8,}|月结|账号|waybillId|accountId|sourcePath/);
 });
 
-test("client page explains screening, removes rail evidence and keeps manual control", () => {
+test("client page explains screening and keeps manual control", () => {
   const html = fs.readFileSync(path.join(root, "optimization.html"), "utf8");
-  assert.doesNotMatch(html, /Observed rail|17,772|rail-chain intensity|tonne-km selected|target-total-activity/i);
+  assert.doesNotMatch(html, /rail-chain intensity|tonne-km selected|target-total-activity/i);
   assert.match(html, /min="5" max="30" step="1"/);
   assert.match(html, /Potential rail-shift shipments/);
   assert.match(html, /≥1,000 km/);
@@ -182,7 +182,7 @@ for (const [share, expected] of [[10, "1.20"], [20, "2.40"], [30, "3.61"]]) {
 
 test("30T card is separate from the rail workbench", () => {
   const html = fs.readFileSync(path.join(root, "optimization.html"), "utf8");
-  assert.match(html, /30T diesel substitution pathway/);
+  assert.match(html, /Extend 30T diesel consolidation/);
   assert.match(html, /gCO₂e \/ tonne-km/);
   assert.match(html, /All fuel-road records/);
   assert.match(html, /weighted overall/);
@@ -198,10 +198,10 @@ test("30T card is separate from the rail workbench", () => {
   assert.doesNotMatch(html, /Share means the portion of this screened activity/);
   assert.match(html, /Substitution scenario/);
   assert.match(html, /30T diesel candidate pool/);
-  assert.match(html, /Share shifted to 30T diesel/);
-  assert.match(html, /shifted to 30T diesel · estimated WTW reduction/);
+  assert.match(html, /Candidate transport work shifted to 30T diesel/);
+  assert.match(html, /of candidate transport work · estimated WTW reduction/);
   assert.equal((html.match(/data-road-share=/g) || []).length, 4);
   assert.doesNotMatch(html, /data-road-reduction/);
-  assert.match(html, /Eligibility/);
+  assert.match(html, /Compatible loads/);
   assert.equal((html.match(/class="road-consolidation card"/g) || []).length, 1);
 });

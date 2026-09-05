@@ -6,6 +6,7 @@
   <meta name="description" content="An account-linked shipment-level SF routing case that turns Estée Lauder carbon data into measurable ESG value.">
   <title>Precision Routing · Estée Lauder × SF</title>
   <link rel="stylesheet" href="assets/site.css?v=rail-candidates-1">
+  <link rel="stylesheet" href="assets/transport-mix.css">
 </head>
 <body>
   <header class="site-header">
@@ -35,7 +36,7 @@
         <article><span>Account-linked waybills</span><strong>45,888</strong><small>SF Standard Express</small></article>
         <article><span>Shipment weight</span><strong>47.53</strong><small>tonnes</small></article>
         <article><span>Actual WTW footprint</span><strong>17.37</strong><small>tCO₂e</small></article>
-        <article><span>Fuel-road emissions</span><strong>14.06</strong><small>tCO₂e</small></article>
+        <article><span>Transport WTW footprint</span><strong>17.28</strong><small>tCO₂e · transport only</small></article>
       </div>
     </div>
   </header>
@@ -50,74 +51,60 @@
       </div>
     </section>
 
-    <section class="precision-signal card" aria-labelledby="signal-title">
+    <section class="precision-signal card transport-structure" aria-labelledby="signal-title">
       <div class="precision-section-head">
-        <div>
-          <span>Shipment-level opportunity</span>
-          <h2 id="signal-title">Fuel-road shipments concentrate the lane's carbon impact.</h2>
+        <div><span>Facts &amp; focus</span><h2 id="signal-title">Where emissions concentrate.</h2></div>
+        <div class="mix-scope">May 2026 · Shanghai → Beijing<br><b>Transport only · WTW</b></div>
+      </div>
+      <p class="mix-intro">The same transport categories, viewed by work performed and emissions generated.</p>
+      <div class="mix-layout">
+        <div class="mix-chart">
+          <h3>Transport activity share</h3><p>Shipment weight × distance</p>
+          <div class="mix-plot"><div class="mix-axis"><span>100%</span><span>50%</span><span>0%</span></div><div class="mix-stack" id="mix-work" role="group" aria-label="Transport work composition"></div></div>
+          <strong class="mix-total" id="mix-work-total">67,002 <small>tonne-km</small></strong>
         </div>
-        <div class="evidence-badge"><i></i><span>Account-linked source data</span><strong>May 2026 · full export</strong></div>
+        <div class="mix-chart">
+          <h3>Carbon emissions</h3><p>Share of transport WTW</p>
+          <div class="mix-plot"><div class="mix-axis"><span>100%</span><span>50%</span><span>0%</span></div><div class="mix-stack" id="mix-emissions" role="group" aria-label="Transport emissions composition"></div></div>
+          <strong class="mix-total" id="mix-carbon-total">17.28 <small>tCO₂e</small></strong>
+        </div>
+        <aside class="mix-findings">
+          <span class="mix-eyebrow">Why extend existing pathways?</span>
+          <h3>Focus on the remaining fuel-road activity.</h3>
+          <div class="mix-key-fact"><strong id="mix-priority-carbon">82.3%</strong><span>of transport emissions</span></div>
+          <p><b>Fuel-road (excluding 30T diesel)</b> accounts for <b id="mix-priority-work">31.2%</b> of transport work.</p>
+          <p class="mix-why">Rail and 30T diesel already operate on this lane. Long-distance shipments in the remaining fuel-road pool are the next candidates for evaluation.</p>
+          <div class="mix-next"><span>Two existing pathways</span><a href="#rail-optimization-title">Rail substitution <b>↗</b></a><a href="#road-consolidation-title">30T diesel consolidation <b>↗</b></a></div>
+        </aside>
       </div>
-
-      <div class="signal-layout">
-        <article class="concentration-panel">
-          <div class="panel-kicker"><span>High-impact cohort</span><strong>Shanghai → Beijing</strong></div>
-          <div class="cohort-identity">
-            <span>Identified shipment cohort</span>
-            <strong>Fuel-road shipments</strong>
-            <small>16,149 waybills · 16.70 tonnes</small>
-          </div>
-          <div class="concentration-bars" aria-label="Fuel-road shipments represent 35.1 percent of Shanghai to Beijing weight and 80.9 percent of Shanghai to Beijing emissions">
-            <div class="concentration-row">
-              <div><span>Share of lane shipment weight</span><strong>35.1%</strong></div>
-              <div class="concentration-track"><i style="--share:35.1%"></i></div>
-            </div>
-            <div class="concentration-row is-carbon">
-              <div><span>Share of lane WTW emissions</span><strong>80.9%</strong></div>
-              <div class="concentration-track"><i style="--share:80.9%"></i></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="intensity-benchmark">
-          <div class="panel-kicker"><span>Carbon intensity</span><strong>gCO₂e per kg</strong></div>
-          <div class="benchmark-list">
-            <div class="benchmark-row">
-              <div><span>Lane average</span><strong>365.5</strong></div>
-              <div class="benchmark-track"><i style="--level:43.4%"></i></div>
-            </div>
-            <div class="benchmark-row is-primary">
-              <div><span>Fuel-road shipments</span><strong>841.7</strong></div>
-              <div class="benchmark-track"><i style="--level:100%"></i></div>
-            </div>
-          </div>
-          <div class="intensity-callout"><strong>2.3×</strong><span>the lane-average carbon intensity</span></div>
-        </article>
+      <div class="mix-legend" role="group" aria-label="Transport categories and shares">
+        <div class="mix-legend-head"><span>Transport category</span><span>Work</span><span>Emissions</span></div>
+        <div id="mix-legend-rows"></div>
       </div>
-
-      <div class="evidence-ribbon" aria-label="Case scope">
-        <span><i>01</i><b>Sample</b> May 2026</span>
-        <span><i>02</i><b>Lane</b> Shanghai → Beijing</span>
-        <span><i>03</i><b>Service</b> SF Standard Express</span>
-        <span><i>04</i><b>WTW boundary</b> Pick-up + transport + delivery</span>
-      </div>
+      <p class="mix-selection" id="mix-selection" aria-live="polite">Select a category to highlight its share in both columns.</p>
+      <p class="mix-boundary">Each column totals 100%; labels are rounded. Fuel-road combines unspecified fuel-vehicle, other diesel and gasoline records; explicitly recorded 30T diesel is shown separately. Pick-up and delivery are excluded.</p>
+      <noscript><p>Enable JavaScript to view the transport composition.</p></noscript>
     </section>
 
     <section class="rail-workbench rail-unified card" aria-labelledby="rail-optimization-title">
       <div class="precision-section-head">
-        <div><span>SF rail opportunity</span><h2 id="rail-optimization-title">Plan the rail shift.</h2></div>
+        <div><span>Strategy 01 · Rail</span><h2 id="rail-optimization-title">Expand rail on eligible shipments.</h2></div>
         <span class="rail-case-period">Shanghai → Beijing · May 2026</span>
       </div>
 
+      <div class="pathway-current">
+        <div><span>Current rail coverage</span><strong id="rail-current-coverage">38.7%</strong><small id="rail-current-count">17,772 of 45,888 lane waybills</small></div>
+        <p>Build on existing rail operations by evaluating long-distance shipments with no recorded rail leg.</p>
+      </div>
       <div class="rail-candidate-summary">
         <div class="rail-candidate-total">
           <span>Potential rail-shift shipments</span>
           <strong id="rail-candidate-count">13,879</strong>
-          <small>Screened from 16,149 fuel-road waybills</small>
+          <small>Screened from 16,149 waybills with unspecified fuel-vehicle records</small>
         </div>
         <div class="rail-candidate-definition" id="rail-candidate-definition">
-          <span>Which shipments?</span>
-          <p>Fuel-road waybills with long-distance transport and no recorded rail leg.</p>
+          <span>Why these shipments?</span>
+          <p>Waybills with long-distance unspecified fuel-vehicle activity and no recorded rail leg.</p>
           <div class="rail-screening-rules">
             <span>Recorded fuel-road distance <b>≥1,000 km</b></span>
             <span><b>No rail transport recorded</b></span>
@@ -145,6 +132,7 @@
             <span>Estimated monthly WTW reduction</span>
             <strong><span id="impact-reduction">—</span> <small>tCO₂e</small></strong>
           </div>
+          <div class="scenario-adoption"><span>Rail shipment coverage · after scenario</span><strong id="rail-coverage-after">—</strong></div>
           <div class="rail-footprint">
             <div><span>May lane WTW footprint</span><strong id="footprint-change">—</strong></div>
             <div class="rail-footprint-values">
@@ -169,12 +157,16 @@
 
     <section class="road-consolidation card" aria-labelledby="road-consolidation-title">
       <div class="precision-section-head">
-        <div><span>SF fleet pathway</span><h2 id="road-consolidation-title">30T diesel substitution pathway.</h2></div>
+        <div><span>Strategy 02 · 30T diesel</span><h2 id="road-consolidation-title">Extend 30T diesel consolidation.</h2></div>
         <span class="rail-case-period">Shanghai → Beijing · May 2026</span>
+      </div>
+      <div class="pathway-current">
+        <div><span>Current 30T diesel coverage</span><strong id="road-current-coverage">30.9%</strong><small id="road-current-count">14,191 of 45,888 lane waybills</small></div>
+        <p>30T diesel carries <b id="road-current-work">26.8%</b> of lane transport work and generates <b id="road-current-carbon">9.1%</b> of transport emissions.</p>
       </div>
       <div class="road-intensity-layout">
         <div class="road-intensity-panel">
-          <div class="road-panel-label"><span>Transport-only intensity</span><strong>gCO₂e / tonne-km</strong></div>
+          <div class="road-panel-label"><span>Transport-only intensity</span><strong>gCO₂e / tonne-km</strong></div><p class="road-reference-scope">Road-waybill records · May 2026</p>
           <div class="road-intensity-bars" aria-label="Transport-only intensity references: 30T diesel reference 87.4, all fuel-road records 416.1, 1.5T diesel reference 349.4, 5T diesel reference 311.7, 1.5T gasoline reference 242.7 and 14T diesel reference 144.0 grams of carbon dioxide equivalent per tonne-kilometre">
             <div class="road-intensity-row is-thirty"><div><span>30T diesel reference</span><strong id="thirty-t-intensity">87.4</strong></div><i style="--level:21.0%"></i></div>
             <div class="road-intensity-row is-current"><div><span>All fuel-road records <small>(weighted overall)</small></span><strong id="fuel-road-intensity">416.1</strong></div><i style="--level:100%"></i></div>
@@ -192,18 +184,20 @@
             <span><b>No existing 30T</b> record</span>
           </div>
           <div class="road-candidate-callout"><span>30T diesel candidate waybills</span><strong id="road-candidate-count">13,843</strong><small>Each waybill counted once after screening</small></div>
-          <div class="road-share-label">Share shifted to 30T diesel</div>
-          <div class="road-scenario-options" role="group" aria-label="Share of candidate waybills shifted to 30T diesel">
+          <div class="road-share-label">Candidate transport work shifted to 30T diesel</div>
+          <div class="road-scenario-options" role="group" aria-label="Share of candidate transport work shifted to 30T diesel">
             <button type="button" class="road-scenario-option" data-road-share="5"><strong>5%</strong></button>
             <button type="button" class="road-scenario-option" data-road-share="10"><strong>10%</strong></button>
             <button type="button" class="road-scenario-option active" data-road-share="20"><strong>20%</strong></button>
             <button type="button" class="road-scenario-option" data-road-share="30"><strong>30%</strong></button>
           </div>
-          <div class="road-scenario-output" aria-live="polite" aria-atomic="true"><span id="road-output-label">20% shifted to 30T diesel · estimated WTW reduction</span><strong><span id="road-reduction-output">2.40</span> <small>tCO₂e</small></strong><p><span id="road-after-output">14.97</span> tCO₂e remaining on the May lane</p></div>
+          <div class="road-scenario-output" aria-live="polite" aria-atomic="true"><span id="road-output-label">20% of candidate transport work · estimated WTW reduction</span><strong><span id="road-reduction-output">2.40</span> <small>tCO₂e</small></strong><p><span id="road-after-output">14.97</span> tCO₂e remaining on the May lane</p><div class="scenario-adoption"><span>30T share of lane transport work · after scenario</span><strong id="road-work-share-after">—</strong></div></div>
         </div>
       </div>
-      <div class="road-pathway-footer"><span><b>Eligibility</b> Long-haul fuel-road activity with no existing 30T record</span><span><b>Activation gate</b> Match capacity, load and service window before rollout</span></div>
+      <div class="road-pathway-footer"><span><b>Before rollout</b> Compatible loads · 30T capacity · Delivery-window fit · Cost viability</span></div>
     </section>
+
+    <p class="pathway-shared-note">Rail and 30T are alternative scenarios. Candidate pools may overlap; estimated reductions are not additive.</p>
 
     <section class="playbook-overview" aria-labelledby="playbook-title">
       <div class="playbook-copy">
@@ -225,6 +219,8 @@
   <script src="assets/site.js"></script>
   <script src="data/dashboard-data.js?v=rail-candidates-1"></script>
   <script src="data/rail-candidates.js?v=rail-candidates-1"></script>
-  <script src="assets/optimization.js?v=rail-candidates-1"></script>
+  <script src="data/transport-mix.js"></script>
+  <script src="assets/optimization.js?v=transport-mix-1"></script>
+  <script src="assets/transport-mix.js"></script>
 </body>
 </html>

@@ -57,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setText("#actual-footprint", model.actualFootprintTonnes.toFixed(2));
     setText("#optimized-footprint", result.optimizedFootprintTonnes.toFixed(2));
     setText("#footprint-change", `${result.reductionPercent.toFixed(1)}% reduction`);
+    const mix = window.ESTEE_TRANSPORT_MIX;
+    if (mix) {
+      setText("#rail-coverage-after", `${(mix.railWaybills / mix.waybills * 100).toFixed(1)}% → ${((mix.railWaybills + result.selectedWaybills) / mix.waybills * 100).toFixed(1)}%`);
+    }
     presetButtons.forEach((button) => {
       const active = Number(button.dataset.share) === share;
       button.classList.toggle("active", active);
@@ -102,9 +106,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("#five-t-intensity", referenceValue("5T diesel")?.toFixed(1));
   const render = (share) => {
     const result = calculateRoadConsolidation(model, share);
-    setText("#road-output-label", `${result.share}% shifted to 30T diesel · estimated WTW reduction`);
+    setText("#road-output-label", `${result.share}% of candidate transport work · estimated WTW reduction`);
     setText("#road-reduction-output", result.reductionTonnes.toFixed(2));
     setText("#road-after-output", result.remainingFootprintTonnes.toFixed(2));
+    const mix = window.ESTEE_TRANSPORT_MIX;
+    const thirty = mix?.categories.find(item => item.id === "thirty");
+    if (thirty) {
+      setText("#road-work-share-after", `${(thirty.activityTonneKm / mix.totalActivityTonneKm * 100).toFixed(1)}% → ${((thirty.activityTonneKm + result.selectedActivityTonneKm) / mix.totalActivityTonneKm * 100).toFixed(1)}%`);
+    }
     options.forEach((option) => { const active = Number(option.dataset.roadShare) === result.share; option.classList.toggle("active", active); option.setAttribute("aria-pressed", String(active)); });
   };
   options.forEach((option) => option.addEventListener("click", () => render(option.dataset.roadShare)));
